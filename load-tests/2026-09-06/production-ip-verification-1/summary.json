@@ -1,0 +1,111 @@
+{
+  "RunId": "production-ip-verification-1",
+  "StartTimeUtc": "2026-09-06T07:26:40.882014Z",
+  "EndTimeUtc": "2026-09-06T07:26:46.2388212Z",
+  "TargetBaseUrl": "https://intervista.in",
+  "Scenario": "login",
+  "VirtualUsers": 1,
+  "TotalRequests": 1,
+  "WasInterrupted": false,
+  "Initial": {
+    "TotalRequests": 1,
+    "SuccessfulRequests": 1,
+    "StatusCounts": {
+      "Count200": 1,
+      "Count400": 0,
+      "Count401": 0,
+      "Count429": 0,
+      "Count500": 0,
+      "Other4xx": 0,
+      "Other5xx": 0
+    },
+    "FailureCounts": {
+      "Timeout": 0,
+      "NetworkError": 0,
+      "Other": 0
+    },
+    "Latency": {
+      "MinMs": 5343.6,
+      "AverageMs": 5343.6,
+      "P50Ms": 5343.6,
+      "P90Ms": 5343.6,
+      "P95Ms": 5343.6,
+      "P99Ms": 5343.6,
+      "MaxMs": 5343.6
+    },
+    "Throughput": {
+      "RequestsPerSecond": 0.19
+    },
+    "Percentages": {
+      "SuccessPercent": 100,
+      "FailurePercent": 0,
+      "RateLimitedPercent": 0,
+      "ServerErrorPercent": 0,
+      "TimeoutPercent": 0
+    }
+  },
+  "Final": {
+    "TotalRequests": 1,
+    "SuccessfulRequests": 1,
+    "StatusCounts": {
+      "Count200": 1,
+      "Count400": 0,
+      "Count401": 0,
+      "Count429": 0,
+      "Count500": 0,
+      "Other4xx": 0,
+      "Other5xx": 0
+    },
+    "FailureCounts": {
+      "Timeout": 0,
+      "NetworkError": 0,
+      "Other": 0
+    },
+    "Latency": {
+      "MinMs": 5343.6,
+      "AverageMs": 5343.6,
+      "P50Ms": 5343.6,
+      "P90Ms": 5343.6,
+      "P95Ms": 5343.6,
+      "P99Ms": 5343.6,
+      "MaxMs": 5343.6
+    },
+    "Throughput": {
+      "RequestsPerSecond": 0.19
+    },
+    "Percentages": {
+      "SuccessPercent": 100,
+      "FailurePercent": 0,
+      "RateLimitedPercent": 0,
+      "ServerErrorPercent": 0,
+      "TimeoutPercent": 0
+    }
+  },
+  "Rounds": [
+    {
+      "RoundNumber": 1,
+      "StartTimeUtc": "2026-09-06T07:26:40.8830111Z",
+      "EndTimeUtc": "2026-09-06T07:26:46.2365989Z",
+      "DurationSeconds": 5.35,
+      "DelayBeforeThisRoundSeconds": 0,
+      "TotalRequests": 1,
+      "Count200": 1,
+      "Count500": 0,
+      "Count429": 0
+    }
+  ],
+  "RetryStats": {
+    "InitialSuccesses": 1,
+    "RecoveredSuccesses": 0,
+    "FinalSuccesses": 1,
+    "FinalFailures": 0,
+    "InitialHttp500": 0,
+    "RecoveredFrom500": 0,
+    "RemainingHttp500": 0,
+    "TotalRetryAttempts": 0,
+    "InitialSuccessPercent": 100,
+    "FinalSuccessPercent": 100
+  },
+  "SignupMetrics": null,
+  "LoginMetrics": null
+}

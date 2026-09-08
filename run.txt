@@ -1,0 +1,3 @@
+To run the ngrok link : ngrok http 5173 --host-header=rewrite
+
+To run the product : ./start.ps1

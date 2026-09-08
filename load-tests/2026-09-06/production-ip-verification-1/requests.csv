@@ -1,0 +1,2 @@
+RunId,RequestSeq,VirtualUserId,RoundNumber,AttemptNumber,Scenario,Operation,TimestampUtc,Method,Endpoint,StatusCode,DurationMs,ResultCategory,IsSuccess,IsTimeout,ExceptionType,TraceId,InitialAttemptTimestampUtc,InitialAttemptDurationMs,InitialStatusCode,TimeWaitedBeforeRetryMs,TotalElapsedFromFirstAttemptMs
+production-ip-verification-1,1,1,1,1,login,Login,2026-09-06T07:26:40.8908861Z,POST,/api/user/auth/login,200,5343.60,SUCCESS,True,False,None,none,2026-09-06T07:26:40.8908861Z,5343.60,200,0.00,5343.60

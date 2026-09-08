@@ -1,0 +1,49 @@
+{
+  "RunId": "sanity-login-103151",
+  "StartTimeUtc": "2026-09-05T10:31:52.061724Z",
+  "EndTimeUtc": "2026-09-05T10:31:55.7583877Z",
+  "TargetBaseUrl": "http://localhost:5280",
+  "Scenario": "login",
+  "VirtualUsers": 1,
+  "TotalRequests": 1,
+  "WasInterrupted": false,
+  "Overall": {
+    "TotalRequests": 1,
+    "SuccessfulRequests": 0,
+    "StatusCounts": {
+      "Count200": 0,
+      "Count400": 0,
+      "Count401": 1,
+      "Count429": 0,
+      "Count500": 0,
+      "Other4xx": 0,
+      "Other5xx": 0
+    },
+    "FailureCounts": {
+      "Timeout": 0,
+      "NetworkError": 0,
+      "Other": 1
+    },
+    "Latency": {
+      "MinMs": 3681.71,
+      "AverageMs": 3681.71,
+      "P50Ms": 3681.71,
+      "P90Ms": 3681.71,
+      "P95Ms": 3681.71,
+      "P99Ms": 3681.71,
+      "MaxMs": 3681.71
+    },
+    "Throughput": {
+      "RequestsPerSecond": 0.27
+    },
+    "Percentages": {
+      "SuccessPercent": 0,
+      "FailurePercent": 100,
+      "RateLimitedPercent": 0,
+      "ServerErrorPercent": 0,
+      "TimeoutPercent": 0
+    }
+  },
+  "SignupMetrics": null,
+  "LoginMetrics": null
+}

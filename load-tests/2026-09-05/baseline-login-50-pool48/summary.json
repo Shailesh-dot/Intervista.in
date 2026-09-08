@@ -1,0 +1,49 @@
+{
+  "RunId": "baseline-login-50-pool48",
+  "StartTimeUtc": "2026-09-05T11:40:42.4541195Z",
+  "EndTimeUtc": "2026-09-05T11:40:47.5647992Z",
+  "TargetBaseUrl": "http://localhost:5280",
+  "Scenario": "login",
+  "VirtualUsers": 50,
+  "TotalRequests": 50,
+  "WasInterrupted": false,
+  "Overall": {
+    "TotalRequests": 50,
+    "SuccessfulRequests": 48,
+    "StatusCounts": {
+      "Count200": 48,
+      "Count400": 0,
+      "Count401": 0,
+      "Count429": 0,
+      "Count500": 2,
+      "Other4xx": 0,
+      "Other5xx": 0
+    },
+    "FailureCounts": {
+      "Timeout": 0,
+      "NetworkError": 0,
+      "Other": 2
+    },
+    "Latency": {
+      "MinMs": 2840.95,
+      "AverageMs": 4072.04,
+      "P50Ms": 4430.64,
+      "P90Ms": 4870.05,
+      "P95Ms": 4970.13,
+      "P99Ms": 5011.44,
+      "MaxMs": 5011.44
+    },
+    "Throughput": {
+      "RequestsPerSecond": 9.78
+    },
+    "Percentages": {
+      "SuccessPercent": 96,
+      "FailurePercent": 4,
+      "RateLimitedPercent": 0,
+      "ServerErrorPercent": 4,
+      "TimeoutPercent": 0
+    }
+  },
+  "SignupMetrics": null,
+  "LoginMetrics": null
+}

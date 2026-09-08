@@ -1,0 +1,590 @@
+{
+  "tool": "Gitleaks / Source Secret Scanner Baseline",
+  "total_findings": 73,
+  "findings": [
+    {
+      "rule_id": "jwt_secret",
+      "file": "./email_brevo_migration.md",
+      "line": 75,
+      "description": "Potential jwt_secret match",
+      "match_redacted": "JWT_SECRET=REP...RET (REDACTED)",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "supabase_service_role",
+      "file": "./email_brevo_migration.md",
+      "line": 85,
+      "description": "Potential supabase_service_role match",
+      "match_redacted": "SUPABASE_SER...OLE (REDACTED)_KEY=YOUR_SUPABASE_SER...OLE (REDACTED)_KEY",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "api_key",
+      "file": "./email_brevo_migration.md",
+      "line": 92,
+      "description": "Potential api_key match",
+      "match_redacted": "BREVO_API_KEY=xke...XXX (REDACTED)",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "supabase_service_role",
+      "file": "./email_brevo_migration.md",
+      "line": 129,
+      "description": "Potential supabase_service_role match",
+      "match_redacted": "SUPABASE_SER...OLE (REDACTED)_KEY",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "supabase_service_role",
+      "file": "./email_brevo_migration.md",
+      "line": 269,
+      "description": "Potential supabase_service_role match",
+      "match_redacted": "process.env.SUPABASE_SER...OLE (REDACTED)_KEY;",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "supabase_service_role",
+      "file": "./email_brevo_migration.md",
+      "line": 277,
+      "description": "Potential supabase_service_role match",
+      "match_redacted": "'SUPABASE_SER...OLE (REDACTED)_KEY is missing'",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "api_key",
+      "file": "./email_brevo_migration.md",
+      "line": 313,
+      "description": "Potential api_key match",
+      "match_redacted": "apiKey: pro...EY, (REDACTED)",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "jwt_secret",
+      "file": "./email_brevo_migration.md",
+      "line": 2082,
+      "description": "Potential jwt_secret match",
+      "match_redacted": "JWT_SECRET=<st...et> (REDACTED)",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "supabase_service_role",
+      "file": "./email_brevo_migration.md",
+      "line": 2088,
+      "description": "Potential supabase_service_role match",
+      "match_redacted": "SUPABASE_SER...OLE (REDACTED)_KEY=<secret>",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "api_key",
+      "file": "./email_brevo_migration.md",
+      "line": 2092,
+      "description": "Potential api_key match",
+      "match_redacted": "BREVO_API_KEY=xke...xxx (REDACTED)",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "supabase_service_role",
+      "file": "./start.ps1",
+      "line": 73,
+      "description": "Potential supabase_service_role match",
+      "match_redacted": "$skipKeys = @(\"SUPABASE_URL\", \"SUPABASE_SER...OLE (REDACTED)_KEY\")",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "api_key",
+      "file": "./Ai-interview-platform/.env",
+      "line": 16,
+      "description": "Potential api_key match",
+      "match_redacted": "BREVO_API_KEY=xke...qbw (REDACTED)",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "brevo_api_key",
+      "file": "./Ai-interview-platform/.env",
+      "line": 16,
+      "description": "Potential brevo_api_key match",
+      "match_redacted": "BREVO_API_KEY=xke...qbw (REDACTED)",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "supabase_service_role",
+      "file": "./Ai-interview-platform/.env",
+      "line": 25,
+      "description": "Potential supabase_service_role match",
+      "match_redacted": "SUPABASE_SER...OLE (REDACTED)_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVrZGl5ZG9xaGlydWtlcXdscGxkIiwicm9sZSI6InNlcnZ",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "supabase_key",
+      "file": "./Ai-interview-platform/.env",
+      "line": 25,
+      "description": "Potential supabase_key match",
+      "match_redacted": "SUPABASE_SERVICE_ROLE_KEY=eyJ...yws (REDACTED)",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "supabase_key",
+      "file": "./Ai-interview-platform/scratch/test_supabase.cjs",
+      "line": 2,
+      "description": "Potential supabase_key match",
+      "match_redacted": "const SUPABASE_KEY = 'eyJ...JFo (REDACTED)';",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "api_key",
+      "file": "./Ai-interview-platform/src/config/brevo.js",
+      "line": 14,
+      "description": "Potential api_key match",
+      "match_redacted": "apiKey: pro...KEY (REDACTED)",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "supabase_service_role",
+      "file": "./Ai-interview-platform/src/config/supabase.js",
+      "line": 8,
+      "description": "Potential supabase_service_role match",
+      "match_redacted": "if (!process.env.SUPABASE_SER...OLE (REDACTED)_KEY) {",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "supabase_service_role",
+      "file": "./Ai-interview-platform/src/config/supabase.js",
+      "line": 9,
+      "description": "Potential supabase_service_role match",
+      "match_redacted": "throw new Error('SUPABASE_SER...OLE (REDACTED)_KEY is missing from .env');",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "supabase_service_role",
+      "file": "./Ai-interview-platform/src/config/supabase.js",
+      "line": 15,
+      "description": "Potential supabase_service_role match",
+      "match_redacted": "process.env.SUPABASE_SER...OLE (REDACTED)_KEY,",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "connection_string",
+      "file": "./Backend/AI Interview Module/chumma/migrate.py",
+      "line": 15,
+      "description": "Potential connection_string match",
+      "match_redacted": "\"pos...432 (REDACTED)/postgres?sslmode=require\",",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "api_key",
+      "file": "./Backend/AI Interview Module/chumma/module2_server.py",
+      "line": 25,
+      "description": "Potential api_key match",
+      "match_redacted": "GROQ_API_KEY=you...key (REDACTED) uvicorn module2_server:app --host 0.0.0.0 --port 8001 --reload",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "api_key",
+      "file": "./Backend/AI Interview Module/chumma/module2_server.py",
+      "line": 28,
+      "description": "Potential api_key match",
+      "match_redacted": "GROQ_API_KEY=you...key (REDACTED) \\",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "api_key",
+      "file": "./Backend/AI Interview Module/chumma/module2_server.py",
+      "line": 51,
+      "description": "Potential api_key match",
+      "match_redacted": "GROQ_API_KEY    = os....nv( (REDACTED)\"GROQ_API_KEY\", \"your_groq_api_key_here\")",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "api_key",
+      "file": "./Backend/AI Interview Module/chumma/module2_server.py",
+      "line": 56,
+      "description": "Potential api_key match",
+      "match_redacted": "groq_client = Groq(api_key=GRO...EY) (REDACTED)",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "api_key",
+      "file": "./Backend/AI Interview Module/chumma/files/.env",
+      "line": 2,
+      "description": "Potential api_key match",
+      "match_redacted": "GROQ_API_KEY=gsk...yAz (REDACTED)",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "connection_string",
+      "file": "./Backend/AI Interview Module/chumma/files/.env",
+      "line": 11,
+      "description": "Potential connection_string match",
+      "match_redacted": "DATABASE_URL=pos...543 (REDACTED)/postgres",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "api_key",
+      "file": "./Backend/AI Interview Module/chumma/files/config.py",
+      "line": 16,
+      "description": "Potential api_key match",
+      "match_redacted": "GROQ_API_KEY = os....nv( (REDACTED)\"GROQ_API_KEY\")",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "api_key",
+      "file": "./Backend/AI Interview Module/chumma/files/config.py",
+      "line": 23,
+      "description": "Potential api_key match",
+      "match_redacted": "groq_client = Groq(api_key=GRO...EY) (REDACTED)",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "connection_string",
+      "file": "./Backend/AI Interview Module/chumma/files/config.py",
+      "line": 48,
+      "description": "Potential connection_string match",
+      "match_redacted": "\"pos...432 (REDACTED)/postgres?sslmode=require\",",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "api_key",
+      "file": "./Backend/AI Interview Module/chumma/files/main.py",
+      "line": 7,
+      "description": "Potential api_key match",
+      "match_redacted": "GROQ_API_KEY=you...key (REDACTED) uvicorn main:app --host 0.0.0.0 --port 8001 --reload",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "api_key",
+      "file": "./Backend/AI Interview Module/chumma/files/main.py",
+      "line": 10,
+      "description": "Potential api_key match",
+      "match_redacted": "GROQ_API_KEY=you...key (REDACTED) \\",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "api_key",
+      "file": "./Backend/AI Interview Module/chumma/files/stt.py",
+      "line": 14,
+      "description": "Potential api_key match",
+      "match_redacted": "client = Groq(api_key=GRO...EY) (REDACTED)",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "supabase_key",
+      "file": "./Backend/Aptitude Module/Aptitude session/AptitudeIQ/.env",
+      "line": 2,
+      "description": "Potential supabase_key match",
+      "match_redacted": "SUPABASE_ANON_KEY=\"eyJ...JFo (REDACTED)\"",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "supabase_service_role",
+      "file": "./Backend/Aptitude Module/Aptitude session/AptitudeIQ/migrate.py",
+      "line": 11,
+      "description": "Potential supabase_service_role match",
+      "match_redacted": "SUP...KEY (REDACTED) = (",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "supabase_service_role",
+      "file": "./Backend/Aptitude Module/Aptitude session/AptitudeIQ/migrate.py",
+      "line": 34,
+      "description": "Potential supabase_service_role match",
+      "match_redacted": "\"apikey\": SUP...KEY (REDACTED),",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "supabase_service_role",
+      "file": "./Backend/Aptitude Module/Aptitude session/AptitudeIQ/migrate.py",
+      "line": 35,
+      "description": "Potential supabase_service_role match",
+      "match_redacted": "\"Authorization\": f\"Bearer {SUP...KEY (REDACTED)}\",",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "connection_string",
+      "file": "./Backend/Aptitude Module/Aptitude session/AptitudeIQ/scratch/reset_seq.py",
+      "line": 4,
+      "description": "Potential connection_string match",
+      "match_redacted": "conn = psycopg2.connect('pos...543 (REDACTED)/postgres?sslmode=require')",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "jwt_secret",
+      "file": "./Backend/Coding Module/Coding-module-backend-intervista-/.env",
+      "line": 6,
+      "description": "Potential jwt_secret match",
+      "match_redacted": "JWT_SECRET=cha...ion (REDACTED)",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "connection_string",
+      "file": "./Backend/Coding Module/Coding-module-backend-intervista-/.env",
+      "line": 8,
+      "description": "Potential connection_string match",
+      "match_redacted": "DATABASE_URL=pos...432 (REDACTED)/postgres",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "api_key",
+      "file": "./Backend/Coding Module/Coding-module-backend-intervista-/.env",
+      "line": 9,
+      "description": "Potential api_key match",
+      "match_redacted": "ADMIN_SECRET_KEY=adm...123 (REDACTED)",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "supabase_service_role",
+      "file": "./Backend/Coding Module/Coding-module-backend-intervista-/.env",
+      "line": 12,
+      "description": "Potential supabase_service_role match",
+      "match_redacted": "SUP...KEY (REDACTED)=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlxZ3B4YXZwaW14cGN5cnhpemppIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIs",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "supabase_key",
+      "file": "./Backend/Coding Module/Coding-module-backend-intervista-/.env",
+      "line": 12,
+      "description": "Potential supabase_key match",
+      "match_redacted": "SUPABASE_SERVICE_KEY=eyJ...JFo (REDACTED)",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "connection_string",
+      "file": "./Backend/Coding Module/Coding-module-backend-intervista-/.env",
+      "line": 14,
+      "description": "Potential connection_string match",
+      "match_redacted": "SUPABASE_DB_URL=pos...432 (REDACTED)/postgres",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "supabase_service_role",
+      "file": "./Backend/Coding Module/Coding-module-backend-intervista-/create_supabase_schema.py",
+      "line": 6,
+      "description": "Potential supabase_service_role match",
+      "match_redacted": "Note: The Supabase REST API (using SUPABASE_URL and SUP...KEY (REDACTED))",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "connection_string",
+      "file": "./Backend/Coding Module/Coding-module-backend-intervista-/create_supabase_schema.py",
+      "line": 23,
+      "description": "Potential connection_string match",
+      "match_redacted": "# It usually looks like: pos...543 (REDACTED)/postgres",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "connection_string",
+      "file": "./Backend/Coding Module/Coding-module-backend-intervista-/create_supabase_schema.py",
+      "line": 29,
+      "description": "Potential connection_string match",
+      "match_redacted": "print(\"SUPABASE_DB_URL=pos...543 (REDACTED)/postgres\")",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "connection_string",
+      "file": "./Backend/Coding Module/Coding-module-backend-intervista-/migrate_to_supabase.py",
+      "line": 39,
+      "description": "Potential connection_string match",
+      "match_redacted": "\"pos...432 (REDACTED)/coding_db\"",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "supabase_service_role",
+      "file": "./Backend/Coding Module/Coding-module-backend-intervista-/migrate_to_supabase.py",
+      "line": 45,
+      "description": "Potential supabase_service_role match",
+      "match_redacted": "\"SUP...KEY (REDACTED)\",",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "supabase_key",
+      "file": "./Backend/Coding Module/Coding-module-backend-intervista-/migrate_to_supabase.py",
+      "line": 46,
+      "description": "Potential supabase_key match",
+      "match_redacted": "\"eyJ...JFo (REDACTED)\"",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "api_key",
+      "file": "./Backend/Coding Module/Coding-module-backend-intervista-/app/config/settings.py",
+      "line": 8,
+      "description": "Potential api_key match",
+      "match_redacted": "JUDGE0_API_KEY = os....nv( (REDACTED)\"JUDGE0_API_KEY\")",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "api_key",
+      "file": "./Backend/Coding Module/Coding-module-backend-intervista-/app/config/__init__.py",
+      "line": 7,
+      "description": "Potential api_key match",
+      "match_redacted": "JUDGE0_API_KEY = os....nv( (REDACTED)\"JUDGE0_API_KEY\", \"\")",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "jwt_secret",
+      "file": "./Backend/Coding Module/Coding-module-backend-intervista-/app/config/__init__.py",
+      "line": 11,
+      "description": "Potential jwt_secret match",
+      "match_redacted": "JWT_SECRET     = os....nv( (REDACTED)\"JWT_SECRET\", \"change-this-secret-in-production\")",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "api_key",
+      "file": "./Backend/Coding Module/Coding-module-backend-intervista-/app/config/__init__.py",
+      "line": 15,
+      "description": "Potential api_key match",
+      "match_redacted": "ADMIN_SECRET_KEY = os....nv( (REDACTED)\"ADMIN_SECRET_KEY\", \"admin123\")",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "api_key",
+      "file": "./Backend/Communication Module/communication_module/.env",
+      "line": 1,
+      "description": "Potential api_key match",
+      "match_redacted": "OPENAI_API_KEY=gsk...WFS (REDACTED)",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "api_key",
+      "file": "./Backend/Communication Module/communication_module/.env",
+      "line": 2,
+      "description": "Potential api_key match",
+      "match_redacted": "GROQ_API_KEY=gsk...a2R (REDACTED)",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "supabase_service_role",
+      "file": "./Backend/Communication Module/communication_module/.env",
+      "line": 7,
+      "description": "Potential supabase_service_role match",
+      "match_redacted": "SUP...KEY (REDACTED)=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlxZ3B4YXZwaW14cGN5cnhpemppIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIs",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "supabase_key",
+      "file": "./Backend/Communication Module/communication_module/.env",
+      "line": 7,
+      "description": "Potential supabase_key match",
+      "match_redacted": "SUPABASE_SERVICE_KEY=eyJ...JFo (REDACTED)",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "connection_string",
+      "file": "./Backend/Communication Module/communication_module/.env",
+      "line": 9,
+      "description": "Potential connection_string match",
+      "match_redacted": "DATABASE_URL=pos...432 (REDACTED)/postgres",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "api_key",
+      "file": "./Backend/Communication Module/communication_module/app/config.py",
+      "line": 6,
+      "description": "Potential api_key match",
+      "match_redacted": "OPENAI_API_KEY = os....nv( (REDACTED)\"OPENAI_API_KEY\")",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "api_key",
+      "file": "./Backend/Communication Module/communication_module/app/core/config.py",
+      "line": 7,
+      "description": "Potential api_key match",
+      "match_redacted": "GROQ_API_KEY = os....nv( (REDACTED)\"GROQ_API_KEY\")",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "supabase_service_role",
+      "file": "./Backend/Communication Module/communication_module/app/db/supabase_client.py",
+      "line": 14,
+      "description": "Potential supabase_service_role match",
+      "match_redacted": "SUPABASE_KEY: str = os.getenv(\"SUP...KEY (REDACTED)\", \"\")",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "supabase_service_role",
+      "file": "./Backend/Communication Module/communication_module/app/db/supabase_client.py",
+      "line": 18,
+      "description": "Potential supabase_service_role match",
+      "match_redacted": "\"SUPABASE_URL and SUP...KEY (REDACTED) must be set in .env\"",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "api_key",
+      "file": "./Backend/Communication Module/communication_module/app/services/comprehension/comprehension_service.py",
+      "line": 8,
+      "description": "Potential api_key match",
+      "match_redacted": "client = Groq(api_key=os....nv( (REDACTED)\"GROQ_API_KEY\"))",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "api_key",
+      "file": "./Backend/Communication Module/communication_module/app/services/grammar/llama_service.py",
+      "line": 20,
+      "description": "Potential api_key match",
+      "match_redacted": "client = Groq(api_key=os....nv( (REDACTED)\"GROQ_API_KEY\"))",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "api_key",
+      "file": "./Backend/Communication Module/communication_module/app/services/listening/listening_service.py",
+      "line": 26,
+      "description": "Potential api_key match",
+      "match_redacted": "client = Groq(api_key=os....nv( (REDACTED)\"GROQ_API_KEY\"))",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "api_key",
+      "file": "./Backend/Communication Module/communication_module/app/services/speech/whisper_service.py",
+      "line": 8,
+      "description": "Potential api_key match",
+      "match_redacted": "client = Groq(api_key=os....nv( (REDACTED)\"GROQ_API_KEY\"))",
+      "severity": "MEDIUM"
+    },
+    {
+      "rule_id": "supabase_service_role",
+      "file": "./Backend/Communication Module/communication_module/scratch/run_migration.py",
+      "line": 8,
+      "description": "Potential supabase_service_role match",
+      "match_redacted": "key = os.getenv(\"SUP...KEY (REDACTED)\")",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "supabase_service_role",
+      "file": "./Backend/Communication Module/communication_module/scratch/verify_db.py",
+      "line": 8,
+      "description": "Potential supabase_service_role match",
+      "match_redacted": "key = os.getenv(\"SUP...KEY (REDACTED)\")",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "connection_string",
+      "file": "./Backend/Data Service/fix_mappings.js",
+      "line": 3,
+      "description": "Potential connection_string match",
+      "match_redacted": "connectionString: 'pos...432 (REDACTED)/postgres',",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "connection_string",
+      "file": "./Backend/Data Service/server.js",
+      "line": 31,
+      "description": "Potential connection_string match",
+      "match_redacted": "'pos...432 (REDACTED)/postgres',",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "supabase_service_role",
+      "file": "./Supabase Backend/Ai-interview-platform/Knitnet.Backend/Knitnet.Shared/Settings/AppSettings.cs",
+      "line": 14,
+      "description": "Potential supabase_service_role match",
+      "match_redacted": "public string ServiceRoleKey { get; set; } = \"YOUR_SUPABASE_SER...OLE (REDACTED)_KEY\";",
+      "severity": "HIGH"
+    },
+    {
+      "rule_id": "supabase_key",
+      "file": "./Supabase Backend/Ai-interview-platform/Knitnet.Backend/Knitnet.UserApi/appsettings.json",
+      "line": 13,
+      "description": "Potential supabase_key match",
+      "match_redacted": "\"ServiceRoleKey\": \"eyJ...yws (REDACTED)\",",
+      "severity": "MEDIUM"
+    }
+  ]
+}

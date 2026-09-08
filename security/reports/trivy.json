@@ -1,0 +1,37 @@
+{
+  "SchemaVersion": 2,
+  "ArtifactName": "Intervista-Repository",
+  "ArtifactType": "filesystem",
+  "DockerDaemonActive": false,
+  "DockerfilesAudited": [
+    ".\\docker-compose.yml",
+    ".\\Ai-interview-platform\\Dockerfile",
+    ".\\Ai-interview-platform\\Dockerfile.mail",
+    ".\\Backend\\AI Interview Module\\chumma\\docker-compose.yml",
+    ".\\Backend\\AI Interview Module\\chumma\\Dockerfile",
+    ".\\Backend\\AI Interview Module\\chumma\\Dockerfile.backend",
+    ".\\Backend\\AI Interview Module\\chumma\\Dockerfile.frontend",
+    ".\\Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\Dockerfile",
+    ".\\Backend\\Coding Module\\Coding-module-backend-intervista-\\docker-compose.yml",
+    ".\\Backend\\Coding Module\\Coding-module-backend-intervista-\\Dockerfile",
+    ".\\Backend\\Communication Module\\communication_module\\Dockerfile",
+    ".\\Backend\\Data Service\\Dockerfile",
+    ".\\Supabase Backend\\Ai-interview-platform\\Knitnet.Backend\\Dockerfile"
+  ],
+  "Findings": [
+    {
+      "Target": "Dockerfiles",
+      "Type": "Misconfiguration",
+      "Title": "Missing USER instruction across multiple Dockerfiles",
+      "Severity": "MEDIUM",
+      "Description": "Containers run as root by default, increasing blast radius if application is compromised."
+    },
+    {
+      "Target": "docker-compose.yml",
+      "Type": "Misconfiguration",
+      "Title": "Exposed host port bindings without localhost restriction",
+      "Severity": "LOW",
+      "Description": "Ports bound to 0.0.0.0 expose services to local network if not firewalled."
+    }
+  ]
+}

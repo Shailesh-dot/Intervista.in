@@ -1,0 +1,111 @@
+{
+  "RunId": "verification-non500-no-retry",
+  "StartTimeUtc": "2026-09-06T06:03:17.0044179Z",
+  "EndTimeUtc": "2026-09-06T06:03:19.0521282Z",
+  "TargetBaseUrl": "http://127.0.0.1:5280",
+  "Scenario": "login",
+  "VirtualUsers": 1,
+  "TotalRequests": 1,
+  "WasInterrupted": false,
+  "Initial": {
+    "TotalRequests": 1,
+    "SuccessfulRequests": 0,
+    "StatusCounts": {
+      "Count200": 0,
+      "Count400": 0,
+      "Count401": 0,
+      "Count429": 0,
+      "Count500": 0,
+      "Other4xx": 0,
+      "Other5xx": 0
+    },
+    "FailureCounts": {
+      "Timeout": 1,
+      "NetworkError": 0,
+      "Other": 0
+    },
+    "Latency": {
+      "MinMs": 2038.08,
+      "AverageMs": 2038.08,
+      "P50Ms": 2038.08,
+      "P90Ms": 2038.08,
+      "P95Ms": 2038.08,
+      "P99Ms": 2038.08,
+      "MaxMs": 2038.08
+    },
+    "Throughput": {
+      "RequestsPerSecond": 0.49
+    },
+    "Percentages": {
+      "SuccessPercent": 0,
+      "FailurePercent": 100,
+      "RateLimitedPercent": 0,
+      "ServerErrorPercent": 0,
+      "TimeoutPercent": 100
+    }
+  },
+  "Final": {
+    "TotalRequests": 1,
+    "SuccessfulRequests": 0,
+    "StatusCounts": {
+      "Count200": 0,
+      "Count400": 0,
+      "Count401": 0,
+      "Count429": 0,
+      "Count500": 0,
+      "Other4xx": 0,
+      "Other5xx": 0
+    },
+    "FailureCounts": {
+      "Timeout": 1,
+      "NetworkError": 0,
+      "Other": 0
+    },
+    "Latency": {
+      "MinMs": 2038.08,
+      "AverageMs": 2038.08,
+      "P50Ms": 2038.08,
+      "P90Ms": 2038.08,
+      "P95Ms": 2038.08,
+      "P99Ms": 2038.08,
+      "MaxMs": 2038.08
+    },
+    "Throughput": {
+      "RequestsPerSecond": 0.49
+    },
+    "Percentages": {
+      "SuccessPercent": 0,
+      "FailurePercent": 100,
+      "RateLimitedPercent": 0,
+      "ServerErrorPercent": 0,
+      "TimeoutPercent": 100
+    }
+  },
+  "Rounds": [
+    {
+      "RoundNumber": 1,
+      "StartTimeUtc": "2026-09-06T06:03:17.0054585Z",
+      "EndTimeUtc": "2026-09-06T06:03:19.0505719Z",
+      "DurationSeconds": 2.04,
+      "DelayBeforeThisRoundSeconds": 0,
+      "TotalRequests": 1,
+      "Count200": 0,
+      "Count500": 0,
+      "Count429": 0
+    }
+  ],
+  "RetryStats": {
+    "InitialSuccesses": 0,
+    "RecoveredSuccesses": 0,
+    "FinalSuccesses": 0,
+    "FinalFailures": 1,
+    "InitialHttp500": 0,
+    "RecoveredFrom500": 0,
+    "RemainingHttp500": 0,
+    "TotalRetryAttempts": 0,
+    "InitialSuccessPercent": 0,
+    "FinalSuccessPercent": 0
+  },
+  "SignupMetrics": null,
+  "LoginMetrics": null
+}

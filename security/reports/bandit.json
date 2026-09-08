@@ -1,0 +1,533 @@
+{
+  "errors": [
+    {
+      "filename": "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\scratch\\old_server.py",
+      "reason": "syntax error while parsing AST from file"
+    }
+  ],
+  "generated_at": "2026-08-26T11:45:14Z",
+  "metrics": {
+    "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\db.py": {
+      "CONFIDENCE.HIGH": 1,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 1,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 39,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\generate_sql.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 55,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\migrate.py": {
+      "CONFIDENCE.HIGH": 1,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 1,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 91,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\scratch\\check_bad.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 10,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\scratch\\old_server.py": {
+      "loc": 875,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\scratch\\old_server_utf8.py": {
+      "CONFIDENCE.HIGH": 1,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 2,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 1,
+      "SEVERITY.LOW": 1,
+      "SEVERITY.MEDIUM": 1,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 343,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\scratch\\reset_seq.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 12,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\scripts\\convert.py": {
+      "CONFIDENCE.HIGH": 1,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 1,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 516,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\scripts\\setup_supabase.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 3,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 3,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 242,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\server.py": {
+      "CONFIDENCE.HIGH": 7,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 7,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 431,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\test_save.py": {
+      "CONFIDENCE.HIGH": 2,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 2,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 20,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "_totals": {
+      "CONFIDENCE.HIGH": 13,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 5,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 1,
+      "SEVERITY.LOW": 10,
+      "SEVERITY.MEDIUM": 7,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 2634,
+      "nosec": 0,
+      "skipped_tests": 0
+    }
+  },
+  "results": [
+    {
+      "code": "37                     return int(cr.split(\"/\")[-1])\n38                 except: pass\n39             return 0\n",
+      "col_offset": 16,
+      "end_col_offset": 28,
+      "filename": "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\db.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Try, Except, Pass detected.",
+      "line_number": 38,
+      "line_range": [
+        38
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html",
+      "test_id": "B110",
+      "test_name": "try_except_pass"
+    },
+    {
+      "code": "46     try:\n47         urllib.request.urlopen(req)\n48         return len(rows_batch)\n",
+      "col_offset": 8,
+      "end_col_offset": 35,
+      "filename": "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\migrate.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 22,
+        "link": "https://cwe.mitre.org/data/definitions/22.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+      "line_number": 47,
+      "line_range": [
+        47
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b310-urllib-urlopen",
+      "test_id": "B310",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "131                     cur.execute(f\"TRUNCATE TABLE {table_name} RESTART IDENTITY CASCADE\")\n132                 except:\n133                     pass\n134             conn.commit()\n",
+      "col_offset": 16,
+      "end_col_offset": 24,
+      "filename": "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\scratch\\old_server_utf8.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Try, Except, Pass detected.",
+      "line_number": 132,
+      "line_range": [
+        132,
+        133
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html",
+      "test_id": "B110",
+      "test_name": "try_except_pass"
+    },
+    {
+      "code": "168                     table_name = TOPIC_MAP[cat]\n169                     cur.execute(f\"\"\"\n170                         INSERT INTO {table_name}\n171                             (question, options, correct_answer, explanation, category, source)\n172                         VALUES (%s, %s, %s, %s, %s, %s)\n173                         ON CONFLICT (question) DO NOTHING\n174                     \"\"\", (\n175                         q.get(\"question\"),\n",
+      "col_offset": 32,
+      "end_col_offset": 23,
+      "filename": "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\scratch\\old_server_utf8.py",
+      "issue_confidence": "MEDIUM",
+      "issue_cwe": {
+        "id": 89,
+        "link": "https://cwe.mitre.org/data/definitions/89.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Possible SQL injection vector through string-based query construction.",
+      "line_number": 169,
+      "line_range": [
+        169,
+        170,
+        171,
+        172,
+        173,
+        174
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html",
+      "test_id": "B608",
+      "test_name": "hardcoded_sql_expressions"
+    },
+    {
+      "code": "436     load_json_to_db(reset=False)\n437     app.run(debug=True, use_reloader=False, port=5000)\n",
+      "col_offset": 4,
+      "end_col_offset": 54,
+      "filename": "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\scratch\\old_server_utf8.py",
+      "issue_confidence": "MEDIUM",
+      "issue_cwe": {
+        "id": 94,
+        "link": "https://cwe.mitre.org/data/definitions/94.html"
+      },
+      "issue_severity": "HIGH",
+      "issue_text": "A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code.",
+      "line_number": 437,
+      "line_range": [
+        437
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b201_flask_debug_true.html",
+      "test_id": "B201",
+      "test_name": "flask_debug_true"
+    },
+    {
+      "code": "119             return path.read_text(encoding=enc, errors=\"ignore\")\n120         except Exception:\n121             continue\n122     return \"\"\n",
+      "col_offset": 8,
+      "end_col_offset": 20,
+      "filename": "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\scripts\\convert.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Try, Except, Continue detected.",
+      "line_number": 120,
+      "line_range": [
+        120,
+        121
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b112_try_except_continue.html",
+      "test_id": "B112",
+      "test_name": "try_except_continue"
+    },
+    {
+      "code": "207                 table_name = topic_map[cat]\n208                 cur.execute(f\"\"\"\n209                     INSERT INTO {table_name}\n210                         (question, options, correct_answer, explanation, category, source)\n211                     VALUES (%s, %s, %s, %s, %s, %s)\n212                     ON CONFLICT (question) DO NOTHING\n213                 \"\"\", (\n214                     q.get(\"question\"),\n",
+      "col_offset": 28,
+      "end_col_offset": 19,
+      "filename": "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\scripts\\setup_supabase.py",
+      "issue_confidence": "MEDIUM",
+      "issue_cwe": {
+        "id": 89,
+        "link": "https://cwe.mitre.org/data/definitions/89.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Possible SQL injection vector through string-based query construction.",
+      "line_number": 208,
+      "line_range": [
+        208,
+        209,
+        210,
+        211,
+        212,
+        213
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html",
+      "test_id": "B608",
+      "test_name": "hardcoded_sql_expressions"
+    },
+    {
+      "code": "263         try:\n264             cur.execute(f\"SELECT COUNT(*) FROM {table}\")\n265             count = cur.fetchone()[0]\n",
+      "col_offset": 24,
+      "end_col_offset": 55,
+      "filename": "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\scripts\\setup_supabase.py",
+      "issue_confidence": "MEDIUM",
+      "issue_cwe": {
+        "id": 89,
+        "link": "https://cwe.mitre.org/data/definitions/89.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Possible SQL injection vector through string-based query construction.",
+      "line_number": 264,
+      "line_range": [
+        264
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html",
+      "test_id": "B608",
+      "test_name": "hardcoded_sql_expressions"
+    },
+    {
+      "code": "276         try:\n277             cur.execute(f\"SELECT COUNT(*) FROM {table_name}\")\n278             count = cur.fetchone()[0]\n",
+      "col_offset": 24,
+      "end_col_offset": 60,
+      "filename": "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\scripts\\setup_supabase.py",
+      "issue_confidence": "MEDIUM",
+      "issue_cwe": {
+        "id": 89,
+        "link": "https://cwe.mitre.org/data/definitions/89.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Possible SQL injection vector through string-based query construction.",
+      "line_number": 277,
+      "line_range": [
+        277
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html",
+      "test_id": "B608",
+      "test_name": "hardcoded_sql_expressions"
+    },
+    {
+      "code": "25 def load_json_to_db(reset=False):\n26     import subprocess\n27     import sys\n",
+      "col_offset": 4,
+      "end_col_offset": 21,
+      "filename": "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\server.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 26,
+      "line_range": [
+        26
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "30     try:\n31         subprocess.run([sys.executable, str(convert_path)], check=True)\n32     except Exception as e:\n",
+      "col_offset": 8,
+      "end_col_offset": 71,
+      "filename": "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\server.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 31,
+      "line_range": [
+        31
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "37     try:\n38         subprocess.run([sys.executable, str(migrate_path)])\n39     except Exception as e:\n",
+      "col_offset": 8,
+      "end_col_offset": 59,
+      "filename": "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\server.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 38,
+      "line_range": [
+        38
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "276         if len(all_questions) > num_questions:\n277             all_questions = random.sample(all_questions, num_questions)\n278 \n",
+      "col_offset": 28,
+      "end_col_offset": 71,
+      "filename": "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\server.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 277,
+      "line_range": [
+        277
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "286         if len(all_questions) > num_questions:\n287             all_questions = random.sample(all_questions, num_questions)\n288 \n",
+      "col_offset": 28,
+      "end_col_offset": 71,
+      "filename": "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\server.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 287,
+      "line_range": [
+        287
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "313         \n314         sample = random.sample(data, min(15, len(data)))\n315         out = []\n",
+      "col_offset": 17,
+      "end_col_offset": 56,
+      "filename": "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\server.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 314,
+      "line_range": [
+        314
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "333         print(\"[WARN] get_questions fallback to local:\", e)\n334         sample = random.sample(LOCAL_QUESTIONS_BANK, min(15, len(LOCAL_QUESTIONS_BANK)))\n335         out = []\n",
+      "col_offset": 17,
+      "end_col_offset": 88,
+      "filename": "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\server.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 334,
+      "line_range": [
+        334
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "5 # Get one question from the API\n6 req = urllib.request.urlopen('http://localhost:5002/api/questions')\n7 qs = json.loads(req.read())\n",
+      "col_offset": 6,
+      "end_col_offset": 67,
+      "filename": "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\test_save.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 22,
+        "link": "https://cwe.mitre.org/data/definitions/22.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+      "line_number": 6,
+      "line_range": [
+        6
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b310-urllib-urlopen",
+      "test_id": "B310",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "18 req = urllib.request.Request('http://localhost:5002/api/save', data=payload, headers={'Content-Type': 'application/json'}, method='POST')\n19 res = urllib.request.urlopen(req)\n20 print('Save response:', json.loads(res.read()))\n",
+      "col_offset": 6,
+      "end_col_offset": 33,
+      "filename": "Backend\\Aptitude Module\\Aptitude session\\AptitudeIQ\\test_save.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 22,
+        "link": "https://cwe.mitre.org/data/definitions/22.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+      "line_number": 19,
+      "line_range": [
+        19
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b310-urllib-urlopen",
+      "test_id": "B310",
+      "test_name": "blacklist"
+    }
+  ]
+}

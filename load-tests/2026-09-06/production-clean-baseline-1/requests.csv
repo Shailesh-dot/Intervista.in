@@ -1,0 +1,2 @@
+RunId,RequestSeq,VirtualUserId,RoundNumber,AttemptNumber,Scenario,Operation,TimestampUtc,Method,Endpoint,StatusCode,DurationMs,ResultCategory,IsSuccess,IsTimeout,ExceptionType,TraceId,InitialAttemptTimestampUtc,InitialAttemptDurationMs,InitialStatusCode,TimeWaitedBeforeRetryMs,TotalElapsedFromFirstAttemptMs
+production-clean-baseline-1,1,1,1,1,login,Login,2026-09-06T08:04:50.0315611Z,POST,/api/user/auth/login,200,672.05,SUCCESS,True,False,None,none,2026-09-06T08:04:50.0315611Z,672.05,200,0.00,672.05

@@ -1,0 +1,14 @@
+{
+  "RunId": "sanity-signup-104217",
+  "MachineName": "LAPTOP-TGO5TMO2",
+  "OperatingSystem": "Microsoft Windows 10.0.26200",
+  "DotNetVersion": "8.0.26",
+  "TargetUrl": "http://localhost:5280",
+  "Scenario": "signup",
+  "VirtualUsers": 1,
+  "ConfiguredTimeoutSeconds": 30,
+  "StartTimeUtc": "2026-09-05T10:42:17.7836727Z",
+  "EndTimeUtc": "2026-09-05T10:42:19.5947586Z",
+  "WasInterrupted": false,
+  "PercentileCalculationMethod": "Nearest-Rank: ceil((P / 100) * N) - 1, clamped [0, N-1]"
+}

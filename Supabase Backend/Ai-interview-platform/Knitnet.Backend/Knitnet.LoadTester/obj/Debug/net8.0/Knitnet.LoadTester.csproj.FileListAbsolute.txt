@@ -1,0 +1,15 @@
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.LoadTester\bin\Debug\net8.0\Knitnet.LoadTester.exe
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.LoadTester\bin\Debug\net8.0\Knitnet.LoadTester.deps.json
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.LoadTester\bin\Debug\net8.0\Knitnet.LoadTester.runtimeconfig.json
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.LoadTester\bin\Debug\net8.0\Knitnet.LoadTester.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.LoadTester\bin\Debug\net8.0\Knitnet.LoadTester.pdb
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.LoadTester\obj\Debug\net8.0\Knitnet.LoadTester.GeneratedMSBuildEditorConfig.editorconfig
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.LoadTester\obj\Debug\net8.0\Knitnet.LoadTester.AssemblyInfoInputs.cache
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.LoadTester\obj\Debug\net8.0\Knitnet.LoadTester.AssemblyInfo.cs
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.LoadTester\obj\Debug\net8.0\Knitnet.LoadTester.csproj.CoreCompileInputs.cache
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.LoadTester\obj\Debug\net8.0\Knitnet.LoadTester.sourcelink.json
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.LoadTester\obj\Debug\net8.0\Knitnet.LoadTester.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.LoadTester\obj\Debug\net8.0\refint\Knitnet.LoadTester.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.LoadTester\obj\Debug\net8.0\Knitnet.LoadTester.pdb
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.LoadTester\obj\Debug\net8.0\Knitnet.LoadTester.genruntimeconfig.cache
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.LoadTester\obj\Debug\net8.0\ref\Knitnet.LoadTester.dll

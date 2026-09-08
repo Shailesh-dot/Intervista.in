@@ -1,0 +1,122 @@
+{
+  "RunId": "production-login-150-retry3",
+  "StartTimeUtc": "2026-09-06T08:20:09.2362009Z",
+  "EndTimeUtc": "2026-09-06T08:20:28.856067Z",
+  "TargetBaseUrl": "https://intervista.in",
+  "Scenario": "login",
+  "VirtualUsers": 150,
+  "TotalRequests": 181,
+  "WasInterrupted": false,
+  "Initial": {
+    "TotalRequests": 150,
+    "SuccessfulRequests": 119,
+    "StatusCounts": {
+      "Count200": 119,
+      "Count400": 0,
+      "Count401": 0,
+      "Count429": 0,
+      "Count500": 31,
+      "Other4xx": 0,
+      "Other5xx": 0
+    },
+    "FailureCounts": {
+      "Timeout": 0,
+      "NetworkError": 0,
+      "Other": 31
+    },
+    "Latency": {
+      "MinMs": 2200.38,
+      "AverageMs": 7736.99,
+      "P50Ms": 7197.27,
+      "P90Ms": 12895.61,
+      "P95Ms": 14000.15,
+      "P99Ms": 14610.96,
+      "MaxMs": 14642.83
+    },
+    "Throughput": {
+      "RequestsPerSecond": 10.09
+    },
+    "Percentages": {
+      "SuccessPercent": 79.33,
+      "FailurePercent": 20.67,
+      "RateLimitedPercent": 0,
+      "ServerErrorPercent": 20.67,
+      "TimeoutPercent": 0
+    }
+  },
+  "Final": {
+    "TotalRequests": 150,
+    "SuccessfulRequests": 150,
+    "StatusCounts": {
+      "Count200": 150,
+      "Count400": 0,
+      "Count401": 0,
+      "Count429": 0,
+      "Count500": 0,
+      "Other4xx": 0,
+      "Other5xx": 0
+    },
+    "FailureCounts": {
+      "Timeout": 0,
+      "NetworkError": 0,
+      "Other": 0
+    },
+    "Latency": {
+      "MinMs": 495.52,
+      "AverageMs": 6512.64,
+      "P50Ms": 5433.4,
+      "P90Ms": 12895.61,
+      "P95Ms": 14000.15,
+      "P99Ms": 14610.96,
+      "MaxMs": 14642.83
+    },
+    "Throughput": {
+      "RequestsPerSecond": 7.65
+    },
+    "Percentages": {
+      "SuccessPercent": 100,
+      "FailurePercent": 0,
+      "RateLimitedPercent": 0,
+      "ServerErrorPercent": 0,
+      "TimeoutPercent": 0
+    }
+  },
+  "Rounds": [
+    {
+      "RoundNumber": 1,
+      "StartTimeUtc": "2026-09-06T08:20:09.2386741Z",
+      "EndTimeUtc": "2026-09-06T08:20:24.1082183Z",
+      "DurationSeconds": 14.87,
+      "DelayBeforeThisRoundSeconds": 0,
+      "TotalRequests": 150,
+      "Count200": 119,
+      "Count500": 31,
+      "Count429": 0
+    },
+    {
+      "RoundNumber": 2,
+      "StartTimeUtc": "2026-09-06T08:20:26.123766Z",
+      "EndTimeUtc": "2026-09-06T08:20:28.8547579Z",
+      "DurationSeconds": 2.73,
+      "DelayBeforeThisRoundSeconds": 2,
+      "TotalRequests": 31,
+      "Count200": 31,
+      "Count500": 0,
+      "Count429": 0
+    }
+  ],
+  "RetryStats": {
+    "InitialSuccesses": 119,
+    "RecoveredSuccesses": 31,
+    "FinalSuccesses": 150,
+    "FinalFailures": 0,
+    "InitialHttp500": 31,
+    "RecoveredFrom500": 31,
+    "RemainingHttp500": 0,
+    "TotalRetryAttempts": 31,
+    "InitialSuccessPercent": 79.33,
+    "FinalSuccessPercent": 100
+  },
+  "SignupMetrics": null,
+  "LoginMetrics": null
+}

@@ -1,0 +1,917 @@
+{
+  "total_endpoints": 93,
+  "generated_at": "2026-08-26",
+  "endpoints": [
+    {
+      "service": "Coding Assessment API",
+      "port": 8000,
+      "method": "GET",
+      "path": "/health",
+      "summary": "API health check",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Coding Assessment API",
+      "port": 8000,
+      "method": "GET",
+      "path": "/health/judge0",
+      "summary": "Judge0 connectivity check",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Coding Assessment API",
+      "port": 8000,
+      "method": "POST",
+      "path": "/admin/question",
+      "summary": "Create a question (admin only)",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Coding Assessment API",
+      "port": 8000,
+      "method": "POST",
+      "path": "/admin/question/bulk",
+      "summary": "Bulk upload questions (admin only)",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Coding Assessment API",
+      "port": 8000,
+      "method": "GET",
+      "path": "/admin/questions",
+      "summary": "List all questions with hidden TCs (admin only)",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Coding Assessment API",
+      "port": 8000,
+      "method": "PUT",
+      "path": "/admin/question/{question_id}",
+      "summary": "Update a question (admin only)",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Coding Assessment API",
+      "port": 8000,
+      "method": "DELETE",
+      "path": "/admin/question/{question_id}",
+      "summary": "Delete a question (admin only)",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Coding Assessment API",
+      "port": 8000,
+      "method": "GET",
+      "path": "/question/random",
+      "summary": "Get a random question (public)",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Coding Assessment API",
+      "port": 8000,
+      "method": "GET",
+      "path": "/question/random-set",
+      "summary": "Get a curated set of 3 questions (E/M/H)",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Coding Assessment API",
+      "port": 8000,
+      "method": "GET",
+      "path": "/question/stats",
+      "summary": "Question stats (public)",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Coding Assessment API",
+      "port": 8000,
+      "method": "GET",
+      "path": "/question/languages",
+      "summary": "All supported languages (public)",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Coding Assessment API",
+      "port": 8000,
+      "method": "GET",
+      "path": "/question/{question_id}/boilerplate",
+      "summary": "Get boilerplate (public envelope)",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Coding Assessment API",
+      "port": 8000,
+      "method": "GET",
+      "path": "/question/{question_id}",
+      "summary": "Get question by ID (public)",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Coding Assessment API",
+      "port": 8000,
+      "method": "GET",
+      "path": "/question/",
+      "summary": "List all questions (public)",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Coding Assessment API",
+      "port": 8000,
+      "method": "POST",
+      "path": "/code/run",
+      "summary": "Raw code run (language_id, no question context)",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Coding Assessment API",
+      "port": 8000,
+      "method": "POST",
+      "path": "/submit/run",
+      "summary": "Run code directly (public)",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Coding Assessment API",
+      "port": 8000,
+      "method": "POST",
+      "path": "/submit/",
+      "summary": "Submit code async (public envelope)",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Coding Assessment API",
+      "port": 8000,
+      "method": "GET",
+      "path": "/submit/{submission_id}/status",
+      "summary": "Poll submission status",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Coding Assessment API",
+      "port": 8000,
+      "method": "GET",
+      "path": "/submit/all",
+      "summary": "All submissions (admin only)",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Coding Assessment API",
+      "port": 8000,
+      "method": "GET",
+      "path": "/submit/candidate/{candidate_id}",
+      "summary": "Candidate history",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Coding Assessment API",
+      "port": 8000,
+      "method": "GET",
+      "path": "/submit/question/{question_id}",
+      "summary": "Submissions for a question",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Coding Assessment API",
+      "port": 8000,
+      "method": "GET",
+      "path": "/submit/{submission_id}",
+      "summary": "Legacy Get submission by ID",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Coding Assessment API",
+      "port": 8000,
+      "method": "POST",
+      "path": "/assessment/start",
+      "summary": "Start an Interview Assessment Session",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Coding Assessment API",
+      "port": 8000,
+      "method": "GET",
+      "path": "/assessment/{session_id}",
+      "summary": "Get Session Details",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Coding Assessment API",
+      "port": 8000,
+      "method": "POST",
+      "path": "/assessment/{session_id}/complete",
+      "summary": "Complete Session early",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Question_AI \u2014 Module 2",
+      "port": 8001,
+      "method": "POST",
+      "path": "/verification/create_session",
+      "summary": "Create Session",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Question_AI \u2014 Module 2",
+      "port": 8001,
+      "method": "POST",
+      "path": "/questions/generate",
+      "summary": "Generate Questions",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Question_AI \u2014 Module 2",
+      "port": 8001,
+      "method": "GET",
+      "path": "/questions/{session_id}",
+      "summary": "Get Questions",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Question_AI \u2014 Module 2",
+      "port": 8001,
+      "method": "POST",
+      "path": "/evaluation/evaluate_answers",
+      "summary": "Evaluate Answers",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Question_AI \u2014 Module 2",
+      "port": 8001,
+      "method": "POST",
+      "path": "/stt/synthesize",
+      "summary": "Tts Endpoint",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Question_AI \u2014 Module 2",
+      "port": 8001,
+      "method": "POST",
+      "path": "/stt/transcribe",
+      "summary": "Transcribe Audio",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Question_AI \u2014 Module 2",
+      "port": 8001,
+      "method": "POST",
+      "path": "/upload_resume",
+      "summary": "Upload Resume",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Question_AI \u2014 Module 2",
+      "port": 8001,
+      "method": "GET",
+      "path": "/health",
+      "summary": "Health",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Communication Assessment API",
+      "port": 8002,
+      "method": "GET",
+      "path": "/api/v1/speaking/questions",
+      "summary": "Get Speaking Questions",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Communication Assessment API",
+      "port": 8002,
+      "method": "POST",
+      "path": "/api/v1/evaluate",
+      "summary": "Evaluate",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Communication Assessment API",
+      "port": 8002,
+      "method": "POST",
+      "path": "/api/v1/speaking/evaluate_all",
+      "summary": "Evaluate All Speaking",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Communication Assessment API",
+      "port": 8002,
+      "method": "POST",
+      "path": "/api/v1/speaking/aggregate",
+      "summary": "Aggregate Speaking",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Communication Assessment API",
+      "port": 8002,
+      "method": "GET",
+      "path": "/api/v1/listening/clips",
+      "summary": "Get Clips",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Communication Assessment API",
+      "port": 8002,
+      "method": "POST",
+      "path": "/api/v1/listening/respond",
+      "summary": "Respond",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Communication Assessment API",
+      "port": 8002,
+      "method": "POST",
+      "path": "/api/v1/listening/respond_all",
+      "summary": "Respond All",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Communication Assessment API",
+      "port": 8002,
+      "method": "POST",
+      "path": "/api/v1/listening/aggregate",
+      "summary": "Aggregate",
+      "auth_required": false,
+      "roles": "Unknown",
+      "source": "live_openapi"
+    },
+    {
+      "service": "Knitnet.CompanyApi",
+      "port": 5000,
+      "method": "GET",
+      "path": "/company",
+      "action": "Get",
+      "auth_required": true,
+      "roles": "Company",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.CompanyApi",
+      "port": 5000,
+      "method": "POST",
+      "path": "/company/info",
+      "action": "UpdateInfo",
+      "auth_required": true,
+      "roles": "Company",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.CompanyApi",
+      "port": 5000,
+      "method": "POST",
+      "path": "/company/create",
+      "action": "Create",
+      "auth_required": true,
+      "roles": "Company",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.CompanyApi",
+      "port": 5000,
+      "method": "GET",
+      "path": "/company/exists/{testId}",
+      "action": "Exists",
+      "auth_required": true,
+      "roles": "Company",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.CompanyApi",
+      "port": 5000,
+      "method": "GET",
+      "path": "/company/list",
+      "action": "List",
+      "auth_required": true,
+      "roles": "Company",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.CompanyApi",
+      "port": 5000,
+      "method": "POST",
+      "path": "/company/create",
+      "action": "Create",
+      "auth_required": true,
+      "roles": "Company",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.CompanyApi",
+      "port": 5000,
+      "method": "GET",
+      "path": "/company/all",
+      "action": "GetAll",
+      "auth_required": true,
+      "roles": "Company",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.CompanyApi",
+      "port": 5000,
+      "method": "POST",
+      "path": "/company",
+      "action": "Create",
+      "auth_required": true,
+      "roles": "Company",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.CompanyApi",
+      "port": 5000,
+      "method": "GET",
+      "path": "/company",
+      "action": "GetAll",
+      "auth_required": true,
+      "roles": "Company",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.CompanyApi",
+      "port": 5000,
+      "method": "GET",
+      "path": "/company",
+      "action": "GetAll",
+      "auth_required": true,
+      "roles": "Company",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.TransactionApi",
+      "port": 5004,
+      "method": "POST",
+      "path": "/transaction",
+      "action": "CreateOrUpdate",
+      "auth_required": true,
+      "roles": "None",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.TransactionApi",
+      "port": 5004,
+      "method": "GET",
+      "path": "/transaction",
+      "action": "Get",
+      "auth_required": true,
+      "roles": "None",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.TransactionApi",
+      "port": 5004,
+      "method": "POST",
+      "path": "/transaction/usage",
+      "action": "Deduct",
+      "auth_required": true,
+      "roles": "None",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.TransactionApi",
+      "port": 5004,
+      "method": "GET",
+      "path": "/transaction/balance",
+      "action": "Balance",
+      "auth_required": true,
+      "roles": "None",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.UserApi",
+      "port": 5001,
+      "method": "POST",
+      "path": "/api/user/auth/signup/student",
+      "action": "StudentSignup",
+      "auth_required": true,
+      "roles": "User",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.UserApi",
+      "port": 5001,
+      "method": "POST",
+      "path": "/api/user/auth/signup/company",
+      "action": "CompanySignup",
+      "auth_required": true,
+      "roles": "User",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.UserApi",
+      "port": 5001,
+      "method": "POST",
+      "path": "/api/user/auth/login",
+      "action": "Login",
+      "auth_required": true,
+      "roles": "User",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.UserApi",
+      "port": 5001,
+      "method": "POST",
+      "path": "/api/user/auth/forgot-password",
+      "action": "ForgotPassword",
+      "auth_required": true,
+      "roles": "User",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.UserApi",
+      "port": 5001,
+      "method": "POST",
+      "path": "/api/user/auth/reset-password",
+      "action": "ResetPassword",
+      "auth_required": true,
+      "roles": "User",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.UserApi",
+      "port": 5001,
+      "method": "GET",
+      "path": "/api/user/auth/profile/{email}",
+      "action": "GetProfile",
+      "auth_required": true,
+      "roles": "User",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.UserApi",
+      "port": 5001,
+      "method": "POST",
+      "path": "/api/user/auth/upload-photo",
+      "action": "UploadPhoto",
+      "auth_required": true,
+      "roles": "User",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.UserApi",
+      "port": 5001,
+      "method": "POST",
+      "path": "/api/user/auth/create",
+      "action": "Create",
+      "auth_required": true,
+      "roles": "User",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.UserApi",
+      "port": 5001,
+      "method": "GET",
+      "path": "/api/user/auth/me",
+      "action": "GetMyProfile",
+      "auth_required": true,
+      "roles": "User",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.UserApi",
+      "port": 5001,
+      "method": "GET",
+      "path": "/api/user/auth/status",
+      "action": "GetStatus",
+      "auth_required": true,
+      "roles": "User",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.UserApi",
+      "port": 5001,
+      "method": "POST",
+      "path": "/api/user/auth/create",
+      "action": "Create",
+      "auth_required": true,
+      "roles": "User",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.UserApi",
+      "port": 5001,
+      "method": "POST",
+      "path": "/api/user/auth/complete",
+      "action": "Complete",
+      "auth_required": true,
+      "roles": "User",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.UserApi",
+      "port": 5001,
+      "method": "POST",
+      "path": "/api/user/auth/snapshot/{index:int}",
+      "action": "SaveSnapshot",
+      "auth_required": true,
+      "roles": "User",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.UserApi",
+      "port": 5001,
+      "method": "DELETE",
+      "path": "/api/user/auth/snapshots",
+      "action": "CleanupSnapshots",
+      "auth_required": true,
+      "roles": "User",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.UserApi",
+      "port": 5001,
+      "method": "GET",
+      "path": "/api/user/auth",
+      "action": "GetMyResults",
+      "auth_required": true,
+      "roles": "User",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.UserApi",
+      "port": 5001,
+      "method": "POST",
+      "path": "/api/user/auth/session",
+      "action": "StartSession",
+      "auth_required": true,
+      "roles": "User",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.UserApi",
+      "port": 5001,
+      "method": "GET",
+      "path": "/api/user/auth/{userId:int}",
+      "action": "GetByUser",
+      "auth_required": true,
+      "roles": "User",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.UserApi",
+      "port": 5001,
+      "method": "GET",
+      "path": "/api/user/auth/{userId:int}/{testId}",
+      "action": "GetByUserAndTest",
+      "auth_required": true,
+      "roles": "User",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Knitnet.UserApi",
+      "port": 5001,
+      "method": "GET",
+      "path": "/api/user/auth/session/{sessionId}",
+      "action": "GetBySession",
+      "auth_required": true,
+      "roles": "User",
+      "source": "csharp_ast"
+    },
+    {
+      "service": "Backend.DataService",
+      "port": 5003,
+      "method": "GET",
+      "path": "/health",
+      "auth_required": false,
+      "roles": "Public/Internal",
+      "source": "express_routes"
+    },
+    {
+      "service": "Backend.DataService",
+      "port": 5003,
+      "method": "GET",
+      "path": "/verification/test-lookup/:testCode",
+      "auth_required": false,
+      "roles": "Public/Internal",
+      "source": "express_routes"
+    },
+    {
+      "service": "Backend.DataService",
+      "port": 5003,
+      "method": "GET",
+      "path": "/verification/my-attempts/:studentId",
+      "auth_required": false,
+      "roles": "Public/Internal",
+      "source": "express_routes"
+    },
+    {
+      "service": "Backend.DataService",
+      "port": 5003,
+      "method": "POST",
+      "path": "/verification/submit-module-result",
+      "auth_required": false,
+      "roles": "Public/Internal",
+      "source": "express_routes"
+    },
+    {
+      "service": "Backend.DataService",
+      "port": 5003,
+      "method": "GET",
+      "path": "/verification/test-results/:testId",
+      "auth_required": false,
+      "roles": "Public/Internal",
+      "source": "express_routes"
+    },
+    {
+      "service": "Backend.DataService",
+      "port": 5003,
+      "method": "GET",
+      "path": "/profile/:userId",
+      "auth_required": false,
+      "roles": "Public/Internal",
+      "source": "express_routes"
+    },
+    {
+      "service": "Backend.DataService",
+      "port": 5003,
+      "method": "POST",
+      "path": "/profile/create",
+      "auth_required": false,
+      "roles": "Public/Internal",
+      "source": "express_routes"
+    },
+    {
+      "service": "Backend.AptitudeModule",
+      "port": 5002,
+      "method": "GET",
+      "path": "/api/topics/hierarchy",
+      "auth_required": false,
+      "roles": "Candidate/Internal",
+      "source": "flask_routes"
+    },
+    {
+      "service": "Backend.AptitudeModule",
+      "port": 5002,
+      "method": "GET",
+      "path": "/api/categories-and-subtopics",
+      "auth_required": false,
+      "roles": "Candidate/Internal",
+      "source": "flask_routes"
+    },
+    {
+      "service": "Backend.AptitudeModule",
+      "port": 5002,
+      "method": "POST",
+      "path": "/api/questions/by-topics",
+      "auth_required": false,
+      "roles": "Candidate/Internal",
+      "source": "flask_routes"
+    },
+    {
+      "service": "Backend.AptitudeModule",
+      "port": 5002,
+      "method": "POST",
+      "path": "/api/save",
+      "auth_required": false,
+      "roles": "Candidate/Internal",
+      "source": "flask_routes"
+    },
+    {
+      "service": "Backend.AIInterviewModule",
+      "port": 8002,
+      "method": "POST",
+      "path": "/verification/create_session",
+      "auth_required": false,
+      "roles": "Candidate/Internal",
+      "source": "fastapi_routes"
+    },
+    {
+      "service": "Backend.AIInterviewModule",
+      "port": 8002,
+      "method": "POST",
+      "path": "/questions/generate",
+      "auth_required": false,
+      "roles": "Candidate/Internal",
+      "source": "fastapi_routes"
+    },
+    {
+      "service": "Backend.AIInterviewModule",
+      "port": 8002,
+      "method": "GET",
+      "path": "/questions/{session_id}",
+      "auth_required": false,
+      "roles": "Candidate/Internal",
+      "source": "fastapi_routes"
+    },
+    {
+      "service": "Backend.AIInterviewModule",
+      "port": 8002,
+      "method": "POST",
+      "path": "/evaluation/evaluate_answers",
+      "auth_required": false,
+      "roles": "Candidate/Internal",
+      "source": "fastapi_routes"
+    },
+    {
+      "service": "Backend.AIInterviewModule",
+      "port": 8002,
+      "method": "POST",
+      "path": "/stt/transcribe",
+      "auth_required": false,
+      "roles": "Candidate/Internal",
+      "source": "fastapi_routes"
+    },
+    {
+      "service": "Backend.AIInterviewModule",
+      "port": 8002,
+      "method": "POST",
+      "path": "/stt/synthesize",
+      "auth_required": false,
+      "roles": "Candidate/Internal",
+      "source": "fastapi_routes"
+    },
+    {
+      "service": "Backend.AIInterviewModule",
+      "port": 8002,
+      "method": "POST",
+      "path": "/upload_resume",
+      "auth_required": false,
+      "roles": "Candidate/Internal",
+      "source": "fastapi_routes"
+    },
+    {
+      "service": "Backend.AIInterviewModule",
+      "port": 8002,
+      "method": "GET",
+      "path": "/health",
+      "auth_required": false,
+      "roles": "Candidate/Internal",
+      "source": "fastapi_routes"
+    }
+  ]
+}

@@ -1,0 +1,1136 @@
+Using launch settings from C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.UserApi\Properties\launchSettings.json...
+Building...
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.Shared\Knitnet.Shared.csproj : warning NU1603: Knitnet.Shared depends on System.IdentityModel.Tokens.Jwt (>= 8.0.4) but System.IdentityModel.Tokens.Jwt 8.0.4 was not found. System.IdentityModel.Tokens.Jwt 8.1.0 was resolved instead. [C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.UserApi\Knitnet.UserApi.csproj]
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.UserApi\Knitnet.UserApi.csproj : warning NU1603: Knitnet.Shared depends on System.IdentityModel.Tokens.Jwt (>= 8.0.4) but System.IdentityModel.Tokens.Jwt 8.0.4 was not found. System.IdentityModel.Tokens.Jwt 8.1.0 was resolved instead.
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.UserApi\Knitnet.UserApi.csproj : warning NU1603: Knitnet.Shared depends on System.IdentityModel.Tokens.Jwt (>= 8.0.4) but System.IdentityModel.Tokens.Jwt 8.0.4 was not found. System.IdentityModel.Tokens.Jwt 8.1.0 was resolved instead.
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.Shared\Knitnet.Shared.csproj : warning NU1603: Knitnet.Shared depends on System.IdentityModel.Tokens.Jwt (>= 8.0.4) but System.IdentityModel.Tokens.Jwt 8.0.4 was not found. System.IdentityModel.Tokens.Jwt 8.1.0 was resolved instead.
+info: Knitnet.UserApi.Services.SnapshotCleanupService[0]
+      SnapshotCleanupService started. Scanning /tmp/verification every 5m, max age 30m
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://localhost:5280
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.UserApi
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Start
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (105ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (54ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (107ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (107ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (53ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (67ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (67ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (72ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (74ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (128ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (74ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (79ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (82ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=865.81
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=872.92
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=825.18
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=872.91
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=1793.69
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=1793.69
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=1793.75
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=865.88
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=825.17
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=1793.66
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=824.43
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=825.35
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=865.92
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=646.72
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=651.61
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=24.53
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=2465.41 UserId=216
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=27.79
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=2473.34 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN2A:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=2670.27 ClientIp=::1
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN28:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=2674.82 ClientIp=::1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (854ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (854ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=2492.75
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=2492.76
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=713.31
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.35
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=1538.20 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN39:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=2687.16 ClientIp=::1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (870ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=2512.46
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=759.39
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.15
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=1632.64 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN2K:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=2736.84 ClientIp=::1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (916ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=1621.88
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=773.31
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=773.45
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.16
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=2567.44 UserId=216
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.12
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=1639.51 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN2B:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=2754.49 ClientIp=::1
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN2S:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=2748.78 ClientIp=::1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (929ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (929ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=2568.15
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=1598.54
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=789.05
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.16
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=1614.53 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN36:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=2763.15 ClientIp=::1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (946ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=1656.09
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (951ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=1661.59
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=798.69
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.13
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=1664.80 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN2P:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=2775.83 ClientIp=::1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=804.83
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.15
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=2598.97 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN23:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=2786.07 ClientIp=::1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=812.87
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.13
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=1638.29 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN37:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=2786.83 ClientIp=::1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1,025ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1,025ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=2610.50
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=1639.23
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=818.66
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.14
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=1691.82 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN3I:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=2791.00 ClientIp=::1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1,028ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=1692.23
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=819.64
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.10
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=1645.14 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN32:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=2794.09 ClientIp=::1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1,028ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=1693.19
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (979ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=1647.72
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1,004ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=1714.70
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1,042ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=1711.30
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=967.00
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.17
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=1833.20 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN2Q:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=2942.87 ClientIp=::1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1,162ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=1879.81
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1,308ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1,255ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=1924.94
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=1972.77
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1,442ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=3027.69
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1,439ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=2156.41
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1,559ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=2717.50
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=801.86
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.16
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=3295.07 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN25:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=3482.15 ClientIp=::1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=825.89
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.17
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=3338.78 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN26:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=3525.95 ClientIp=::1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=776.43
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.12
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=3344.77 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN21:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=3531.94 ClientIp=::1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=805.59
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.15
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=2427.73 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN2V:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=3541.00 ClientIp=::1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1,730ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1,730ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=3369.27
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=2448.35
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1,757ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=2427.41
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1,758ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=2475.62
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=780.20
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.16
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=2428.17 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN3B:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=3577.16 ClientIp=::1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1,759ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=2477.44
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=800.15
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.16
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=2439.70 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN3D:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=3590.72 ClientIp=::1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1,774ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=2446.25
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=812.44
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.15
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=3423.25 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN24:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=3610.49 ClientIp=::1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1,838ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=2502.21
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1,791ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=2500.77
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1,847ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=2464.30
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=833.94
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.16
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=2527.39 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN2I:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=3632.14 ClientIp=::1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1,810ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=2480.67
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1,827ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=3466.37
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (2,040ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=2709.73
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=978.11
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.16
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=2858.20 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN2L:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=3963.28 ClientIp=::1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (2,208ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (2,208ms) [Parameters=[@__dto_Email_0='?'], CommandType='Text', CommandTimeout='60']
+      SELECT u.id, u.created_at, u.email, u.name, u.password, u.role
+      FROM users AS u
+      WHERE u.email = @__dto_Email_0
+      LIMIT 1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=2918.92
+info: Knitnet.UserApi.Services.AuthService[0]
+      [DATABASE] Operation=UserLookup DurationMs=2913.30
+fail: Microsoft.EntityFrameworkCore.Database.Connection[20004]
+      An error occurred using the connection to database 'postgres' on server 'tcp://aws-1-ap-south-1.pooler.supabase.com:5432'.
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=1486.62
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.17
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=3979.80 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN22:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=4235.01 ClientIp=::1
+fail: Microsoft.EntityFrameworkCore.Database.Connection[20004]
+      An error occurred using the connection to database 'postgres' on server 'tcp://aws-1-ap-south-1.pooler.supabase.com:5432'.
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=1574.30
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.15
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=3230.64 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN2T:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=4339.75 ClientIp=::1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=1585.14
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.15
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=3246.98 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN2U:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=4355.78 ClientIp=::1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=1612.67
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.14
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=3211.46 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN3A:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=4360.52 ClientIp=::1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=1155.75
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.17
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=3312.47 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN2N:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=4417.76 ClientIp=::1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=1627.33
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.16
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=3319.80 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN2F:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=4424.86 ClientIp=::1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=1616.55
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.15
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=3331.52 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN2R:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=4441.03 ClientIp=::1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=1583.38
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.13
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=3294.90 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN3C:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=4444.09 ClientIp=::1
+fail: Microsoft.EntityFrameworkCore.Query[10100]
+      An exception occurred while iterating over the results of a query for context type 'Knitnet.UserApi.Data.UserDbContext'.
+      Npgsql.PostgresException (0x80004005): XX000: (EMAXCONNSESSION) max clients reached in session mode - max clients are limited to pool_size: 48
+         at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+         at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+         at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+         at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+         at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+         at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+         at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+        Exception data:
+          Severity: FATAL
+          SqlState: XX000
+          MessageText: (EMAXCONNSESSION) max clients reached in session mode - max clients are limited to pool_size: 48
+      Npgsql.PostgresException (0x80004005): XX000: (EMAXCONNSESSION) max clients reached in session mode - max clients are limited to pool_size: 48
+         at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+         at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+         at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+         at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+         at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+         at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+         at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+        Exception data:
+          Severity: FATAL
+          SqlState: XX000
+          MessageText: (EMAXCONNSESSION) max clients reached in session mode - max clients are limited to pool_size: 48
+fail: Microsoft.EntityFrameworkCore.Query[10100]
+      An exception occurred while iterating over the results of a query for context type 'Knitnet.UserApi.Data.UserDbContext'.
+      Npgsql.PostgresException (0x80004005): XX000: (EMAXCONNSESSION) max clients reached in session mode - max clients are limited to pool_size: 48
+         at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+         at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+         at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+         at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+         at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+         at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+         at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+        Exception data:
+          Severity: FATAL
+          SqlState: XX000
+          MessageText: (EMAXCONNSESSION) max clients reached in session mode - max clients are limited to pool_size: 48
+      Npgsql.PostgresException (0x80004005): XX000: (EMAXCONNSESSION) max clients reached in session mode - max clients are limited to pool_size: 48
+         at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+         at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+         at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+         at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+         at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+         at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+         at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+        Exception data:
+          Severity: FATAL
+          SqlState: XX000
+          MessageText: (EMAXCONNSESSION) max clients reached in session mode - max clients are limited to pool_size: 48
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=1158.51
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.13
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=3876.26 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN2D:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=4487.24 ClientIp=::1
+fail: RequestTiming[0]
+      [ERROR] Method=POST Path=/api/user/auth/login ExceptionType=PostgresException Message=XX000: (EMAXCONNSESSION) max clients reached in session mode - max clients are limited to pool_size: 48 TraceId=0HNOB89URKN3E:00000001
+      Npgsql.PostgresException (0x80004005): XX000: (EMAXCONNSESSION) max clients reached in session mode - max clients are limited to pool_size: 48
+         at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+         at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+         at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+         at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+         at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+         at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+         at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+         at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+         at Knitnet.UserApi.Services.AuthService.LoginAsync(LoginDto dto) in C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.UserApi\Services\AuthService.cs:line 151
+         at Knitnet.UserApi.Controllers.AuthController.Login(LoginDto dto) in C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.UserApi\Controllers\UserControllers.cs:line 45
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+         at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+         at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+         at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+         at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.<Invoke>g__AwaitMatcher|10_0(EndpointRoutingMiddleware middleware, HttpContext httpContext, Task`1 matcherTask)
+         at Program.<>c.<<<Main>$>b__0_5>d.MoveNext() in C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.UserApi\Program.cs:line 162
+        Exception data:
+          Severity: FATAL
+          SqlState: XX000
+          MessageText: (EMAXCONNSESSION) max clients reached in session mode - max clients are limited to pool_size: 48
+fail: RequestTiming[0]
+      [ERROR] Method=POST Path=/api/user/auth/login ExceptionType=PostgresException Message=XX000: (EMAXCONNSESSION) max clients reached in session mode - max clients are limited to pool_size: 48 TraceId=0HNOB89URKN34:00000001
+      Npgsql.PostgresException (0x80004005): XX000: (EMAXCONNSESSION) max clients reached in session mode - max clients are limited to pool_size: 48
+         at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+         at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+         at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+         at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+         at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+         at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+         at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+         at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+         at Knitnet.UserApi.Services.AuthService.LoginAsync(LoginDto dto) in C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.UserApi\Services\AuthService.cs:line 151
+         at Knitnet.UserApi.Controllers.AuthController.Login(LoginDto dto) in C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.UserApi\Controllers\UserControllers.cs:line 45
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+         at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+         at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+         at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+         at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.<Invoke>g__AwaitMatcher|10_0(EndpointRoutingMiddleware middleware, HttpContext httpContext, Task`1 matcherTask)
+         at Program.<>c.<<<Main>$>b__0_5>d.MoveNext() in C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.UserApi\Program.cs:line 162
+        Exception data:
+          Severity: FATAL
+          SqlState: XX000
+          MessageText: (EMAXCONNSESSION) max clients reached in session mode - max clients are limited to pool_size: 48
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN34:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=4518.28 ClientIp=::1
+fail: Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware[1]
+      An unhandled exception has occurred while executing the request.
+      Npgsql.PostgresException (0x80004005): XX000: (EMAXCONNSESSION) max clients reached in session mode - max clients are limited to pool_size: 48
+         at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+         at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+         at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+         at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+         at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+         at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+         at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+         at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+         at Knitnet.UserApi.Services.AuthService.LoginAsync(LoginDto dto) in C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.UserApi\Services\AuthService.cs:line 151
+         at Knitnet.UserApi.Controllers.AuthController.Login(LoginDto dto) in C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.UserApi\Controllers\UserControllers.cs:line 45
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+         at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+         at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+         at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+         at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.<Invoke>g__AwaitMatcher|10_0(EndpointRoutingMiddleware middleware, HttpContext httpContext, Task`1 matcherTask)
+         at Program.<>c.<<<Main>$>b__0_5>d.MoveNext() in C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.UserApi\Program.cs:line 162
+      --- End of stack trace from previous location ---
+         at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+         at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+         at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+        Exception data:
+          Severity: FATAL
+          SqlState: XX000
+          MessageText: (EMAXCONNSESSION) max clients reached in session mode - max clients are limited to pool_size: 48
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN3E:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=4537.79 ClientIp=::1
+fail: Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware[1]
+      An unhandled exception has occurred while executing the request.
+      Npgsql.PostgresException (0x80004005): XX000: (EMAXCONNSESSION) max clients reached in session mode - max clients are limited to pool_size: 48
+         at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+         at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+         at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+         at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+         at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+         at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+         at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+         at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+         at Knitnet.UserApi.Services.AuthService.LoginAsync(LoginDto dto) in C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.UserApi\Services\AuthService.cs:line 151
+         at Knitnet.UserApi.Controllers.AuthController.Login(LoginDto dto) in C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.UserApi\Controllers\UserControllers.cs:line 45
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+         at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+         at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+         at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+         at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.<Invoke>g__AwaitMatcher|10_0(EndpointRoutingMiddleware middleware, HttpContext httpContext, Task`1 matcherTask)
+         at Program.<>c.<<<Main>$>b__0_5>d.MoveNext() in C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.UserApi\Program.cs:line 162
+      --- End of stack trace from previous location ---
+         at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+         at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+         at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+        Exception data:
+          Severity: FATAL
+          SqlState: XX000
+          MessageText: (EMAXCONNSESSION) max clients reached in session mode - max clients are limited to pool_size: 48
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=1523.94
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.17
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=3449.16 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN38:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=4597.63 ClientIp=::1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=1545.92
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.16
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=3519.00 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN2E:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=4623.99 ClientIp=::1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=1122.88
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.16
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=3600.66 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN2J:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=4704.89 ClientIp=::1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=1495.53
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.11
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=4523.55 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN27:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=4710.77 ClientIp=::1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=1140.71
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.26
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=3568.50 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN31:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=4717.68 ClientIp=::1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=1132.37
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.24
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=3579.00 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN3G:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=4723.75 ClientIp=::1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=1159.90
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.15
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=3635.77 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN2G:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=4740.69 ClientIp=::1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=1137.40
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.17
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=3638.45 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN3H:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=4744.88 ClientIp=::1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=1146.55
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.16
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=3649.02 UserId=216
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=1201.48
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN2M:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=4754.05 ClientIp=::1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.12
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=4571.08 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN2C:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=4757.99 ClientIp=::1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=1138.26
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=1122.34
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.10
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=3602.73 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN35:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=4751.37 ClientIp=::1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.14
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=3603.22 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN3F:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=4750.19 ClientIp=::1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=1112.14
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.18
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=4578.93 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN29:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=4766.17 ClientIp=::1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=1317.40
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.17
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=3766.03 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN2H:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=4871.06 ClientIp=::1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=1076.08
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.16
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=3786.10 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN33:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=4935.06 ClientIp=::1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=910.64
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.13
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=3829.81 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN2O:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=4939.80 ClientIp=::1
+info: Knitnet.UserApi.Services.AuthService[0]
+      [BCrypt] Operation=Verify DurationMs=958.41
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=JwtGeneration DurationMs=0.18
+info: Knitnet.UserApi.Services.AuthService[0]
+      [AUTH] Operation=Login Stage=Completed DurationMs=3872.06 UserId=216
+info: RequestTiming[0]
+      [REQUEST] TraceId=0HNOB89URKN30:00000001 Method=POST Path=/api/user/auth/login StatusCode=200 DurationMs=4985.27 ClientIp=::1

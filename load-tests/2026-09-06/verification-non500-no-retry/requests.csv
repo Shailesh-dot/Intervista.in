@@ -1,0 +1,2 @@
+RunId,RequestSeq,VirtualUserId,RoundNumber,AttemptNumber,Scenario,Operation,TimestampUtc,Method,Endpoint,StatusCode,DurationMs,ResultCategory,IsSuccess,IsTimeout,ExceptionType,TraceId,InitialAttemptTimestampUtc,InitialAttemptDurationMs,InitialStatusCode,TimeWaitedBeforeRetryMs,TotalElapsedFromFirstAttemptMs
+verification-non500-no-retry,1,1,1,1,login,Login,2026-09-06T06:03:17.0111298Z,POST,/api/user/auth/login,0,2038.08,TIMEOUT,False,True,TaskCanceledException (Timeout),none,2026-09-06T06:03:17.0111298Z,2038.08,0,0.00,2038.08

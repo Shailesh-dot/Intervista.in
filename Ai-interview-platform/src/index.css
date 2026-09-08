@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-primary: 'Inter', sans-serif;
+  --font-secondary: 'Inter', sans-serif;
+
+  --animate-fade-in: fade-in 1s ease-out;
+  --animate-gradient: gradient 8s linear infinite;
+
+  /* Custom Palette */
+  --color-brand-dark: #144542;
+  --color-brand-secondary: #DAFF0C;
+  --color-brand-light: #EAF0F0;
+  --color-brand-gray: #9B9B9B;
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes gradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  @keyframes shine {
+    from { left: -100%; }
+    to { left: 100%; }
+  }
+
+  @keyframes shimmer {
+    100% { transform: translateX(100%); }
+  }
+
+  --animate-shine: shine 1.5s infinite;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Accounts for fixed navbar height */
+  overflow-x: hidden;
+  width: 100%;
+}
+
+:root {
+  --background: #EAF0F0;
+  --foreground: #144542;
+  --card: #ffffff;
+  --card-foreground: #144542;
+  --popover: #ffffff;
+  --popover-foreground: #144542;
+  --primary: #144542;
+  --primary-foreground: #ffffff;
+  --secondary: #DAFF0C;
+  --secondary-foreground: #144542;
+  --muted: #f4f7f7;
+  --muted-foreground: #9B9B9B;
+  --accent: #DAFF0C;
+  --accent-foreground: #144542;
+  --destructive: #ef4444;
+  --destructive-foreground: #fafafa;
+  --border: #dce5e5;
+  --input: #dce5e5;
+  --ring: #144542;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-secondary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6, .font-primary {
+  font-family: var(--font-primary);
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #1445421a;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #DAFF0C33;
+}
+

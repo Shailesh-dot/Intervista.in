@@ -1,0 +1,16 @@
+{
+  "RunId": "production-login-50-retry3",
+  "MachineName": "LAPTOP-TGO5TMO2",
+  "OperatingSystem": "Microsoft Windows 10.0.26200",
+  "DotNetVersion": "8.0.26",
+  "TargetUrl": "https://intervista.in",
+  "Scenario": "login",
+  "VirtualUsers": 50,
+  "ConfiguredTimeoutSeconds": 30,
+  "RetryRounds": 3,
+  "RetryDelaySeconds": 2,
+  "StartTimeUtc": "2026-09-06T08:10:59.6414457Z",
+  "EndTimeUtc": "2026-09-06T08:11:09.5578698Z",
+  "WasInterrupted": false,
+  "PercentileCalculationMethod": "Nearest-Rank: ceil((P / 100) * N) - 1, clamped [0, N-1]"
+}

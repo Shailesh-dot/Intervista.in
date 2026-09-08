@@ -1,0 +1,2 @@
+RunId,VirtualUserId,Scenario,Operation,TimestampUtc,Method,Endpoint,StatusCode,DurationMs,ResultCategory,IsSuccess,IsTimeout,ExceptionType,TraceId
+sanity-signup-104217,1,signup,Signup,2026-09-05T10:42:17.7975190Z,POST,/api/user/auth/signup/student,200,1793.12,SUCCESS,True,False,None,none

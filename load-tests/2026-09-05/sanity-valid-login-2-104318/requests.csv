@@ -1,0 +1,2 @@
+RunId,VirtualUserId,Scenario,Operation,TimestampUtc,Method,Endpoint,StatusCode,DurationMs,ResultCategory,IsSuccess,IsTimeout,ExceptionType,TraceId
+sanity-valid-login-2-104318,1,login,Login,2026-09-05T10:43:18.9530082Z,POST,/api/user/auth/login,200,480.13,SUCCESS,True,False,None,none

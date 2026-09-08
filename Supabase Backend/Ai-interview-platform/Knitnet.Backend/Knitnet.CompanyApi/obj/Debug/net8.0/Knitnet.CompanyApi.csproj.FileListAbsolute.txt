@@ -1,0 +1,306 @@
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/appsettings.Development.json
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/appsettings.json
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Knitnet.CompanyApi.staticwebassets.endpoints.json
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Knitnet.CompanyApi
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Knitnet.CompanyApi.deps.json
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Knitnet.CompanyApi.runtimeconfig.json
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Knitnet.CompanyApi.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Knitnet.CompanyApi.pdb
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/BCrypt.Net-Next.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Microsoft.AspNetCore.OpenApi.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Relational.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Microsoft.Extensions.Caching.Memory.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Microsoft.Extensions.Logging.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Microsoft.Extensions.Logging.Abstractions.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Microsoft.Extensions.Options.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Microsoft.OpenApi.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Npgsql.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Swashbuckle.AspNetCore.Swagger.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Knitnet.Shared.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/bin/Debug/net8.0/Knitnet.Shared.pdb
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/obj/Debug/net8.0/Knitnet.CompanyApi.csproj.AssemblyReference.cache
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/obj/Debug/net8.0/rpswa.dswa.cache.json
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/obj/Debug/net8.0/Knitnet.CompanyApi.GeneratedMSBuildEditorConfig.editorconfig
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/obj/Debug/net8.0/Knitnet.CompanyApi.AssemblyInfoInputs.cache
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/obj/Debug/net8.0/Knitnet.CompanyApi.AssemblyInfo.cs
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/obj/Debug/net8.0/Knitnet.CompanyApi.csproj.CoreCompileInputs.cache
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/obj/Debug/net8.0/Knitnet.CompanyApi.MvcApplicationPartsAssemblyInfo.cs
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/obj/Debug/net8.0/Knitnet.CompanyApi.MvcApplicationPartsAssemblyInfo.cache
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/obj/Debug/net8.0/Knitnet.CompanyApi.sourcelink.json
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/obj/Debug/net8.0/rjimswa.dswa.cache.json
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/obj/Debug/net8.0/rjsmrazor.dswa.cache.json
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/obj/Debug/net8.0/rjsmcshtml.dswa.cache.json
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/obj/Debug/net8.0/scopedcss/bundle/Knitnet.CompanyApi.styles.css
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/obj/Debug/net8.0/staticwebassets.build.json
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/obj/Debug/net8.0/staticwebassets.build.json.cache
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/obj/Debug/net8.0/staticwebassets.development.json
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/obj/Debug/net8.0/staticwebassets.build.endpoints.json
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/obj/Debug/net8.0/swae.build.ex.cache
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/obj/Debug/net8.0/Knitnet..63A1E5EE.Up2Date
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/obj/Debug/net8.0/Knitnet.CompanyApi.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/obj/Debug/net8.0/refint/Knitnet.CompanyApi.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/obj/Debug/net8.0/Knitnet.CompanyApi.pdb
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/obj/Debug/net8.0/Knitnet.CompanyApi.genruntimeconfig.cache
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.CompanyApi/obj/Debug/net8.0/ref/Knitnet.CompanyApi.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\appsettings.Development.json
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\appsettings.json
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Knitnet.CompanyApi.staticwebassets.endpoints.json
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Knitnet.CompanyApi.exe
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Knitnet.CompanyApi.deps.json
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Knitnet.CompanyApi.runtimeconfig.json
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Knitnet.CompanyApi.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Knitnet.CompanyApi.pdb
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\BCrypt-Net-Next.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Humanizer.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Mono.TextTemplating.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Npgsql.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\System.CodeDom.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\System.Composition.Convention.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\System.Composition.Hosting.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\System.Composition.Runtime.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\System.Composition.TypedParts.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Knitnet.Shared.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Knitnet.Shared.pdb
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\Knitnet.CompanyApi.csproj.AssemblyReference.cache
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\Knitnet.CompanyApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\Knitnet.CompanyApi.AssemblyInfoInputs.cache
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\Knitnet.CompanyApi.AssemblyInfo.cs
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\Knitnet.CompanyApi.csproj.CoreCompileInputs.cache
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\Knitnet.CompanyApi.MvcApplicationPartsAssemblyInfo.cs
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\Knitnet.CompanyApi.MvcApplicationPartsAssemblyInfo.cache
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\Knitnet.CompanyApi.sourcelink.json
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\scopedcss\bundle\Knitnet.CompanyApi.styles.css
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\staticwebassets.build.json
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\staticwebassets.development.json
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\swae.build.ex.cache
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\Knitnet..63A1E5EE.Up2Date
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\Knitnet.CompanyApi.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\refint\Knitnet.CompanyApi.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\Knitnet.CompanyApi.pdb
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\Knitnet.CompanyApi.genruntimeconfig.cache
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\ref\Knitnet.CompanyApi.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\appsettings.Development.json
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\appsettings.json
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Knitnet.CompanyApi.staticwebassets.endpoints.json
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Knitnet.CompanyApi.exe
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Knitnet.CompanyApi.deps.json
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Knitnet.CompanyApi.runtimeconfig.json
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Knitnet.CompanyApi.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Knitnet.CompanyApi.pdb
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Humanizer.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Mono.TextTemplating.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Npgsql.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\System.CodeDom.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\System.Composition.Convention.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\System.Composition.Hosting.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\System.Composition.Runtime.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\System.Composition.TypedParts.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Knitnet.Shared.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Knitnet.Shared.pdb
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\Knitnet.CompanyApi.csproj.AssemblyReference.cache
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\Knitnet.CompanyApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\Knitnet.CompanyApi.AssemblyInfoInputs.cache
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\Knitnet.CompanyApi.AssemblyInfo.cs
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\Knitnet.CompanyApi.csproj.CoreCompileInputs.cache
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\Knitnet.CompanyApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\Knitnet.CompanyApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\Knitnet.CompanyApi.sourcelink.json
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\scopedcss\bundle\Knitnet.CompanyApi.styles.css
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\staticwebassets.build.json
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\staticwebassets.development.json
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\swae.build.ex.cache
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\Knitnet..63A1E5EE.Up2Date
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\Knitnet.CompanyApi.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\refint\Knitnet.CompanyApi.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\Knitnet.CompanyApi.pdb
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\Knitnet.CompanyApi.genruntimeconfig.cache
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\obj\Debug\net8.0\ref\Knitnet.CompanyApi.dll
+c:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\BCrypt.Net-Next.dll
+c:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\bin\Debug\net8.0\Microsoft.Bcl.TimeProvider.dll

@@ -1,0 +1,14 @@
+{
+  "RunId": "sanity-invalid-login-104306",
+  "MachineName": "LAPTOP-TGO5TMO2",
+  "OperatingSystem": "Microsoft Windows 10.0.26200",
+  "DotNetVersion": "8.0.26",
+  "TargetUrl": "http://localhost:5280",
+  "Scenario": "login",
+  "VirtualUsers": 1,
+  "ConfiguredTimeoutSeconds": 30,
+  "StartTimeUtc": "2026-09-05T10:43:06.9780067Z",
+  "EndTimeUtc": "2026-09-05T10:43:07.1990953Z",
+  "WasInterrupted": false,
+  "PercentileCalculationMethod": "Nearest-Rank: ceil((P / 100) * N) - 1, clamped [0, N-1]"
+}

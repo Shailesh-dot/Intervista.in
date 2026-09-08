@@ -1,0 +1,39 @@
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.Shared/bin/Debug/net8.0/Knitnet.Shared.deps.json
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.Shared/bin/Debug/net8.0/Knitnet.Shared.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.Shared/bin/Debug/net8.0/Knitnet.Shared.pdb
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.Shared/obj/Debug/net8.0/Knitnet.Shared.csproj.AssemblyReference.cache
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.Shared/obj/Debug/net8.0/Knitnet.Shared.GeneratedMSBuildEditorConfig.editorconfig
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.Shared/obj/Debug/net8.0/Knitnet.Shared.AssemblyInfoInputs.cache
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.Shared/obj/Debug/net8.0/Knitnet.Shared.AssemblyInfo.cs
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.Shared/obj/Debug/net8.0/Knitnet.Shared.csproj.CoreCompileInputs.cache
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.Shared/obj/Debug/net8.0/Knitnet.Shared.sourcelink.json
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.Shared/obj/Debug/net8.0/Knitnet.Shared.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.Shared/obj/Debug/net8.0/refint/Knitnet.Shared.dll
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.Shared/obj/Debug/net8.0/Knitnet.Shared.pdb
+/home/rudhran/projects/Knitnet/Intervista/Ai-interview-platform/Knitnet.Backend/Knitnet.Shared/obj/Debug/net8.0/ref/Knitnet.Shared.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.Shared\bin\Debug\net8.0\Knitnet.Shared.deps.json
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.Shared\bin\Debug\net8.0\Knitnet.Shared.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.Shared\bin\Debug\net8.0\Knitnet.Shared.pdb
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.Shared\obj\Debug\net8.0\Knitnet.Shared.csproj.AssemblyReference.cache
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.Shared\obj\Debug\net8.0\Knitnet.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.Shared\obj\Debug\net8.0\Knitnet.Shared.AssemblyInfoInputs.cache
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.Shared\obj\Debug\net8.0\Knitnet.Shared.AssemblyInfo.cs
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.Shared\obj\Debug\net8.0\Knitnet.Shared.csproj.CoreCompileInputs.cache
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.Shared\obj\Debug\net8.0\Knitnet.Shared.sourcelink.json
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.Shared\obj\Debug\net8.0\Knitnet.Shared.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.Shared\obj\Debug\net8.0\refint\Knitnet.Shared.dll
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.Shared\obj\Debug\net8.0\Knitnet.Shared.pdb
+C:\knitnet main\New Backend\Knitnet.Backend\Knitnet.Shared\obj\Debug\net8.0\ref\Knitnet.Shared.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.Shared\bin\Debug\net8.0\Knitnet.Shared.deps.json
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.Shared\bin\Debug\net8.0\Knitnet.Shared.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.Shared\bin\Debug\net8.0\Knitnet.Shared.pdb
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.Shared\obj\Debug\net8.0\Knitnet.Shared.csproj.AssemblyReference.cache
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.Shared\obj\Debug\net8.0\Knitnet.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.Shared\obj\Debug\net8.0\Knitnet.Shared.AssemblyInfoInputs.cache
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.Shared\obj\Debug\net8.0\Knitnet.Shared.AssemblyInfo.cs
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.Shared\obj\Debug\net8.0\Knitnet.Shared.csproj.CoreCompileInputs.cache
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.Shared\obj\Debug\net8.0\Knitnet.Shared.sourcelink.json
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.Shared\obj\Debug\net8.0\Knitnet.Shared.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.Shared\obj\Debug\net8.0\refint\Knitnet.Shared.dll
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.Shared\obj\Debug\net8.0\Knitnet.Shared.pdb
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.Shared\obj\Debug\net8.0\ref\Knitnet.Shared.dll

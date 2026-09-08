@@ -1,0 +1,28 @@
+﻿  Determining projects to restore...
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.Shared\Knitnet.Shared.csproj : warning NU1603: Knitnet.Shared depends on System.IdentityModel.Tokens.Jwt (>= 8.0.4) but System.IdentityModel.Tokens.Jwt 8.0.4 was not found. System.IdentityModel.Tokens.Jwt 8.1.0 was resolved instead. [C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.Backend.sln]
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\Knitnet.CompanyApi.csproj : warning NU1603: Knitnet.Shared depends on System.IdentityModel.Tokens.Jwt (>= 8.0.4) but System.IdentityModel.Tokens.Jwt 8.0.4 was not found. System.IdentityModel.Tokens.Jwt 8.1.0 was resolved instead. [C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.Backend.sln]
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.UserApi\Knitnet.UserApi.csproj : warning NU1603: Knitnet.Shared depends on System.IdentityModel.Tokens.Jwt (>= 8.0.4) but System.IdentityModel.Tokens.Jwt 8.0.4 was not found. System.IdentityModel.Tokens.Jwt 8.1.0 was resolved instead. [C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.Backend.sln]
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.TransactionApi\Knitnet.TransactionApi.csproj : warning NU1603: Knitnet.Shared depends on System.IdentityModel.Tokens.Jwt (>= 8.0.4) but System.IdentityModel.Tokens.Jwt 8.0.4 was not found. System.IdentityModel.Tokens.Jwt 8.1.0 was resolved instead. [C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.Backend.sln]
+  All projects are up-to-date for restore.
+
+The following sources were used:
+   https://api.nuget.org/v3/index.json
+
+The given project `Knitnet.UserApi` has no vulnerable packages given the current sources.
+The given project `Knitnet.Shared` has no vulnerable packages given the current sources.
+The given project `Knitnet.CompanyApi` has no vulnerable packages given the current sources.
+The given project `Knitnet.TransactionApi` has no vulnerable packages given the current sources.
+  Determining projects to restore...
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.Shared\Knitnet.Shared.csproj : warning NU1603: Knitnet.Shared depends on System.IdentityModel.Tokens.Jwt (>= 8.0.4) but System.IdentityModel.Tokens.Jwt 8.0.4 was not found. System.IdentityModel.Tokens.Jwt 8.1.0 was resolved instead. [C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.Backend.sln]
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.CompanyApi\Knitnet.CompanyApi.csproj : warning NU1603: Knitnet.Shared depends on System.IdentityModel.Tokens.Jwt (>= 8.0.4) but System.IdentityModel.Tokens.Jwt 8.0.4 was not found. System.IdentityModel.Tokens.Jwt 8.1.0 was resolved instead. [C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.Backend.sln]
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.UserApi\Knitnet.UserApi.csproj : warning NU1603: Knitnet.Shared depends on System.IdentityModel.Tokens.Jwt (>= 8.0.4) but System.IdentityModel.Tokens.Jwt 8.0.4 was not found. System.IdentityModel.Tokens.Jwt 8.1.0 was resolved instead. [C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.Backend.sln]
+C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.TransactionApi\Knitnet.TransactionApi.csproj : warning NU1603: Knitnet.Shared depends on System.IdentityModel.Tokens.Jwt (>= 8.0.4) but System.IdentityModel.Tokens.Jwt 8.0.4 was not found. System.IdentityModel.Tokens.Jwt 8.1.0 was resolved instead. [C:\Intervista Project\Supabase Backend\Ai-interview-platform\Knitnet.Backend\Knitnet.Backend.sln]
+  All projects are up-to-date for restore.
+
+The following sources were used:
+   https://api.nuget.org/v3/index.json
+
+The given project `Knitnet.UserApi` has no deprecated packages given the current sources.
+The given project `Knitnet.Shared` has no deprecated packages given the current sources.
+The given project `Knitnet.CompanyApi` has no deprecated packages given the current sources.
+The given project `Knitnet.TransactionApi` has no deprecated packages given the current sources.

@@ -1,0 +1,10 @@
+# Ignore user credentials and tokens
+users.csv
+*.credentials.csv
+*.local.csv
+
+# Ignore test result outputs
+results/
+*.log
+summary-*.json
+report-*.html

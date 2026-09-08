@@ -1,0 +1,16 @@
+{
+  "RunId": "verification-non500-no-retry",
+  "MachineName": "LAPTOP-TGO5TMO2",
+  "OperatingSystem": "Microsoft Windows 10.0.26200",
+  "DotNetVersion": "8.0.26",
+  "TargetUrl": "http://127.0.0.1:5280",
+  "Scenario": "login",
+  "VirtualUsers": 1,
+  "ConfiguredTimeoutSeconds": 2,
+  "RetryRounds": 2,
+  "RetryDelaySeconds": 2,
+  "StartTimeUtc": "2026-09-06T06:03:17.0044179Z",
+  "EndTimeUtc": "2026-09-06T06:03:19.0521282Z",
+  "WasInterrupted": false,
+  "PercentileCalculationMethod": "Nearest-Rank: ceil((P / 100) * N) - 1, clamped [0, N-1]"
+}
