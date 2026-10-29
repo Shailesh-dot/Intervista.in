@@ -1,0 +1,15 @@
+# ── Build Stage: Compile React/Vite frontend ──────────────────
+FROM node:20-alpine AS build
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+# ── Production Stage: Serve with Nginx ────────────────────────
+# nginx.conf is bind-mounted at runtime from deployment/nginx/nginx.conf
+# This keeps the image reusable and the routing config externalized.
+FROM nginx:alpine
+COPY --from=build /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

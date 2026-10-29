@@ -1,0 +1,15 @@
+# Mail server — Node.js Express with Brevo email integration
+# Requires: server.js + src/ directory (services, routes, config)
+FROM node:20-alpine
+WORKDIR /app
+
+# Install production dependencies
+COPY package*.json ./
+RUN npm install --production
+
+# Copy server entry point and its required source directories
+COPY server.js ./
+COPY src/ ./src/
+
+EXPOSE 5000
+CMD ["node", "server.js"]

@@ -7,7 +7,7 @@ from app.utils.response_formatter import success_response
 router = APIRouter(prefix="/assessment", tags=["Assessment Sessions"])
 
 @router.post("/start", response_model=dict, summary="Start an Interview Assessment Session")
-def start_assessment(request: AssessmentSessionCreate, _=Depends(admin_required)):
+def start_assessment(request: AssessmentSessionCreate):
     """
     Called by the main AI Interview Platform when a candidate reaches the Coding Module.
     Creates a time-bound session that expires after X minutes.

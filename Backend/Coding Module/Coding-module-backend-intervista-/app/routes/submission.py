@@ -1,7 +1,9 @@
+import os
 from fastapi import APIRouter, HTTPException, Depends, BackgroundTasks, Request
 from app.schemas.submission_schema import SubmissionRequest, RunRequest, SubmissionEnqueueResponse, SubmissionStatusResponse
 from app.utils.limiter import limiter, RATE_LIMIT_SUBMIT
 from app.utils.metrics import metrics
+from app.core.logger import logger
 from app.services.submission_service import (
     run_code_request, enqueue_submission, process_submission_worker,
     get_submission_by_id, get_candidate_history,
@@ -23,10 +25,11 @@ def run_code(request: Request, body: RunRequest):
 
 @router.post("/", response_model=dict, summary="Submit code async (public envelope)")
 @limiter.limit(RATE_LIMIT_SUBMIT)
-def submit(request: Request, body: SubmissionRequest):
+def submit(request: Request, body: SubmissionRequest, background_tasks: BackgroundTasks):
     """
     Submit button — immediately returns 'queued' status.
-    Enqueues job into durable Redis queue for dedicated evaluator workers.
+    Enqueues job into durable Redis queue when Redis is available,
+    otherwise falls back gracefully to in-process background task execution.
     """
     if body.session_id:
         from app.storage.assessment_store import get_session, complete_session
@@ -43,24 +46,23 @@ def submit(request: Request, body: SubmissionRequest):
             
     submission_id, question, language_id = enqueue_submission(body)
     
-    # Enqueue into durable Redis Evaluation Queue
-    from app.queue.eval_queue import get_eval_queue
-    from app.storage.submission_store import update_submission_status
-    try:
-        get_eval_queue().enqueue(submission_id)
-    except Exception as err:
-        # DB succeeded, Redis failed -> Mark DB record failed & return 503
-        update_submission_status(
+    enqueued_to_redis = False
+    redis_url = os.getenv("REDIS_URL")
+    if redis_url:
+        from app.queue.eval_queue import get_eval_queue
+        try:
+            get_eval_queue().enqueue(submission_id)
+            enqueued_to_redis = True
+        except Exception as err:
+            logger.warning(f"Redis enqueue failed: {err}. Falling back to in-process background task.")
+
+    if not enqueued_to_redis:
+        background_tasks.add_task(
+            process_submission_worker,
             submission_id,
-            {
-                "job_status": "failed",
-                "status": "Internal Error",
-                "compile_output": f"Evaluation queue failure: {err}"
-            }
-        )
-        raise HTTPException(
-            status_code=503,
-            detail="Evaluation queue temporarily unavailable. Please retry."
+            question,
+            body.source_code,
+            language_id,
         )
         
     metrics.record_submission_accepted()

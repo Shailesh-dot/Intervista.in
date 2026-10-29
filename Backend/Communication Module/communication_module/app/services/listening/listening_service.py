@@ -117,7 +117,7 @@ def _llm(prompt: str, max_tokens: int = 1000) -> dict:
     for attempt in range(3):
         try:
             resp = client.chat.completions.create(
-                model="llama-3.3-70b-versatile",
+                model=os.getenv("GROQ_MODEL", "openai/gpt-oss-120b"),
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.1,
                 max_tokens=max_tokens,
@@ -281,7 +281,7 @@ def evaluate_all_responses(session_clips: list, clip_responses: list) -> list:
                     "retention":              {**EMPTY_PENALTY, "coverage_ratio": 0.0},
                     "comprehension":          {**EMPTY_PENALTY},
                 }
-                print(f"[{clip_id}] REPEAT — empty transcript, all params scored 0")
+                print(f"[{clip_id}] REPEAT - empty transcript, all params scored 0")
                 continue
 
             khr        = _keyword_hit_rate(clip.key_facts, transcript)

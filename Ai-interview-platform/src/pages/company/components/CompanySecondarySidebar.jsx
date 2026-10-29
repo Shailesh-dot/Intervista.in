@@ -77,19 +77,17 @@ export default function CompanySecondarySidebar({
               <div
                 key={test.testId}
                 onClick={() => onSelectTest(test)}
-                className={`rounded-2xl p-6 mb-4 cursor-pointer transition-all duration-300 border ${
-                  isSelected
-                    ? "bg-[#144542]/[0.02] border-[#144542] shadow-md shadow-[#144542]/5 border-[1.5px]"
-                    : "bg-white border-gray-200 shadow-sm hover:shadow hover:border-gray-300"
-                }`}
+                className={`rounded-2xl p-6 mb-4 cursor-pointer transition-all duration-300 border ${isSelected
+                  ? "bg-[#144542]/[0.02] border-[#144542] shadow-md shadow-[#144542]/5 border-[1.5px]"
+                  : "bg-white border-gray-200 shadow-sm hover:shadow hover:border-gray-300"
+                  }`}
               >
                 <div className="flex justify-between items-start mb-4">
                   <span
-                    className={`px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-full shadow-sm h-fit ${
-                      isSelected
-                        ? "bg-[#144542] text-white"
-                        : "bg-white border border-gray-200 text-gray-700"
-                    }`}
+                    className={`px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-full shadow-sm h-fit ${isSelected
+                      ? "bg-[#144542] text-white"
+                      : "bg-white border border-gray-200 text-gray-700"
+                      }`}
                   >
                     {isSelected ? "Selected" : "Draft"}
                   </span>

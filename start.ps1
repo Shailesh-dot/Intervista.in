@@ -33,12 +33,23 @@ function Write-Warn($msg) { Write-Host "  [WARN] $msg" -ForegroundColor Yellow }
 function Write-Err($msg)  { Write-Host "  [ERR]  $msg" -ForegroundColor Red    }
 function Write-Info($msg) { Write-Host "  [INFO] $msg" -ForegroundColor Cyan   }
 
-# Returns $true if the TCP port is NOT already bound (safe to start on it)
+# Force-kills any process on the port, then returns $true so the service always starts fresh
 function Test-PortFree([int]$Port) {
-    $used = (Get-NetTCPConnection -LocalPort $Port -State Listen -ErrorAction SilentlyContinue)
-    if ($used) {
-        Write-Warn "Port $Port is already in use  -  skipping (service already running)"
-        return $false
+    $conns = Get-NetTCPConnection -LocalPort $Port -State Listen -ErrorAction SilentlyContinue
+    if ($conns) {
+        foreach ($conn in $conns) {
+            $ownerPid = $conn.OwningProcess
+            Write-Warn "Port $Port in use by PID $ownerPid -- force-killing..."
+            Stop-Process -Id $ownerPid -Force -ErrorAction SilentlyContinue
+            & taskkill /PID $ownerPid /F 2>&1 | Out-Null
+        }
+        Start-Sleep -Milliseconds 800
+        $still = Get-NetTCPConnection -LocalPort $Port -State Listen -ErrorAction SilentlyContinue
+        if ($still) {
+            Write-Warn "Port $Port still in use after kill -- service may conflict (WSL process?)"
+        } else {
+            Write-Ok "Port $Port cleared"
+        }
     }
     return $true
 }
@@ -204,11 +215,15 @@ Start-Sleep -Milliseconds 800
 # -- 4. Aptitude Module (Port 5002) ---------------------------------------
 #    Runs Flask backend on port 5002 to avoid conflict with User Mail Server.
 $APTITUDE_DIR = Join-Path $BACKEND_DIR "Aptitude Module\Aptitude session\AptitudeIQ"
-Start-Service `
-    -Name      "Aptitude Module" `
-    -WorkDir   $APTITUDE_DIR `
-    -Command   "python" `
-    -Arguments "server.py"
+if (Test-PortFree 5002) {
+    Start-Service `
+        -Name      "Aptitude Module" `
+        -WorkDir   $APTITUDE_DIR `
+        -Command   "python" `
+        -Arguments "server.py"
+} else {
+    Write-Ok "Aptitude Module  ->  already running on port 5002"
+}
 
 Start-Sleep -Milliseconds 500
 
@@ -223,6 +238,7 @@ if (Test-Path $CODING_VENV) {
     $codingCmd  = "uvicorn"
     $codingArgs = "app.main:app --host 0.0.0.0 --port 8000 --reload"
 }
+Test-PortFree 8000 | Out-Null
 Start-Service `
     -Name      "Coding Module" `
     -WorkDir   $CODING_DIR `
@@ -236,6 +252,7 @@ Start-Sleep -Milliseconds 500
 $AI_DIR      = Join-Path $BACKEND_DIR "AI Interview Module\chumma\files"
 $AI_UVICORN  = Join-Path $AI_DIR      "venv\Scripts\uvicorn.exe"
 if (-not (Test-Path $AI_UVICORN)) { $AI_UVICORN = "uvicorn" }
+Test-PortFree 8001 | Out-Null
 Start-Service `
     -Name      "AI Interview Module" `
     -WorkDir   $AI_DIR `
@@ -249,27 +266,35 @@ $VERBAL_DIR  = Join-Path $BACKEND_DIR "Communication Module\communication_module
 $VERBAL_VENV = Join-Path $VERBAL_DIR  "com\Scripts\uvicorn.exe"
 if (Test-Path $VERBAL_VENV) {
     $verbalCmd  = $VERBAL_VENV
-    $verbalArgs = "app.main:app --host 0.0.0.0 --port 8002"
+    $verbalArgs = "app.main:app --host 0.0.0.0 --port 8002 --reload"
 } else {
     Write-Warn "Communication Module: com venv not found  -  using system uvicorn"
     $verbalCmd  = "uvicorn"
-    $verbalArgs = "app.main:app --host 0.0.0.0 --port 8002"
+    $verbalArgs = "app.main:app --host 0.0.0.0 --port 8002 --reload"
 }
-Start-Service `
-    -Name      "Communication Module" `
-    -WorkDir   $VERBAL_DIR `
-    -Command   $verbalCmd `
-    -Arguments $verbalArgs
+if (Test-PortFree 8002) {
+    Start-Service `
+        -Name      "Communication Module" `
+        -WorkDir   $VERBAL_DIR `
+        -Command   $verbalCmd `
+        -Arguments $verbalArgs
+} else {
+    Write-Ok "Communication Module  ->  already running on port 8002"
+}
 
 Start-Sleep -Milliseconds 500
 
 # -- 8. Data Service (Port 5003) ------------------------------------------
 $DATA_SERVICE_DIR = Join-Path $BACKEND_DIR "Data Service"
-Start-Service `
-    -Name      "Data Service" `
-    -WorkDir   $DATA_SERVICE_DIR `
-    -Command   "node" `
-    -Arguments "server.js"
+if (Test-PortFree 5003) {
+    Start-Service `
+        -Name      "Data Service" `
+        -WorkDir   $DATA_SERVICE_DIR `
+        -Command   "node" `
+        -Arguments "server.js"
+} else {
+    Write-Ok "Data Service  ->  already running on port 5003"
+}
 
 Start-Sleep -Milliseconds 500
 

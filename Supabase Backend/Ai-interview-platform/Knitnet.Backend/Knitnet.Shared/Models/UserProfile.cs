@@ -40,6 +40,9 @@ public class UserProfile
     [Column("gender")]
     public string Gender { get; set; } = string.Empty;
 
+    [Column("roll_number")]
+    public string RollNumber { get; set; } = string.Empty;
+
     // Navigation property for FK enforcement
     public User? User { get; set; }
 }

@@ -165,8 +165,8 @@ def process_submission_worker(
                 "test_case_id": tc.get("id", i + 1), # fallback mock index
                 "status": status_label,
                 "execution_time": _safe_parse_time(res.get("time")),
-                "stdout": "**hidden**" if is_hidden else actual,
-                "stderr": "**hidden**" if is_hidden else stderr,
+                "stdout": actual,   # always store real candidate output; expected_output is never stored so nothing leaks
+                "stderr": stderr,   # candidate's own error messages — always shown
                 "compile_output": compile_error_output if i == 0 else "" # Don't duplicate massive strings
             })
             

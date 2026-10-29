@@ -77,7 +77,9 @@ export default function InitialProcess() {
     }
     localStorage.removeItem('coding_draft_codes');
     localStorage.removeItem('coding_submissions');
+    localStorage.removeItem('coding_session_submissions');
     localStorage.removeItem('coding_session_id');
+    localStorage.removeItem('coding_assigned_codes');
     navigate('/coding/assessment', { state: { uniqueId } });
   };
 

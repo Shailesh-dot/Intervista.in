@@ -88,7 +88,7 @@ async def run_pipeline(audio_file, question: str) -> dict:
     segments        = transcript_data.get("timestamps", [])
     words           = transcript_data.get("words", [])
 
-    print(f"TRANSCRIPT ({len(transcript)} chars): {transcript[:120]}…")
+    print(f"TRANSCRIPT ({len(transcript)} chars): {transcript[:120]}...")
     print(f"SEGMENTS: {len(segments)} | WORDS: {len(words)}")
 
     if not is_valid_speech(transcript, segments, words):
@@ -198,7 +198,7 @@ async def run_session_pipeline(
                 "segments": td.get("timestamps", []),
                 "words":    td.get("words", []),
             })
-            print(f"TRANSCRIPT Q{len(transcriptions)}: {td.get('text','')[:80]}…")
+            print(f"TRANSCRIPT Q{len(transcriptions)}: {td.get('text','')[:80]}...")
         except Exception as e:
             print(f"TRANSCRIPTION ERROR: {e}")
             transcriptions.append({"question": question, "text": "", "segments": [], "words": []})

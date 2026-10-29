@@ -1,0 +1,191 @@
+services:
+  # ─── FRONTEND & REVERSE PROXY ───
+  frontend:
+    image: premroger12/frontend-nginx:latest
+    build:
+      context: ./Ai-interview-platform
+      dockerfile: Dockerfile
+    container_name: frontend-nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - supabase-user-api
+      - supabase-company-api
+      - mail-server
+      - data-service
+      - coding-service
+      - interview-service
+      - communication-service
+      - aptitude-service
+    networks:
+      - platform-network
+    restart: always
+
+  # ─── NODE MAIL SERVER ───
+  mail-server:
+    image: premroger12/mail-server:latest
+    build:
+      context: ./Ai-interview-platform
+      dockerfile: Dockerfile.mail
+    container_name: mail-server
+    environment:
+      - NODE_ENV=production
+      - FRONTEND_URL=${FRONTEND_URL}
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_PASS=${EMAIL_PASS}
+      - BREVO_API_KEY=${BREVO_API_KEY}
+      - BREVO_SENDER_EMAIL=${BREVO_SENDER_EMAIL}
+      - BREVO_SENDER_NAME=${BREVO_SENDER_NAME:-Intervista}
+      - BREVO_REPLY_TO=${BREVO_REPLY_TO:-teams@intervista.in}
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_SERVICE_ROLE_KEY=${SUPABASE_SERVICE_ROLE_KEY:-${SUPABASE_SERVICE_KEY}}
+      - EMAIL_TOKEN_BYTES=${EMAIL_TOKEN_BYTES:-32}
+      - EMAIL_VERIFICATION_EXPIRY_HOURS=${EMAIL_VERIFICATION_EXPIRY_HOURS:-24}
+      - PASSWORD_RESET_EXPIRY_MINUTES=${PASSWORD_RESET_EXPIRY_MINUTES:-20}
+      - EMAIL_RESEND_COOLDOWN_SECONDS=${EMAIL_RESEND_COOLDOWN_SECONDS:-60}
+    networks:
+      - platform-network
+    restart: always
+
+  # ─── .NET C# SUPABASE USER API ───
+  supabase-user-api:
+    image: premroger12/supabase-user-api:latest
+    build:
+      context: ./Supabase Backend/Ai-interview-platform/Knitnet.Backend
+      dockerfile: Dockerfile
+      args:
+        - API_PROJECT=Knitnet.UserApi
+    container_name: supabase-user-api
+    environment:
+      - ConnectionStrings__DefaultConnection=${DB_CONNECTION_STRING}
+      - FRONTEND_URL=${FRONTEND_URL}
+      - JwtSettings__SecretKey=${JWT_SECRET_KEY}
+      - JwtSettings__Issuer=${JWT_ISSUER:-KnitnetBackend}
+      - JwtSettings__Audience=${JWT_AUDIENCE:-KnitnetFrontend}
+      - JwtSettings__ExpiryHours=${JWT_EXPIRY_HOURS:-3}
+      - SupabaseSettings__Url=${SUPABASE_URL}
+      - SupabaseSettings__ServiceRoleKey=${SUPABASE_SERVICE_KEY}
+      - SupabaseSettings__ProfileImagesBucket=${SUPABASE_PROFILE_IMAGES_BUCKET:-profile-images}
+      - SupabaseSettings__CompanyLogosBucket=${SUPABASE_COMPANY_LOGOS_BUCKET:-company-logos}
+      - SupabaseSettings__VerificationDocsBucket=${SUPABASE_VERIFICATION_DOCS_BUCKET:-verification-docs}
+      - MAIL_SERVER_URL=http://mail-server:5000
+    networks:
+      - platform-network
+    restart: always
+
+  # ─── .NET C# SUPABASE COMPANY API ───
+  supabase-company-api:
+    image: premroger12/supabase-company-api:latest
+    build:
+      context: ./Supabase Backend/Ai-interview-platform/Knitnet.Backend
+      dockerfile: Dockerfile
+      args:
+        - API_PROJECT=Knitnet.CompanyApi
+    container_name: supabase-company-api
+    environment:
+      - ConnectionStrings__DefaultConnection=${DB_CONNECTION_STRING}
+      - FRONTEND_URL=${FRONTEND_URL}
+      - JwtSettings__SecretKey=${JWT_SECRET_KEY}
+      - JwtSettings__Issuer=${JWT_ISSUER:-KnitnetBackend}
+      - JwtSettings__Audience=${JWT_AUDIENCE:-KnitnetFrontend}
+      - JwtSettings__ExpiryHours=${JWT_EXPIRY_HOURS:-3}
+    networks:
+      - platform-network
+    restart: always
+
+  # ─── NODE DATA SERVICE ───
+  data-service:
+    image: premroger12/data-service:latest
+    build:
+      context: ./Backend/Data Service
+      dockerfile: Dockerfile
+    container_name: data-service
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - FRONTEND_URL=${FRONTEND_URL}
+    networks:
+      - platform-network
+    restart: always
+
+  # ─── PYTHON CODING MODULE SERVICE ───
+  coding-service:
+    image: premroger12/coding-service:latest
+    build:
+      context: ./Backend/Coding Module/Coding-module-backend-intervista-
+      dockerfile: Dockerfile
+    container_name: coding-service
+    environment:
+      - DATABASE_URL=${CODING_DATABASE_URL}
+      - FRONTEND_URL=${FRONTEND_URL}
+      - JUDGE0_URL=${JUDGE0_URL}
+      - JUDGE0_API_KEY=${JUDGE0_API_KEY:-}
+      - JWT_SECRET=${JWT_SECRET_KEY}
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_SERVICE_KEY=${SUPABASE_SERVICE_KEY}
+      - ADMIN_SECRET_KEY=${ADMIN_SECRET_KEY:-admin123}
+    networks:
+      - platform-network
+    restart: always
+
+  # ─── PYTHON TECHNICAL INTERVIEW SERVICE ───
+  interview-service:
+    image: premroger12/interview-service:latest
+    build:
+      context: ./Backend/AI Interview Module/chumma
+      dockerfile: Dockerfile
+    container_name: interview-service
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - DO_AGENT_API_URL=${DO_AGENT_API_URL}
+      - DO_AGENT_API_KEY=${DO_AGENT_API_KEY}
+      - VERCEL_ORIGIN=${FRONTEND_URL}
+      - DATABASE_URL=${INTERVIEW_DATABASE_URL}
+      - AZURE_SPEECH_KEY=${AZURE_SPEECH_KEY}
+      - AZURE_SPEECH_REGION=${AZURE_SPEECH_REGION:-centralindia}
+      - DEFAULT_VOICE=${DEFAULT_VOICE:-en-IN-ArjunNeural}
+    networks:
+      - platform-network
+    restart: always
+
+  # ─── PYTHON COMMUNICATION MODULE SERVICE ───
+  communication-service:
+    image: premroger12/communication-service:latest
+    build:
+      context: ./Backend/Communication Module/communication_module
+      dockerfile: Dockerfile
+    container_name: communication-service
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - DO_AGENT_API_URL=${DO_AGENT_API_URL}
+      - DO_AGENT_API_KEY=${DO_AGENT_API_KEY}
+      - AZURE_SPEECH_KEY=${AZURE_SPEECH_KEY}
+      - AZURE_SPEECH_REGION=${AZURE_SPEECH_REGION:-centralindia}
+      - DEFAULT_VOICE=${DEFAULT_VOICE:-en-IN-ArjunNeural}
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_SERVICE_KEY=${SUPABASE_SERVICE_KEY}
+      - DATABASE_URL=${COMMUNICATION_DATABASE_URL}
+    networks:
+      - platform-network
+    restart: always
+
+  # ─── PYTHON/FLASK APTITUDE SERVICE ───
+  aptitude-service:
+    image: premroger12/aptitude-service:latest
+    build:
+      context: ./Backend/Aptitude Module/Aptitude session/AptitudeIQ
+      dockerfile: Dockerfile
+    container_name: aptitude-service
+    environment:
+      - HOST=0.0.0.0
+      - PORT=5000
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
+      - SUPABASE_SERVICE_KEY=${SUPABASE_SERVICE_KEY}
+    networks:
+      - platform-network
+    restart: always
+
+
+networks:
+  platform-network:
+    driver: bridge

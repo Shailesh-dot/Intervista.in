@@ -4,7 +4,7 @@ import {
   FiPlay, FiSend, FiClock, FiChevronDown, FiCheckCircle,
   FiXCircle, FiAlertCircle, FiLoader, FiCode, FiZap,
   FiUser, FiFlag, FiMaximize2, FiMinimize2, FiRefreshCw,
-  FiTerminal, FiList, FiAward, FiMoon, FiSun,
+  FiTerminal, FiList, FiAward, FiMoon, FiSun, FiRotateCcw,
 } from 'react-icons/fi';
 import Editor from '@monaco-editor/react';
 import ProctorOverlay from '../../routes/ProctorOverlay';
@@ -188,12 +188,28 @@ function RunResultsViewer({ data, activeQuestion, customStdin, isDarkMode }) {
   );
 }
 
-function SubmitResultsViewer({ data, isDarkMode }) {
+function SubmitResultsViewer({ data, activeQuestion, isDarkMode, topErrorIdx }) {
   const t = (light, dark) => isDarkMode ? dark : light;
-  const [selectedIdx, setSelectedIdx] = useState(0);
   const tcResults = data?.test_case_results || [];
-  const current = tcResults[selectedIdx] || null;
-  const isAllPassed = data.status === 'Accepted';
+  const isAllPassed = data.status === 'Accepted' ||
+    (data.passed_test_cases === data.total_test_cases && data.total_test_cases > 0 && data.total_test_cases != null);
+
+  // Determine the single test case to reveal:
+  // Use topErrorIdx from parent (tracks progressively unlocked errors),
+  // or fall back to the first failing case if no map entry yet.
+  const resolvedIdx = (topErrorIdx != null && topErrorIdx >= 0)
+    ? topErrorIdx
+    : tcResults.findIndex(tc => tc.status !== 'Accepted');
+  const topErrorCase = isAllPassed ? null : (tcResults[resolvedIdx] || null);
+  const topErrorNumber = resolvedIdx + 1; // 1-based for display
+
+  const inputDisplay = topErrorCase?.input
+    ? topErrorCase.input
+    : (activeQuestion?.sample_test_cases?.[resolvedIdx]?.input || activeQuestion?.sample_test_cases?.[resolvedIdx]?.input_data || '(No Input)');
+
+  const expectedOutputDisplay = topErrorCase?.expected_output
+    ? topErrorCase.expected_output
+    : (activeQuestion?.sample_test_cases?.[resolvedIdx]?.expected_output || '(No Output)');
 
   return (
     <div className={`flex flex-col h-full ${t('bg-white/60', 'bg-[#161b22]/30')}`}>
@@ -201,8 +217,11 @@ function SubmitResultsViewer({ data, isDarkMode }) {
       <div className={`px-6 py-5 border-b ${t('border-black/10', 'border-white/10')} ${isAllPassed ? 'bg-emerald-500/10' : 'bg-red-500/5'}`}>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-2xl border ${isAllPassed ? `${t('bg-emerald-500/20 border-emerald-400/30 text-emerald-600 shadow-[0_0_15px_rgba(16,185,129,0.1)]', 'bg-emerald-500/20 border-emerald-400/30 text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.1)]')}` : 'bg-red-500/10 border-red-400/30 text-red-400'
-              }`}>
+            <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-2xl border ${
+              isAllPassed
+                ? t('bg-emerald-500/20 border-emerald-400/30 text-emerald-600 shadow-[0_0_15px_rgba(16,185,129,0.1)]', 'bg-emerald-500/20 border-emerald-400/30 text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.1)]')
+                : 'bg-red-500/10 border-red-400/30 text-red-400'
+            }`}>
               {isAllPassed ? <FiCheckCircle /> : <FiAlertCircle />}
             </div>
             <div>
@@ -219,61 +238,88 @@ function SubmitResultsViewer({ data, isDarkMode }) {
         </div>
       </div>
 
-      {/* 2. Test Case Selection Grid */}
-      <div className={`px-5 py-3 ${t('bg-[#F0F0F0] border-black/5', 'bg-[#1c2128] border-white/5')} border-b flex items-center gap-3`}>
-        <div className="flex flex-wrap gap-2">
-          {tcResults.map((tc, i) => (
-            <button
-              key={i}
-              onClick={() => setSelectedIdx(i)}
-              className={`w-8 h-8 rounded-lg border transition-all duration-200 cursor-pointer flex items-center justify-center ${selectedIdx === i
-                ? `border-[#DAFF0C] ${t('bg-[#DAFF0C]/20 text-[#7A9000]', 'bg-[#DAFF0C]/10 text-[#DAFF0C]')} shadow-lg`
-                : `${t('border-black/8 bg-black/5 text-[#AAAAAA] hover:border-black/20', 'border-white/5 bg-white/5 text-white/20 hover:border-white/20')}`
-                }`}
-            >
-              {tc.status === 'Accepted' ? <FiCheckCircle className="text-xs" /> : <FiXCircle className="text-xs" />}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* 3. Selected Case Detail */}
-      <div className="flex-1 overflow-y-auto p-5 custom-scrollbar">
-        {current && (
-          <div className="space-y-5">
-            <div className="flex items-center gap-4">
-              <span className={`text-[10px] font-black uppercase ${t('text-[#AAAAAA]', 'text-white/30')}`}>Case {selectedIdx + 1} Detail</span>
-              {current.is_hidden && <span className={`px-2 py-0.5 rounded text-[8px] font-black uppercase italic tracking-widest border ${t('bg-black/5 text-[#888888] border-black/10', 'bg-white/5 text-white/30 border-white/10')}`}>Private Case</span>}
-            </div>
-
-            {current.is_hidden ? (
-              <div className={`border border-dashed rounded-2xl p-10 flex flex-col items-center justify-center text-center ${t('bg-[#F8F8F8] border-black/10', 'bg-[#0d1117] border-white/10')}`}>
-                <FiFlag className={`text-3xl mb-3 ${t('text-[#CCCCCC]', 'text-white/10')}`} />
-                <p className={`text-xs font-medium max-w-[300px] ${t('text-[#AAAAAA]', 'text-white/30')}`}>Hidden test case details are restricted to prevent answer leaking. All outputs are encrypted by the judge engine.</p>
-              </div>
-            ) : (
-              <div className="space-y-4">
-                {(current.compile_output || current.stderr) && (
-                  <ErrorDisplay
-                    status={current.status}
-                    output={current.compile_output || current.stderr}
-                    isDarkMode={isDarkMode}
-                  />
-                )}
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <p className={`text-[10px] font-black uppercase tracking-widest ${t('text-[#666666]', 'text-white/30')}`}>Output</p>
-                    <pre className={`border rounded-xl p-3 font-mono text-xs min-h-[40px] ${t('bg-[#F8F8F8] border-black/10 text-black font-bold', 'bg-[#0d1117] border-white/5 text-white/60')}`}>{current.stdout || '(No Output)'}</pre>
-                  </div>
-                  <div className="space-y-2">
-                    <p className={`text-[10px] font-black uppercase tracking-widest ${t('text-[#666666]', 'text-white/30')}`}>Status</p>
-                    <div className={`border rounded-xl p-3 font-mono font-black text-xs min-h-[40px] flex items-center ${t('bg-[#F8F8F8] border-black/10', 'bg-[#0d1117] border-white/5')} ${current.status === 'Accepted' ? t('text-emerald-700 font-bold', 'text-emerald-400') : 'text-red-600 font-bold'}`}>
-                      {current.status}
-                    </div>
-                  </div>
+      {/* 2. Topmost Error — Single Test Case Panel */}
+      <div className="flex-1 overflow-y-auto custom-scrollbar">
+        {isAllPassed ? (
+          /* All Passed — celebration view */
+          <div className={`m-5 border border-dashed rounded-2xl p-10 flex flex-col items-center justify-center text-center ${
+            t('bg-emerald-50 border-emerald-300/40', 'bg-emerald-500/5 border-emerald-500/20')
+          }`}>
+            <FiCheckCircle className={`text-4xl mb-3 ${t('text-emerald-600', 'text-emerald-400')}`} />
+            <p className={`text-sm font-black tracking-wide ${t('text-emerald-700', 'text-emerald-400')}`}>All Test Cases Passed!</p>
+            <p className={`text-[10px] font-medium mt-1 ${t('text-emerald-600/60', 'text-emerald-400/50')}`}>Your solution is correct. Well done!</p>
+          </div>
+        ) : topErrorCase ? (
+          /* Topmost Error — show the single first-failing test case */
+          <div className="p-5 space-y-4">
+            {/* Case header */}
+            <div className={`flex items-center justify-between pb-3 border-b ${t('border-black/8', 'border-white/8')}`}>
+              <div className="flex items-center gap-2">
+                <div className="w-7 h-7 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center justify-center">
+                  <FiXCircle className="text-red-400 text-sm" />
+                </div>
+                <div>
+                  <p className={`text-xs font-black ${t('text-[#111111]', 'text-white')}`}>Test Case {topErrorNumber}</p>
+                  <p className={`text-[9px] font-bold uppercase tracking-widest ${t('text-[#AAAAAA]', 'text-white/30')}`}>
+                    {topErrorCase.is_hidden ? 'Private Case' : 'Failed'}
+                  </p>
                 </div>
               </div>
-            )}
+              <span className="px-2.5 py-1 rounded-full text-[9px] font-black uppercase tracking-widest bg-red-500/10 border border-red-500/20 text-red-400">
+                {topErrorCase.status}
+              </span>
+            </div>
+
+            <div className="space-y-4">
+              {/* Compile/Runtime error block */}
+              {(topErrorCase.compile_output || topErrorCase.stderr) && (
+                <ErrorDisplay
+                  status={topErrorCase.status}
+                  output={topErrorCase.compile_output || topErrorCase.stderr}
+                  isDarkMode={isDarkMode}
+                />
+              )}
+
+              {/* Input vs Your Output vs Expected Output */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="space-y-2">
+                  <p className={`text-[10px] font-black uppercase tracking-widest ${t('text-[#666666]', 'text-white/30')}`}>Input</p>
+                  <pre className={`border rounded-xl p-3 font-mono text-xs min-h-[40px] font-bold overflow-x-auto whitespace-pre-wrap ${
+                    t('bg-[#F8F8F8] border-black/10 text-[#222222]', 'bg-[#0d1117] border-white/5 text-white/80')
+                  }`}>{inputDisplay}</pre>
+                </div>
+                <div className="space-y-2">
+                  <p className={`text-[10px] font-black uppercase tracking-widest ${t('text-[#666666]', 'text-white/30')}`}>Your Output</p>
+                  <pre className={`border rounded-xl p-3 font-mono text-xs min-h-[40px] text-red-500 font-bold ${
+                    t('bg-[#F8F8F8] border-red-300/30', 'bg-[#0d1117] border-red-500/20')
+                  }`}>{topErrorCase.stdout || '(No Output)'}</pre>
+                </div>
+                <div className="space-y-2">
+                  <p className={`text-[10px] font-black uppercase tracking-widest ${t('text-[#666666]', 'text-white/30')}`}>Expected Output</p>
+                  <pre className={`border rounded-xl p-3 font-mono text-xs min-h-[40px] font-bold ${
+                    t('bg-[#F8F8F8] border-emerald-300/30 text-emerald-600', 'bg-[#0d1117] border-emerald-500/20 text-emerald-400')
+                  }`}>
+                    {expectedOutputDisplay}
+                  </pre>
+                </div>
+              </div>
+
+              {/* Progress hint */}
+              <div className={`flex items-center gap-2 px-3 py-2.5 rounded-xl border ${
+                t('bg-amber-50 border-amber-200/60 text-amber-700', 'bg-amber-500/5 border-amber-500/20 text-amber-400')
+              }`}>
+                <FiAlertCircle className="text-sm shrink-0" />
+                <p className="text-[10px] font-bold leading-tight">
+                  Fix Test Case {topErrorNumber} to unlock the next failing case.
+                </p>
+              </div>
+            </div>
+          </div>
+        ) : (
+          /* No test case results yet */
+          <div className={`m-5 flex flex-col items-center justify-center py-10 ${t('text-[#CCCCCC]', 'text-white/10')}`}>
+            <FiList className="text-3xl mb-2" />
+            <p className="text-[10px] font-black uppercase tracking-[0.2em]">No Results</p>
           </div>
         )}
       </div>
@@ -325,6 +371,10 @@ export default function MainAssessment() {
   const [running, setRunning] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [activeTab, setActiveTab] = useState('testcase'); // testcase | result
+  // Tracks the index of the topmost (first) failing test case per question.
+  // Keyed by question_id so errors are isolated across questions.
+  // Resets on page refresh (session-scoped, like LeetCode).
+  const [topErrorMap, setTopErrorMap] = useState({});
   const [stdin, setStdin] = useState('');
   const [runResult, setRunResult] = useState(null);
   const [submitResult, setSubmitResult] = useState(null);
@@ -388,14 +438,64 @@ export default function MainAssessment() {
         const qRes = await apiCall('/question/');
         let qs = qRes.data || [];
 
-        // Filter questions if specific problem codes were assigned in test creation
+        // Filter questions based on assignment mode (fixed vs. random per candidate)
         const testInfo = loadTestInfo();
-        const assignedProblemCodes = testInfo?.codingMapping?.problemCodes || [];
+        const testCode = testInfo?.testCode || testInfo?.testId;
+        const mode = (testInfo?.codingMapping?.selectionMode || 'fixed').toLowerCase();
+        let assignedProblemCodes = testInfo?.codingMapping?.problemCodes || [];
+
+        // Check if there are cached assigned codes for this test first
+        const cacheKey = testCode ? `coding_assigned_codes_${testCode}` : 'coding_assigned_codes';
+        const cached = localStorage.getItem(cacheKey) || localStorage.getItem('coding_assigned_codes');
+        if (cached) {
+          try {
+            const parsedCached = JSON.parse(cached);
+            if (Array.isArray(parsedCached) && parsedCached.length > 0) {
+              assignedProblemCodes = parsedCached;
+            }
+          } catch {}
+        }
+
+        if (testCode && (mode === 'random' || !testInfo?.codingMapping?.selectionMode)) {
+          try {
+            const studentId = localStorage.getItem('userId') || email;
+            const assignRes = await fetch('/api/verification/coding-assignment', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                testCode: testCode,
+                studentId: studentId
+              })
+            });
+            if (assignRes.ok) {
+              const assignData = await assignRes.json();
+              if (Array.isArray(assignData.problemCodes) && assignData.problemCodes.length > 0) {
+                assignedProblemCodes = assignData.problemCodes;
+                localStorage.setItem(cacheKey, JSON.stringify(assignedProblemCodes));
+                localStorage.setItem('coding_assigned_codes', JSON.stringify(assignedProblemCodes));
+              }
+            }
+          } catch (assignErr) {
+            console.error('[MainAssessment] Error retrieving coding assignment:', assignErr);
+          }
+        }
+
         if (Array.isArray(assignedProblemCodes) && assignedProblemCodes.length > 0) {
-          const codeSet = new Set(assignedProblemCodes.map(String));
-          const filtered = qs.filter(q => codeSet.has(String(q.id)) || codeSet.has(String(q.problem_code)));
-          if (filtered.length > 0) {
-            qs = filtered;
+          // Preserve the server's difficulty progression (Easy -> Medium -> Hard)
+          const qMap = new Map();
+          qs.forEach(q => {
+            qMap.set(String(q.id), q);
+            if (q.problem_code) qMap.set(String(q.problem_code), q);
+          });
+          const orderedQuestions = [];
+          assignedProblemCodes.forEach(code => {
+            const found = qMap.get(String(code));
+            if (found && !orderedQuestions.some(q => q.id === found.id)) {
+              orderedQuestions.push(found);
+            }
+          });
+          if (orderedQuestions.length > 0) {
+            qs = orderedQuestions;
           }
         }
         setQuestions(qs);
@@ -415,6 +515,8 @@ export default function MainAssessment() {
           setSessionId(sid);
           if (sid) {
             localStorage.setItem('coding_session_id', sid);
+            localStorage.removeItem('coding_session_submissions');
+            localStorage.removeItem('coding_submissions');
           } else {
             localStorage.removeItem('coding_session_id');
           }
@@ -440,7 +542,7 @@ export default function MainAssessment() {
           }, 1000);
         }
 
-        setInitPhase('ready');
+        setInitPhase('ready');  
       } catch (err) {
         setInitPhase('error');
         setInitError(err.message || 'Failed to connect to the coding module.');
@@ -475,7 +577,7 @@ export default function MainAssessment() {
     return getDraft(questionId, lang) !== null;
   };
 
-  const getBoilerplateForLang = async (q, targetLang) => {
+  const getBoilerplateForLang = async (q, targetLang, retries = 0) => {
     if (!q) return DEFAULT_CODE[targetLang] || '';
 
     // 1. Direct from question object boilerplates
@@ -495,9 +597,27 @@ export default function MainAssessment() {
       if (bpCode && bpCode.trim()) return bpCode;
     } catch (err) {
       console.warn('Failed to fetch boilerplate from API:', err);
+      // Retry with exponential backoff if service may still be starting
+      if (retries < 3) {
+        await new Promise(res => setTimeout(res, 500 * Math.pow(2, retries)));
+        return getBoilerplateForLang(q, targetLang, retries + 1);
+      }
     }
 
-    // 3. Fallback default stubs
+    // 3. Re-fetch question from API as last resort (boilerplates may have been cached empty)
+    try {
+      const freshQ = await apiCall(`/question/${q.id}`);
+      const freshBp = freshQ.data?.boilerplates?.[targetLang];
+      if (freshBp) {
+        if (typeof freshBp === 'string' && freshBp.trim()) return freshBp;
+        if (freshBp.code && freshBp.code.trim()) return freshBp.code;
+        if (freshBp.source_code && freshBp.source_code.trim()) return freshBp.source_code;
+      }
+    } catch (err) {
+      console.warn('Failed to re-fetch question for boilerplate:', err);
+    }
+
+    // 4. Fallback default stubs
     return DEFAULT_CODE[targetLang] || `# ${q.title}\n`;
   };
 
@@ -512,6 +632,46 @@ export default function MainAssessment() {
       saveDraft(qId, lang, val);
     }
   };
+
+  // ── Reset code to default boilerplate ───────────────────────────────────────
+  const [resettingCode, setResettingCode] = useState(false);
+
+  const handleResetCode = async () => {
+    if (!activeQuestion || resettingCode) return;
+    try {
+      setResettingCode(true);
+      const bp = await getBoilerplateForLang(activeQuestion, language);
+      const targetCode = (bp && bp.trim()) ? bp : (DEFAULT_CODE[language] || '');
+      setCode(targetCode);
+      if (editorRef.current) {
+        editorRef.current.setValue(targetCode);
+      }
+      activeDraftKeyRef.current = makeDraftKey(activeQuestion.id, language);
+      saveDraft(activeQuestion.id, language, targetCode);
+    } finally {
+      setResettingCode(false);
+    }
+  };
+
+  // ── Auto-reload boilerplate if generic stub is showing ─────────────────────
+  // This handles the race condition where the coding service wasn't ready on first load.
+  useEffect(() => {
+    if (!activeQuestion || initPhase !== 'ready') return;
+    const isGenericStub = code === DEFAULT_CODE[language] || code === DEFAULT_CODE[language]?.trimEnd();
+    if (!isGenericStub) return; // User has real code or a draft; don't overwrite
+    let cancelled = false;
+    const reload = async () => {
+      const bp = await getBoilerplateForLang(activeQuestion, language);
+      if (cancelled) return;
+      // Only update if we got something better than the generic stub
+      if (bp && bp !== DEFAULT_CODE[language] && bp.trim()) {
+        activeDraftKeyRef.current = makeDraftKey(activeQuestion.id, language);
+        setCode(bp);
+      }
+    };
+    reload();
+    return () => { cancelled = true; };
+  }, [activeQuestion, initPhase]); // eslint-disable-line
 
   // ── Select / switch question ─────────────────────────────────────────────────
   const selectQuestion = async (q, lang, uid) => {
@@ -687,6 +847,41 @@ export default function MainAssessment() {
             clearInterval(pollRef.current);
             setSubmitResult(data);
             setSubmitting(false);
+
+            // ── Topmost Error Map Update ──────────────────────────────────
+            // Find the first (lowest-indexed) failing test case and store it
+            // so we progressively reveal errors one-by-one, like LeetCode.
+            const tcResults = data.test_case_results || [];
+            const firstFailIdx = tcResults.findIndex(tc => tc.status !== 'Accepted');
+            if (firstFailIdx !== -1) {
+              setTopErrorMap(prev => ({ ...prev, [activeQuestion.id]: firstFailIdx }));
+            } else {
+              // All passed — remove the error pointer for this question
+              setTopErrorMap(prev => {
+                const updated = { ...prev };
+                delete updated[activeQuestion.id];
+                return updated;
+              });
+            }
+            // ─────────────────────────────────────────────────────────────
+
+            // Record this completed submission into the current session store
+            try {
+              const sessionSubs = JSON.parse(localStorage.getItem('coding_session_submissions') || '{}');
+              sessionSubs[activeQuestion.id] = {
+                question_id: activeQuestion.id,
+                submission_id: submissionId,
+                language,
+                source_code: currentCode,
+                score: data.score ?? 0,
+                status: data.status || 'Failed',
+                passed_test_cases: data.passed_test_cases ?? 0,
+                total_test_cases: data.total_test_cases ?? 10,
+              };
+              localStorage.setItem('coding_session_submissions', JSON.stringify(sessionSubs));
+            } catch (e) {
+              console.error('Failed to save session submission:', e);
+            }
           }
         } catch {
           clearInterval(pollRef.current);
@@ -800,11 +995,15 @@ export default function MainAssessment() {
           )}
         </div>
 
-        {/* Center: Timer */}
-        <div className={`flex items-center gap-2 px-4 py-2 rounded-xl border transition-all duration-300 ${isTimeLow ? 'bg-red-500/10 border-red-500/30 text-red-400 animate-pulse' : t('bg-black/5 border-black/10 text-[#111111]', 'bg-white/5 border-white/10 text-white')
-          }`}>
-          <FiClock className="text-base" />
-          <span className="font-mono font-black text-base tracking-wider">{formatTime(timeLeft)}</span>
+        {/* Center: Timer & Reset */}
+        <div className="flex items-center gap-3">
+          <div className={`flex items-center gap-2 px-4 py-2 rounded-xl border transition-all duration-300 ${isTimeLow ? 'bg-red-500/10 border-red-500/30 text-red-400 animate-pulse' : t('bg-black/5 border-black/10 text-[#111111]', 'bg-white/5 border-white/10 text-white')
+            }`}>
+            <FiClock className="text-base" />
+            <span className="font-mono font-black text-base tracking-wider">{formatTime(timeLeft)}</span>
+          </div>
+
+          
         </div>
 
         {/* Right: User + controls */}
@@ -1048,6 +1247,19 @@ export default function MainAssessment() {
               )}
             </div>
 
+            <button
+            onClick={handleResetCode}
+            disabled={resettingCode || !activeQuestion}
+            title="Reset code to default boilerplate"
+            className={`flex items-center -ml-[430px] gap-1.5 px-3 py-2 rounded-xl border text-xs font-black uppercase tracking-wider transition-all duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 active:scale-95 ${t(
+              'bg-black/5 border-black/10 text-[#555555] hover:bg-black/10 hover:text-[#111111]',
+              'bg-white/5 border-white/10 text-white/70 hover:bg-white/10 hover:text-white'
+            )}`}
+          >
+            <FiRotateCcw className={`text-sm ${resettingCode ? 'animate-spin' : ''}`} />
+            <span>Reset</span>
+          </button>
+
             {/* Run / Submit */}
             <div className="flex items-center gap-2">
               <button
@@ -1214,7 +1426,12 @@ export default function MainAssessment() {
                   {/* Submit result Viewer */}
                   {!running && !submitting && submitResult && (
                     <div className="flex-1 overflow-hidden">
-                      <SubmitResultsViewer data={submitResult} isDarkMode={isDarkMode} />
+                      <SubmitResultsViewer
+                        data={submitResult}
+                        activeQuestion={activeQuestion}
+                        isDarkMode={isDarkMode}
+                        topErrorIdx={topErrorMap[activeQuestion?.id] ?? null}
+                      />
                     </div>
                   )}
 

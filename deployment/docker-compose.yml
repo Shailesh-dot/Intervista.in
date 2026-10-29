@@ -1,0 +1,378 @@
+# ══════════════════════════════════════════════════════════════════════════════
+# Intervista Platform — Deployment Docker Compose
+# ══════════════════════════════════════════════════════════════════════════════
+#
+# Usage:
+#   cp .env.example .env        # fill in real values
+#   docker compose build        # build all local images
+#   docker compose up -d        # start the stack
+#
+# Architecture:
+#   Internet → DO Load Balancer → Nginx :80 → Docker network → Services
+#   All backend services communicate via Docker DNS on internal network only.
+#   Only Nginx port 80 is exposed to the host.
+#
+# ══════════════════════════════════════════════════════════════════════════════
+
+services:
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  #  NGINX — Public Entry Point (port 80)
+  #  Serves frontend static files + reverse-proxies all /api/* routes
+  # ═══════════════════════════════════════════════════════════════════════════
+  frontend:
+    image: intervista/frontend:latest
+    build:
+      context: ../Ai-interview-platform
+      dockerfile: ../deployment/dockerfiles/Dockerfile.frontend
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      supabase-user-api:
+        condition: service_started
+      supabase-company-api:
+        condition: service_started
+      supabase-transaction-api:
+        condition: service_started
+      mail-server:
+        condition: service_started
+      data-service:
+        condition: service_started
+      coding-service:
+        condition: service_started
+      interview-service:
+        condition: service_started
+      communication-service:
+        condition: service_started
+      aptitude-service:
+        condition: service_started
+      screening-service:
+        condition: service_started
+      face-proctor-service:
+        condition: service_started
+      live-proctor-service:
+        condition: service_started
+    networks:
+      - platform-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://127.0.0.1:80/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  #  NODE.JS MAIL SERVER — Brevo transactional email + email verification
+  #  Port: 5000 (internal only)
+  # ═══════════════════════════════════════════════════════════════════════════
+  mail-server:
+    image: intervista/mail-server:latest
+    build:
+      context: ../Ai-interview-platform
+      dockerfile: ../deployment/dockerfiles/Dockerfile.mail
+    environment:
+      - NODE_ENV=production
+      - FRONTEND_URL=${FRONTEND_URL}
+      - BREVO_API_KEY=${BREVO_API_KEY}
+      - BREVO_SENDER_EMAIL=${BREVO_SENDER_EMAIL}
+      - BREVO_SENDER_NAME=${BREVO_SENDER_NAME:-Intervista}
+      - BREVO_REPLY_TO=${BREVO_REPLY_TO:-}
+      - EMAIL_USER=${EMAIL_USER:-}
+      - EMAIL_PASS=${EMAIL_PASS:-}
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_SERVICE_ROLE_KEY=${SUPABASE_SERVICE_ROLE_KEY}
+      - EMAIL_TOKEN_BYTES=${EMAIL_TOKEN_BYTES:-32}
+      - EMAIL_VERIFICATION_EXPIRY_HOURS=${EMAIL_VERIFICATION_EXPIRY_HOURS:-24}
+      - PASSWORD_RESET_EXPIRY_MINUTES=${PASSWORD_RESET_EXPIRY_MINUTES:-20}
+      - EMAIL_RESEND_COOLDOWN_SECONDS=${EMAIL_RESEND_COOLDOWN_SECONDS:-60}
+      - CANDIDATE_TABLE=${CANDIDATE_TABLE:-candidates}
+      - CANDIDATE_ID_COLUMN=${CANDIDATE_ID_COLUMN:-id}
+      - CANDIDATE_EMAIL_COLUMN=${CANDIDATE_EMAIL_COLUMN:-email}
+      - CANDIDATE_VERIFIED_COLUMN=${CANDIDATE_VERIFIED_COLUMN:-email_verified}
+      - HR_TABLE=${HR_TABLE:-company_hr}
+      - HR_ID_COLUMN=${HR_ID_COLUMN:-id}
+      - HR_EMAIL_COLUMN=${HR_EMAIL_COLUMN:-email}
+      - HR_VERIFIED_COLUMN=${HR_VERIFIED_COLUMN:-email_verified}
+    networks:
+      - platform-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://127.0.0.1:5000/api/auth/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  #  .NET C# — User API
+  #  Port: 8080 (internal only)
+  # ═══════════════════════════════════════════════════════════════════════════
+  supabase-user-api:
+    image: intervista/user-api:latest
+    build:
+      context: ../Supabase Backend/Ai-interview-platform/Knitnet.Backend
+      dockerfile: Dockerfile
+      args:
+        - API_PROJECT=Knitnet.UserApi
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=${DB_CONNECTION_STRING_DOTNET}
+      - FRONTEND_URL=${FRONTEND_URL}
+      - JwtSettings__SecretKey=${JWT_SECRET_KEY}
+      - JwtSettings__Issuer=${JWT_ISSUER:-KnitnetBackend}
+      - JwtSettings__Audience=${JWT_AUDIENCE:-KnitnetFrontend}
+      - JwtSettings__ExpiryHours=${JWT_EXPIRY_HOURS:-3}
+      - SupabaseSettings__Url=${SUPABASE_URL}
+      - SupabaseSettings__ServiceRoleKey=${SUPABASE_SERVICE_ROLE_KEY}
+      - SupabaseSettings__ProfileImagesBucket=${SUPABASE_PROFILE_IMAGES_BUCKET:-profile-images}
+      - SupabaseSettings__CompanyLogosBucket=${SUPABASE_COMPANY_LOGOS_BUCKET:-company-logos}
+      - SupabaseSettings__VerificationDocsBucket=${SUPABASE_VERIFICATION_DOCS_BUCKET:-verification-docs}
+    networks:
+      - platform-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://127.0.0.1:8080/api/user/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  #  .NET C# — Company API
+  #  Port: 8080 (internal only)
+  # ═══════════════════════════════════════════════════════════════════════════
+  supabase-company-api:
+    image: intervista/company-api:latest
+    build:
+      context: ../Supabase Backend/Ai-interview-platform/Knitnet.Backend
+      dockerfile: Dockerfile
+      args:
+        - API_PROJECT=Knitnet.CompanyApi
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=${DB_CONNECTION_STRING_DOTNET}
+      - FRONTEND_URL=${FRONTEND_URL}
+      - JwtSettings__SecretKey=${JWT_SECRET_KEY}
+      - JwtSettings__Issuer=${JWT_ISSUER:-KnitnetBackend}
+      - JwtSettings__Audience=${JWT_AUDIENCE:-KnitnetFrontend}
+      - JwtSettings__ExpiryHours=${JWT_EXPIRY_HOURS:-3}
+    networks:
+      - platform-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://127.0.0.1:8080/api/company/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  #  .NET C# — Transaction API
+  #  Port: 8080 (internal only)
+  # ═══════════════════════════════════════════════════════════════════════════
+  supabase-transaction-api:
+    image: intervista/transaction-api:latest
+    build:
+      context: ../Supabase Backend/Ai-interview-platform/Knitnet.Backend
+      dockerfile: Dockerfile
+      args:
+        - API_PROJECT=Knitnet.TransactionApi
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=${DB_CONNECTION_STRING_DOTNET}
+      - FRONTEND_URL=${FRONTEND_URL}
+      - JwtSettings__SecretKey=${JWT_SECRET_KEY}
+      - JwtSettings__Issuer=${JWT_ISSUER:-KnitnetBackend}
+      - JwtSettings__Audience=${JWT_AUDIENCE:-KnitnetFrontend}
+      - JwtSettings__ExpiryHours=${JWT_EXPIRY_HOURS:-3}
+      - RazorpaySettings__KeyId=${RAZORPAY_KEY_ID:-}
+      - RazorpaySettings__KeySecret=${RAZORPAY_KEY_SECRET:-}
+      - RazorpaySettings__WebhookSecret=${RAZORPAY_WEBHOOK_SECRET:-}
+    networks:
+      - platform-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://127.0.0.1:8080/api/transaction/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  #  NODE.JS — Data Service
+  #  Port: 5003 (internal only)
+  # ═══════════════════════════════════════════════════════════════════════════
+  data-service:
+    image: intervista/data-service:latest
+    build:
+      context: ../Backend/Data Service
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=${DATABASE_URL}
+      - FRONTEND_URL=${FRONTEND_URL}
+    networks:
+      - platform-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://127.0.0.1:5003/ || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  #  PYTHON — Coding Module (FastAPI + Gunicorn)
+  #  Port: 8000 (internal only)
+  # ═══════════════════════════════════════════════════════════════════════════
+  coding-service:
+    image: intervista/coding-service:latest
+    build:
+      context: ../Backend/Coding Module/Coding-module-backend-intervista-
+      dockerfile: Dockerfile
+    environment:
+      - APP_ENV=production
+      - DATABASE_URL=${CODING_DATABASE_URL}
+      - FRONTEND_URL=${FRONTEND_URL}
+      - JUDGE0_URL=${JUDGE0_URL}
+      - JUDGE0_API_KEY=${JUDGE0_API_KEY:-}
+      - JWT_SECRET=${JWT_SECRET_KEY}
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_SERVICE_KEY=${SUPABASE_SERVICE_ROLE_KEY}
+      - SUPABASE_DB_URL=${CODING_DATABASE_URL}
+      - ADMIN_SECRET_KEY=${ADMIN_SECRET_KEY:-admin123}
+    networks:
+      - platform-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://127.0.0.1:8000/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  #  PYTHON — AI Interview Module (FastAPI + Uvicorn) — STATEFUL
+  #  Port: 8001 (internal only)
+  #  Uses in-memory session state. DO Load Balancer sticky sessions required.
+  # ═══════════════════════════════════════════════════════════════════════════
+  interview-service:
+    image: intervista/interview-service:latest
+    build:
+      context: ../Backend/AI Interview Module/chumma
+      dockerfile: Dockerfile
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - DO_AGENT_API_URL=${DO_AGENT_API_URL}
+      - DO_AGENT_API_KEY=${DO_AGENT_API_KEY}
+      - VERCEL_ORIGIN=${FRONTEND_URL}
+      - DATABASE_URL=${INTERVIEW_DATABASE_URL}
+      - AZURE_SPEECH_KEY=${AZURE_SPEECH_KEY}
+      - AZURE_SPEECH_REGION=${AZURE_SPEECH_REGION:-centralindia}
+    networks:
+      - platform-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://127.0.0.1:8001/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  #  PYTHON — Communication Module (FastAPI + Uvicorn)
+  #  Port: 8002 (internal only)
+  # ═══════════════════════════════════════════════════════════════════════════
+  communication-service:
+    image: intervista/communication-service:latest
+    build:
+      context: ../Backend/Communication Module/communication_module
+      dockerfile: Dockerfile
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - DO_AGENT_API_URL=${DO_AGENT_API_URL}
+      - DO_AGENT_API_KEY=${DO_AGENT_API_KEY}
+      - AZURE_SPEECH_KEY=${AZURE_SPEECH_KEY}
+      - AZURE_SPEECH_REGION=${AZURE_SPEECH_REGION:-centralindia}
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_SERVICE_KEY=${SUPABASE_SERVICE_ROLE_KEY}
+      - DATABASE_URL=${COMMUNICATION_DATABASE_URL}
+    networks:
+      - platform-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://127.0.0.1:8002/ || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  #  PYTHON/FLASK — Aptitude Module
+  #  Port: 5000 (internal only)
+  # ═══════════════════════════════════════════════════════════════════════════
+  aptitude-service:
+    image: intervista/aptitude-service:latest
+    build:
+      context: ../Backend/Aptitude Module/Aptitude session/AptitudeIQ
+      dockerfile: Dockerfile
+    environment:
+      - HOST=0.0.0.0
+      - PORT=5000
+      - FLASK_DEBUG=0
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
+    networks:
+      - platform-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://127.0.0.1:5000/ || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  #  PRE-BUILT IMAGES — No local source available
+  # ═══════════════════════════════════════════════════════════════════════════
+  #  These services use pre-built Docker Hub images from shailesh06/.
+  #  Source directories do not exist in this repository.
+  #  They will be pulled automatically on `docker compose up`.
+
+  # Node.js Screening Service — Port: 5001 (internal only)
+  screening-service:
+    image: shailesh06/screening-service:latest
+    networks:
+      - platform-network
+    restart: unless-stopped
+
+  # Python Face Proctor — Port: 8004 (internal only)
+  face-proctor-service:
+    image: shailesh06/face-proctor-service:latest
+    networks:
+      - platform-network
+    restart: unless-stopped
+
+  # Python Live Proctor (Gaze Tracking) — Port: 8005 (internal only)
+  live-proctor-service:
+    image: shailesh06/live-proctor-service:latest
+    environment:
+      - FACE_STREAM_URL=http://face-proctor-service:8004/video_feed
+    depends_on:
+      - face-proctor-service
+    networks:
+      - platform-network
+    restart: unless-stopped
+
+# ═══════════════════════════════════════════════════════════════════════════
+#  NETWORK
+# ═══════════════════════════════════════════════════════════════════════════
+networks:
+  platform-network:
+    driver: bridge

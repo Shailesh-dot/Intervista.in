@@ -68,6 +68,7 @@ export const APTITUDE_CATEGORIES = [
     description: "Verbal reasoning, reading comprehension & grammar",
     subtopics: [
       { key: "sandy.md", name: "Verbal Reasoning & Comprehension", count: 100 },
+      { key: "Q31_TSP", name: "Java MCQs & TSP", count: 30 },
     ]
   },
   {
@@ -106,6 +107,10 @@ export default function CreateTest({ onCancel }) {
       "04_Permutation_Combination"
     ],
     selectedCodingQuestions: [],
+    codingSelectionMode: "fixed",
+    // New flexible random config: a single pool drawn from selected questions,
+    // a total pick per candidate, and a per-difficulty distribution.
+    codingRandomConfig: { totalPick: 3, distribution: { easy: 1, medium: 1, hard: 1 } },
     interviewQuestionCount: 15
   });
   const [hrList, setHrList] = useState([]);
@@ -363,6 +368,44 @@ export default function CreateTest({ onCancel }) {
     }
   };
 
+  const codingPoolByDifficulty = {
+    easy: codingQuestionsList.filter(q => (q.difficulty || '').toLowerCase() === 'easy' && formData.selectedCodingQuestions?.includes(q.id)),
+    medium: codingQuestionsList.filter(q => (q.difficulty || '').toLowerCase() === 'medium' && formData.selectedCodingQuestions?.includes(q.id)),
+    hard: codingQuestionsList.filter(q => (q.difficulty || '').toLowerCase() === 'hard' && formData.selectedCodingQuestions?.includes(q.id)),
+  };
+
+  const allQuestionsByDifficulty = {
+    easy: codingQuestionsList.filter(q => (q.difficulty || '').toLowerCase() === 'easy'),
+    medium: codingQuestionsList.filter(q => (q.difficulty || '').toLowerCase() === 'medium'),
+    hard: codingQuestionsList.filter(q => (q.difficulty || '').toLowerCase() === 'hard'),
+  };
+
+  // ── Random mode helpers ────────────────────────────────────────────────
+
+  // Update a single difficulty's distribution count, clamped to its pool size.
+  const setDistributionCount = (difficulty, count) => {
+    const poolSize = codingPoolByDifficulty[difficulty]?.length || 0;
+    const maxAllowed = poolSize > 0 ? poolSize : (allQuestionsByDifficulty[difficulty]?.length || 50);
+    const clamped = Math.max(0, Math.min(count, maxAllowed));
+    setFormData(prev => {
+      const prevDist = prev.codingRandomConfig?.distribution || { easy: 0, medium: 0, hard: 0 };
+      const newDist = { ...prevDist, [difficulty]: clamped };
+      const newTotal = newDist.easy + newDist.medium + newDist.hard;
+      return {
+        ...prev,
+        codingRandomConfig: {
+          ...prev.codingRandomConfig,
+          distribution: newDist,
+          totalPick: newTotal,
+        }
+      };
+    });
+  };
+
+  // Derived shorthand for readability in the render.
+  const rDist = formData.codingRandomConfig?.distribution || { easy: 1, medium: 1, hard: 1 };
+  const rTotalPick = formData.codingRandomConfig?.totalPick || (rDist.easy + rDist.medium + rDist.hard);
+
   const handleCreateTest = async () => {
     if (testIdStatus === "taken") {
       setSubmissionStatus({ type: "error", message: "Please enter a unique Test ID" });
@@ -394,6 +437,34 @@ export default function CreateTest({ onCancel }) {
       return;
     }
 
+    if (hasCoding && formData.codingSelectionMode === 'random') {
+      const dist = formData.codingRandomConfig?.distribution || { easy: 0, medium: 0, hard: 0 };
+      const totalPick = (dist.easy || 0) + (dist.medium || 0) + (dist.hard || 0);
+
+      if (totalPick <= 0) {
+        setSubmissionStatus({ type: "error", message: "Please configure at least 1 question to be assigned per candidate in random mode." });
+        return;
+      }
+
+      // Validate that each difficulty's pick count does not exceed its available pool.
+      const poolSizes = {
+        easy:   codingPoolByDifficulty.easy.length   || allQuestionsByDifficulty.easy.length,
+        medium: codingPoolByDifficulty.medium.length || allQuestionsByDifficulty.medium.length,
+        hard:   codingPoolByDifficulty.hard.length   || allQuestionsByDifficulty.hard.length,
+      };
+
+      for (const diff of ['easy', 'medium', 'hard']) {
+        const pickN = dist[diff] || 0;
+        if (pickN > 0 && poolSizes[diff] < pickN) {
+          setSubmissionStatus({
+            type: "error",
+            message: `Cannot assign ${pickN} ${diff.charAt(0).toUpperCase() + diff.slice(1)} questions — only ${poolSizes[diff]} available in the pool.`
+          });
+          return;
+        }
+      }
+    }
+
     setIsSubmitting(true);
     setSubmissionStatus({ type: "", message: "" });
 
@@ -413,7 +484,29 @@ export default function CreateTest({ onCancel }) {
       ...moduleFlags,
       aptitudeTopic: JSON.stringify(formData.aptitudeSubtopics),
       aptitudeTopics: formData.aptitudeSubtopics,
-      codingProblemCodes: hasCoding ? (formData.selectedCodingQuestions || []) : [],
+      // The flat pool always contains the full admin selection (used by fixed mode AND as the
+      // backing store for random mode — unchanged from the existing contract).
+      codingProblemCodes: hasCoding ? (
+        formData.codingSelectionMode === "random" && (!formData.selectedCodingQuestions || formData.selectedCodingQuestions.length === 0)
+          ? codingQuestionsList.map(q => q.id)
+          : (formData.selectedCodingQuestions || [])
+      ) : [],
+      codingSelectionMode: hasCoding ? formData.codingSelectionMode : "fixed",
+      // New flexible random config schema:
+      //   pool        — flat array of all selected question IDs (same as codingProblemCodes)
+      //   totalPick   — total questions every candidate receives
+      //   distribution — { easy, medium, hard } — how many to pick per difficulty from the pool
+      codingRandomConfig: (hasCoding && formData.codingSelectionMode === "random") ? {
+        pool: (!formData.selectedCodingQuestions || formData.selectedCodingQuestions.length === 0)
+          ? codingQuestionsList.map(q => q.id)
+          : (formData.selectedCodingQuestions || []),
+        totalPick:   (rDist.easy + rDist.medium + rDist.hard),
+        distribution: {
+          easy:   rDist.easy   || 0,
+          medium: rDist.medium || 0,
+          hard:   rDist.hard   || 0,
+        }
+      } : null,
       interviewQuestionCount: parseInt(formData.interviewQuestionCount) || 15,
       startDate: new Date(formData.startDate).toISOString(),
       endDate: new Date(formData.endDate).toISOString(),
@@ -777,15 +870,139 @@ export default function CreateTest({ onCancel }) {
                     </div>
                     <div>
                       <h3 className="text-sm font-black text-gray-900">Coding Question Selection</h3>
-                      <p className="text-xs text-gray-500">Pick specific problems to assign, or leave unselected to provide all questions</p>
+                      <p className="text-xs text-gray-500">
+                        {formData.codingSelectionMode === "random"
+                          ? "Build a question pool from any difficulty, then set the distribution each candidate receives"
+                          : "Pick specific problems to assign, or leave unselected to provide all questions"}
+                      </p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="px-3 py-1 bg-[#fdf0d9]/60 border border-[#fdf0d9] text-[#db830f] text-xs font-black rounded-full shadow-sm">
-                      {formData.selectedCodingQuestions?.length || 0} questions chosen
+                      {formData.codingSelectionMode === "random"
+                        ? `Pool: ${formData.selectedCodingQuestions?.length || 0} questions · ${rTotalPick} per candidate`
+                        : `${formData.selectedCodingQuestions?.length || 0} questions chosen`}
                     </span>
                   </div>
                 </div>
+
+                {/* Assignment Mode Toggle */}
+                <div className="mb-4 p-1.5 bg-gray-100 rounded-xl flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() => setFormData(prev => ({ ...prev, codingSelectionMode: "fixed" }))}
+                    className={`flex-1 py-2 px-3 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-2 ${
+                      formData.codingSelectionMode !== "random"
+                        ? "bg-white text-gray-900 shadow-sm font-black"
+                        : "text-gray-500 hover:text-gray-700"
+                    }`}
+                  >
+                    <span>📋 Same questions for everyone</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setFormData(prev => ({ ...prev, codingSelectionMode: "random" }))}
+                    className={`flex-1 py-2 px-3 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-2 ${
+                      formData.codingSelectionMode === "random"
+                        ? "bg-[#db830f] text-white shadow-sm font-black"
+                        : "text-gray-500 hover:text-gray-700"
+                    }`}
+                  >
+                    <span>🎲 Randomize per candidate</span>
+                  </button>
+                </div>
+
+                {/* ── Random Mode: Flexible Distribution Panel ──────────────────── */}
+                {formData.codingSelectionMode === "random" && (
+                  <div className="mb-5 p-4 bg-[#fffbf5] border border-[#f5ddb3] rounded-2xl space-y-3">
+
+                    {/* Header row */}
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2.5 border-b border-[#f5ddb3]">
+                      <div>
+                        <h4 className="text-xs font-black text-gray-900 uppercase tracking-wider flex items-center gap-1.5">
+                          <span>🎯 Difficulty Distribution Per Candidate</span>
+                        </h4>
+                        <p className="text-[11px] text-gray-500 mt-0.5">
+                          Select questions from the bank below to form the pool, then set how many of each difficulty level every candidate receives.
+                        </p>
+                      </div>
+                      <div className="px-3 py-1 bg-[#db830f] text-white rounded-full text-xs font-black self-start sm:self-auto shadow-xs whitespace-nowrap">
+                        {rTotalPick} per candidate
+                      </div>
+                    </div>
+
+                    {/* Pool summary row */}
+                    <div className="grid grid-cols-3 gap-2 text-center">
+                      {[
+                        { label: 'Easy',   key: 'easy',   color: 'emerald', poolCount: codingPoolByDifficulty.easy.length,   bankCount: allQuestionsByDifficulty.easy.length },
+                        { label: 'Medium', key: 'medium', color: 'amber',   poolCount: codingPoolByDifficulty.medium.length, bankCount: allQuestionsByDifficulty.medium.length },
+                        { label: 'Hard',   key: 'hard',   color: 'red',     poolCount: codingPoolByDifficulty.hard.length,   bankCount: allQuestionsByDifficulty.hard.length },
+                      ].map(({ label, key, color, poolCount, bankCount }) => {
+                        const pickN = rDist[key] || 0;
+                        const effectivePool = poolCount > 0 ? poolCount : bankCount;
+                        const overLimit = pickN > effectivePool;
+                        return (
+                          <div key={key}
+                            className={`p-3 bg-white rounded-xl border shadow-xs ${
+                              overLimit ? 'border-red-400' :
+                              color === 'emerald' ? 'border-emerald-200/80' :
+                              color === 'amber'   ? 'border-amber-200/80'   : 'border-red-200/80'
+                            }`}
+                          >
+                            {/* Difficulty badge + pool info */}
+                            <div className="flex items-center justify-between mb-2">
+                              <span className={`text-[10px] font-black uppercase px-1.5 py-0.5 rounded border ${
+                                color === 'emerald' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' :
+                                color === 'amber'   ? 'bg-amber-50 text-amber-700 border-amber-200'       :
+                                                     'bg-red-50 text-red-700 border-red-200'
+                              }`}>{label}</span>
+                              <span className="text-[10px] text-gray-400 font-medium">
+                                {poolCount > 0 ? `${poolCount} in pool` : `${bankCount} in bank`}
+                              </span>
+                            </div>
+
+                            {/* Assign stepper */}
+                            <div className="flex items-center justify-between pt-2 border-t border-gray-100">
+                              <span className="text-xs font-bold text-gray-600">Assign:</span>
+                              <div className="flex items-center gap-1.5">
+                                <button
+                                  type="button"
+                                  onClick={() => setDistributionCount(key, pickN - 1)}
+                                  className="w-6 h-6 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 font-black text-xs flex items-center justify-center cursor-pointer transition-colors"
+                                >-</button>
+                                <span className={`text-sm font-black w-4 text-center ${
+                                  overLimit ? 'text-red-600' :
+                                  color === 'emerald' ? 'text-emerald-700' :
+                                  color === 'amber'   ? 'text-amber-700'   : 'text-red-700'
+                                }`}>{pickN}</span>
+                                <button
+                                  type="button"
+                                  onClick={() => setDistributionCount(key, pickN + 1)}
+                                  className="w-6 h-6 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 font-black text-xs flex items-center justify-center cursor-pointer transition-colors"
+                                >+</button>
+                              </div>
+                            </div>
+
+                            {/* Warning if pick > pool */}
+                            {overLimit && (
+                              <p className="text-[10px] text-red-500 font-bold mt-1.5 text-center">
+                                ⚠ exceeds pool ({effectivePool})
+                              </p>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    {/* Summary line */}
+                    <div className="text-[11px] text-gray-600 font-medium bg-white/70 p-2.5 rounded-xl border border-[#f5ddb3]/60 flex items-center gap-2">
+                      <span>💡</span>
+                      <span>
+                        Each candidate receives <strong>{rTotalPick} randomized questions</strong> — {rDist.easy} Easy · {rDist.medium} Medium · {rDist.hard} Hard — drawn at random from your selected pool of <strong>{formData.selectedCodingQuestions?.length || 0} questions</strong>.
+                      </span>
+                    </div>
+                  </div>
+                )}
 
                 {/* Difficulty filter tabs & Quick actions */}
                 <div className="mb-4">
@@ -936,7 +1153,9 @@ export default function CreateTest({ onCancel }) {
                 {/* Helpful note at bottom */}
                 <div className="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between text-[11px] text-gray-500">
                   <span>
-                    💡 <strong>Tip:</strong> If you leave questions unselected (0 chosen), all available coding challenges will be accessible to candidates.
+                    💡 <strong>Tip:</strong> {formData.codingSelectionMode === "random"
+                      ? "Select questions below to define the pool, then use the distribution panel above to control how many of each difficulty each candidate receives."
+                      : "If you leave questions unselected (0 chosen), all available coding challenges will be accessible to candidates."}
                   </span>
                   {formData.selectedCodingQuestions?.length > 0 && (
                     <button

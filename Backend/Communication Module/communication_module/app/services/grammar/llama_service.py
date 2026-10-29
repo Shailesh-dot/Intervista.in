@@ -247,17 +247,17 @@ def evaluate_speaking_session(
     for attempt in range(max_retries + 1):
         try:
             response = client.chat.completions.create(
-                model="llama-3.3-70b-versatile",
+                model=os.getenv("GROQ_MODEL", "openai/gpt-oss-120b"),
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.1,
-                max_tokens=800,
+                max_tokens=1500,
             )
             raw_text = response.choices[0].message.content
             data     = _extract_json(raw_text)
 
             results_raw = data.get("results", [])
             if not results_raw:
-                print(f"[SPEAKING_LLM] Empty results on attempt {attempt + 1}, retrying…")
+                print(f"[SPEAKING_LLM] Empty results on attempt {attempt + 1}, retrying...")
                 continue
 
             # Parse each result
@@ -284,7 +284,7 @@ def evaluate_speaking_session(
                 for j, m in enumerate(g["mistakes"], 1):
                     print(
                         f"  [{j}] {m.get('category','?')} | "
-                        f"❌ \"{m.get('original')}\" → ✅ \"{m.get('corrected')}\""
+                        f"WRONG: \"{m.get('original')}\" -> CORRECT: \"{m.get('corrected')}\""
                     )
 
             return output

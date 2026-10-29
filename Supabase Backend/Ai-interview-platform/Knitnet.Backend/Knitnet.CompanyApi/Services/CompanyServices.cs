@@ -259,10 +259,27 @@ public class TestService : ITestService
         if (dto.CodingModule)
         {
             var problemCodes = dto.CodingProblemCodes ?? new List<string>();
+            var selectionMode = (dto.CodingSelectionMode ?? "fixed").ToLower();
+            string? randomConfigJson = null;
+
+            if (selectionMode == "random" && dto.CodingRandomConfig != null)
+            {
+                var jsonOptions = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
+                randomConfigJson = JsonSerializer.Serialize(dto.CodingRandomConfig, jsonOptions);
+
+                // The pool is now a flat list of all admin-selected IDs.
+                if (dto.CodingRandomConfig.Pool?.Count > 0)
+                {
+                    problemCodes = dto.CodingRandomConfig.Pool.Distinct().ToList();
+                }
+            }
+
             _db.CodingMappings.Add(new CodingMapping
             {
                 TestMappingId = mapping.Id,
-                ProblemCodes = JsonSerializer.Serialize(problemCodes)
+                ProblemCodes = JsonSerializer.Serialize(problemCodes),
+                SelectionMode = selectionMode,
+                RandomConfig = randomConfigJson
             });
             await _db.SaveChangesAsync();
         }

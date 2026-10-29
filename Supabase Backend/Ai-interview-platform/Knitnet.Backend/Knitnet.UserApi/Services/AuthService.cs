@@ -234,7 +234,7 @@ public class AuthService : IAuthService
         {
             UserId = user.Id,
             TokenHash = tokenHash,
-            ExpiresAtUtc = DateTime.UtcNow.AddMinutes(20),
+            ExpiresAtUtc = DateTime.UtcNow.AddMinutes(60),
         });
         
         var dbSaveSw = Stopwatch.StartNew();

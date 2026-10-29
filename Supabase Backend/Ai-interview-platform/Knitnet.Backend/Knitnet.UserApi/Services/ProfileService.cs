@@ -29,6 +29,7 @@ public class ProfileService : IProfileService
             profile.Dob = dto.Dob;
             profile.Age = dto.Age;
             profile.College = dto.College;
+            profile.RollNumber = dto.RollNumber ?? string.Empty;
             profile.Address = dto.Address;
             profile.Phone = dto.Phone;
             profile.Gender = dto.Gender;
@@ -40,6 +41,7 @@ public class ProfileService : IProfileService
             {
                 UserId = userId, FullName = dto.FullName, Email = user.Email,
                 Dob = dto.Dob, Age = dto.Age, College = dto.College,
+                RollNumber = dto.RollNumber ?? string.Empty,
                 Address = dto.Address, Phone = dto.Phone,
                 PhotoUrl = dto.PhotoUrl ?? string.Empty, Gender = dto.Gender
             };
@@ -59,6 +61,7 @@ public class ProfileService : IProfileService
     {
         UserId = p.UserId, FullName = p.FullName, Email = p.Email,
         Dob = p.Dob, Age = p.Age, College = p.College,
+        RollNumber = p.RollNumber ?? string.Empty,
         Address = p.Address, Phone = p.Phone, PhotoUrl = p.PhotoUrl, Gender = p.Gender
     };
 }

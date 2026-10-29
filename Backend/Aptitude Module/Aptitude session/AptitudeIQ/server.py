@@ -107,7 +107,10 @@ CATEGORY_TOPICS = {
     ],
     "Verbal Ability": [
         "sandy.md",
-        "14.md"
+        "14.md",
+        "Q31_TSP",
+        "Java_MCQs",
+        "TSP - IV"
     ]
 }
 
@@ -159,6 +162,7 @@ APTITUDE_HIERARCHY = {
         "description": "Grammar, sentence completion, and verbal comprehension",
         "subtopics": [
             {"key": "sandy.md", "name": "Verbal Reasoning & Comprehension", "count": 100},
+            {"key": "Q31_TSP", "name": "Java MCQs & TSP", "count": 30},
         ]
     }
 }
@@ -268,10 +272,40 @@ def get_questions_by_topics():
             else:
                 all_questions = list(LOCAL_QUESTIONS_BANK)
         else:
-            # Topic-specific: ALWAYS use local bank with strict source/category filtering
-            # (Supabase topic tables are unreliable — they contain mixed categories)
-            all_questions = _filter_local_questions(expanded_subtopics)
-            print(f"[TOPIC FILTER] Requested topics: {selected_topics} -> expanded to {len(expanded_subtopics)} subtopics -> {len(all_questions)} matching questions", flush=True)
+            # Topic-specific: merge local JSON + Supabase topic tables
+            # 1. Fetch from local JSON bank
+            local_qs = _filter_local_questions(expanded_subtopics)
+            all_questions.extend(local_qs)
+
+            # 2. Also fetch from Supabase topic tables for topics that have a mapping
+            seen_questions = set(q.get("question", "").strip().lower() for q in all_questions)
+            for topic_key in expanded_subtopics:
+                table_name = TOPIC_MAP.get(topic_key)
+                if not table_name:
+                    # Try fuzzy match in TOPIC_MAP
+                    for k, v in TOPIC_MAP.items():
+                        if topic_key.lower() in k.lower() or k.lower() in topic_key.lower():
+                            table_name = v
+                            break
+                if table_name:
+                    try:
+                        supabase_qs = supabase_request(
+                            "GET", table_name,
+                            params={"select": "id,question,options,correct_answer,explanation,category,source", "limit": "200"}
+                        )
+                        if supabase_qs:
+                            for sq in supabase_qs:
+                                q_text = (sq.get("question") or "").strip().lower()
+                                if q_text and q_text not in seen_questions:
+                                    # Normalize field names (correct_answer -> answer)
+                                    sq["answer"] = sq.get("correct_answer") or sq.get("answer")
+                                    all_questions.append(sq)
+                                    seen_questions.add(q_text)
+                            print(f"  [SUPABASE] Fetched {len(supabase_qs)} from '{table_name}'", flush=True)
+                    except Exception as se:
+                        print(f"  [WARN] Supabase fetch for '{table_name}' failed: {se}", flush=True)
+
+            print(f"[TOPIC FILTER] Requested topics: {selected_topics} -> expanded to {len(expanded_subtopics)} subtopics -> {len(all_questions)} total questions", flush=True)
 
         if len(all_questions) > num_questions:
             all_questions = random.sample(all_questions, num_questions)
@@ -301,6 +335,7 @@ def get_questions_by_topics():
             "options": opts,
             "category": r.get("category") or "General",
             "source": r.get("source") or "",
+            "correct_answer": r.get("correct_answer") or r.get("answer") or "",
         })
     return jsonify(out)
 
@@ -484,8 +519,9 @@ def serve_react(path):
     return send_from_directory(str(STATIC_DIR), "index.html")
 
 if __name__ == "__main__":
-    print("\n[START] AptitudeIQ (Supabase Cloud Only) -> http://localhost:5002\n")
-    # load_json_to_db(reset=False)
     is_debug = os.getenv("FLASK_DEBUG", "False").lower() in ("true", "1")
-    host_addr = os.getenv("HOST", "127.0.0.1")
-    app.run(debug=is_debug, use_reloader=False, host=host_addr, port=5002)
+    host_addr = os.getenv("HOST", "0.0.0.0")
+    port_num = int(os.getenv("PORT", 5000))
+    print(f"\n[START] AptitudeIQ -> http://{host_addr}:{port_num}\n")
+    app.run(debug=is_debug, use_reloader=False, host=host_addr, port=port_num)
+    

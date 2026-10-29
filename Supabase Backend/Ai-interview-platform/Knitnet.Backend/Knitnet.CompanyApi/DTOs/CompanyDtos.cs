@@ -81,12 +81,31 @@ public class CreateTestDto
     public string? AptitudeTopic { get; set; }
     public List<string>? AptitudeTopics { get; set; }
     public List<string>? CodingProblemCodes { get; set; }
+    public string? CodingSelectionMode { get; set; } = "fixed";
+    public CodingRandomConfigDto? CodingRandomConfig { get; set; }
     public int InterviewQuestionCount { get; set; } = 15;
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
     public TimeSpan StartTime { get; set; }
     public TimeSpan EndTime { get; set; }
     public int ApproxStudentCount { get; set; }
+}
+
+public class CodingDistributionDto
+{
+    public int Easy   { get; set; }
+    public int Medium { get; set; }
+    public int Hard   { get; set; }
+}
+
+public class CodingRandomConfigDto
+{
+    /// <summary>Flat list of all admin-selected question IDs forming the pool.</summary>
+    public List<string> Pool { get; set; } = new();
+    /// <summary>Total questions every candidate receives.</summary>
+    public int TotalPick { get; set; }
+    /// <summary>How many to pick per difficulty level from the pool.</summary>
+    public CodingDistributionDto Distribution { get; set; } = new();
 }
 
 public class CreateMappingDto

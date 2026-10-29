@@ -121,10 +121,10 @@ def evaluate_comprehension(question: str, answer: str, max_retries: int = 2) -> 
     for attempt in range(max_retries + 1):
         try:
             response = client.chat.completions.create(
-                model="llama-3.3-70b-versatile",
+                model=os.getenv("GROQ_MODEL", "openai/gpt-oss-120b"),
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.1,
-                max_tokens=200,
+                max_tokens=600,
             )
             raw = response.choices[0].message.content
            

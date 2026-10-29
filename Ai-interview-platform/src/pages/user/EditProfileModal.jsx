@@ -25,6 +25,7 @@ const EditProfileModal = ({ isOpen, onClose, userData, onSave }) => {
     dob: userData.dob || "",
     age: userData.age || "",
     college: userData.college || "",
+    rollNumber: userData.rollNumber || "",
     address: userData.address || "",
     phone: userData.phone || "",
     gender: userData.gender || "",
@@ -47,6 +48,7 @@ const EditProfileModal = ({ isOpen, onClose, userData, onSave }) => {
         dob: userData.dob || "",
         age: userData.age || "",
         college: userData.college || "",
+        rollNumber: userData.rollNumber || "",
         address: userData.address || "",
         phone: userData.phone || "",
         gender: userData.gender || "",
@@ -105,6 +107,7 @@ const EditProfileModal = ({ isOpen, onClose, userData, onSave }) => {
       submissionData.append("Dob", formData.dob);
       submissionData.append("Age", formData.age);
       submissionData.append("College", formData.college);
+      submissionData.append("RollNumber", formData.rollNumber);
       submissionData.append("Address", formData.address);
       submissionData.append("Phone", formData.phone);
       submissionData.append("Gender", formData.gender);
@@ -290,7 +293,7 @@ const EditProfileModal = ({ isOpen, onClose, userData, onSave }) => {
                 </div>
 
                 {/* College */}
-                <div className="md:col-span-2 space-y-2">
+                <div className="space-y-2">
                   <label className="block text-sm font-bold text-[#144542] ml-1">
                     College / Institution
                   </label>
@@ -301,6 +304,21 @@ const EditProfileModal = ({ isOpen, onClose, userData, onSave }) => {
                     onChange={handleChange}
                     className="w-full px-5 py-3.5 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:ring-4 focus:ring-[#144542]/5 focus:border-[#144542] transition-all text-sm font-medium"
                     placeholder="Engineering College Name"
+                  />
+                </div>
+
+                {/* Roll Number */}
+                <div className="space-y-2">
+                  <label className="block text-sm font-bold text-[#144542] ml-1">
+                    Roll Number
+                  </label>
+                  <input
+                    type="text"
+                    name="rollNumber"
+                    value={formData.rollNumber}
+                    onChange={handleChange}
+                    className="w-full px-5 py-3.5 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:ring-4 focus:ring-[#144542]/5 focus:border-[#144542] transition-all text-sm font-medium"
+                    placeholder="e.g. 2024PECAIXXX"
                   />
                 </div>
 

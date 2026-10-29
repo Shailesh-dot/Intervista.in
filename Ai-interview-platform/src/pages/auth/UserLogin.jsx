@@ -13,6 +13,7 @@ gsap.registerPlugin(useGSAP);
 export default function UserLogin() {
   const [view, setView] = useState("login"); // login, forgot, verify, reset
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -76,6 +77,16 @@ export default function UserLogin() {
       setMessage({ text: "", type: "" });
     };
   }, []);
+
+  // Password requirements
+  const passwordRules = [
+    { id: "length",    label: "6 to 9 characters",                    test: (p) => p.length >= 6 && p.length <= 9 },
+    { id: "number",    label: "At least 1 number",                     test: (p) => /[0-9]/.test(p) },
+    { id: "symbol",    label: "At least 1 symbol (@, #, $, etc.)",     test: (p) => /[!@#$%^&*()_+\-=\[\]{};':\"\\|,.<>\/?]/.test(p) },
+    { id: "case",      label: "At least 1 uppercase & 1 lowercase",    test: (p) => /[A-Z]/.test(p) && /[a-z]/.test(p) },
+  ];
+
+  const isPasswordValid = (p) => passwordRules.every((r) => r.test(p));
 
 
 
@@ -198,6 +209,18 @@ export default function UserLogin() {
   const handleReset = async (e) => {
     e.preventDefault();
     setMessage({ text: "", type: "" });
+
+    if (!password || !confirmPassword) {
+      showMessage("Please fill in all fields", "error");
+      shakeForm();
+      return;
+    }
+
+    if (!isPasswordValid(password)) {
+      showMessage("Password does not meet all requirements.", "error");
+      shakeForm();
+      return;
+    }
 
     if (password !== confirmPassword) {
       showMessage("Passwords do not match", "error");
@@ -483,10 +506,51 @@ export default function UserLogin() {
                     type={showPassword ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder="••••••••••••"
-                    className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-dark/5 focus:border-brand-dark transition-all text-sm"
+                    placeholder="Enter new password"
+                    className={`w-full px-5 pr-12 py-4 bg-gray-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-dark/5 transition-all text-sm ${
+                      message.type === "error" && (!password || !isPasswordValid(password))
+                        ? "border-red-300 focus:border-red-500"
+                        : "border-gray-200 focus:border-brand-dark"
+                    }`}
                   />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-brand-dark transition-colors"
+                  >
+                    {showPassword ? <FaEye /> : <FaEyeSlash />}
+                  </button>
                 </div>
+
+                {/* Live Password Requirements Checklist */}
+                {password.length > 0 && (
+                  <div className="mt-3 p-3.5 bg-gray-50 border border-gray-100 rounded-xl space-y-2">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2">Password Requirements</p>
+                    {passwordRules.map((rule) => {
+                      const passed = rule.test(password);
+                      return (
+                        <div key={rule.id} className="flex items-center gap-2.5">
+                          <div className={`w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
+                            passed ? "bg-green-500" : "bg-gray-200"
+                          }`}>
+                            {passed ? (
+                              <svg className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                              </svg>
+                            ) : (
+                              <div className="w-1.5 h-1.5 rounded-full bg-gray-400"></div>
+                            )}
+                          </div>
+                          <span className={`text-xs font-semibold transition-colors duration-300 ${
+                            passed ? "text-green-600" : "text-gray-400"
+                          }`}>
+                            {rule.label}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
 
               <div className="gsap-fade-in">
@@ -495,13 +559,29 @@ export default function UserLogin() {
                 </label>
                 <div className="relative">
                   <input
-                    type={showPassword ? "text" : "password"}
+                    type={showConfirmPassword ? "text" : "password"}
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    placeholder="••••••••••••"
-                    className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-dark/5 focus:border-brand-dark transition-all text-sm"
+                    placeholder="Enter confirm password"
+                    className={`w-full px-5 pr-12 py-4 bg-gray-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-dark/5 transition-all text-sm ${
+                      message.type === "error" && password !== confirmPassword
+                        ? "border-red-300 focus:border-red-500"
+                        : "border-gray-200 focus:border-brand-dark"
+                    }`}
                   />
+                  <button
+                    type="button"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-brand-dark transition-colors"
+                  >
+                    {showConfirmPassword ? <FaEye /> : <FaEyeSlash />}
+                  </button>
                 </div>
+                {confirmPassword.length > 0 && password !== confirmPassword && (
+                  <p className="text-xs text-red-500 font-semibold mt-1.5 pl-3">
+                    Passwords do not match
+                  </p>
+                )}
               </div>
 
               <button

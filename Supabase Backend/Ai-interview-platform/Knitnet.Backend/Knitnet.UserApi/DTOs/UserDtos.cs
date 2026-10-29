@@ -48,6 +48,7 @@ public class ProfileCreateDto
     public DateOnly Dob { get; set; }
     public int Age { get; set; }
     public string College { get; set; } = string.Empty;
+    public string RollNumber { get; set; } = string.Empty;
     public string Address { get; set; } = string.Empty;
     public string Phone { get; set; } = string.Empty;
     public string? PhotoUrl { get; set; }
@@ -62,6 +63,7 @@ public class ProfileResponseDto
     public DateOnly Dob { get; set; }
     public int Age { get; set; }
     public string College { get; set; } = string.Empty;
+    public string RollNumber { get; set; } = string.Empty;
     public string Address { get; set; } = string.Empty;
     public string Phone { get; set; } = string.Empty;
     public string PhotoUrl { get; set; } = string.Empty;

@@ -43,7 +43,7 @@ export default function AptitudeTest() {
           selectedTopics = [selectedTopics];
         }
 
-        const data = await fetchQuestions(selectedTopics, 15);
+        const data = await fetchQuestions(selectedTopics, 10);
         setQuestions(data);
       } catch (err) {
         console.error('Failed to load questions:', err);
@@ -73,32 +73,37 @@ export default function AptitudeTest() {
 
       const userEmail = localStorage.getItem('userEmail') || localStorage.getItem('email');
 
-      const result = await submitAnswers(answersPayload, userEmail);
-
-      // Fetch actual scores evaluated by backend using the result_id
       let score = 0;
       let correct = 0;
       let incorrect = 0;
       let correctAnswersList = [];
-      if (result?.result_id) {
-        try {
-          const resultsList = await fetchResults();
-          const matchingResult = resultsList.find(r => r.id === result.result_id);
-          if (matchingResult) {
-            score = matchingResult.score ?? matchingResult.correct ?? 0;
-            correct = matchingResult.correct ?? 0;
-            incorrect = matchingResult.wrong ?? 0;
-          }
 
-          // Fetch correct solutions details to store them in consolidated database
-          const answersDetails = await fetchResultAnswers(result.result_id);
-          correctAnswersList = questions.map((q) => {
-            const detail = answersDetails.find(a => a.question_id === q.id);
-            return detail ? detail.correct_answer : '';
-          });
-        } catch (fetchErr) {
-          console.error('[Aptitude] Failed to fetch verified score or solutions:', fetchErr);
+      try {
+        const result = await submitAnswers(answersPayload, userEmail);
+
+        // Fetch actual scores evaluated by backend using the result_id
+        if (result?.result_id) {
+          try {
+            const resultsList = await fetchResults();
+            const matchingResult = resultsList.find(r => r.id === result.result_id);
+            if (matchingResult) {
+              score = matchingResult.score ?? matchingResult.correct ?? 0;
+              correct = matchingResult.correct ?? 0;
+              incorrect = matchingResult.wrong ?? 0;
+            }
+
+            // Fetch correct solutions details to store them in consolidated database
+            const answersDetails = await fetchResultAnswers(result.result_id);
+            correctAnswersList = questions.map((q) => {
+              const detail = answersDetails.find(a => a.question_id === q.id);
+              return detail ? detail.correct_answer : '';
+            });
+          } catch (fetchErr) {
+            console.error('[Aptitude] Failed to fetch verified score or solutions:', fetchErr);
+          }
         }
+      } catch (submitErr) {
+        console.error('[Aptitude] /api/save failed or timed out:', submitErr);
       }
 
       // ── Save aptitude result to consolidated DB ──

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { FiUser, FiMail, FiCalendar, FiMapPin, FiPhone, FiBookOpen, FiArrowRight, FiCheckCircle, FiCamera } from "react-icons/fi";
+import { FiUser, FiMail, FiCalendar, FiMapPin, FiPhone, FiBookOpen, FiArrowRight, FiCheckCircle, FiCamera, FiHash } from "react-icons/fi";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -19,6 +19,7 @@ const SubmitProfile = () => {
     dob: "",
     age: "",
     college: "",
+    rollNumber: "",
     address: "",
     phone: "",
     gender: "",
@@ -96,6 +97,7 @@ const SubmitProfile = () => {
       submissionData.append("Dob", formData.dob);
       submissionData.append("Age", formData.age);
       submissionData.append("College", formData.college);
+      submissionData.append("RollNumber", formData.rollNumber);
       submissionData.append("Address", formData.address);
       submissionData.append("Phone", formData.phone);
       submissionData.append("Gender", formData.gender);
@@ -317,7 +319,7 @@ const SubmitProfile = () => {
               </div>
 
               {/* College */}
-              <div className="md:col-span-2 space-y-2">
+              <div className="space-y-2">
                 <label className="text-sm font-bold text-gray-700 ml-1">College/Institution</label>
                 <div className="relative group">
                   <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-[#144542] transition-colors">
@@ -330,6 +332,25 @@ const SubmitProfile = () => {
                     onChange={handleChange}
                     className="w-full pl-11 pr-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#144542]/5 focus:border-[#144542] transition-all text-sm font-medium"
                     placeholder="Enter college name"
+                    required
+                  />
+                </div>
+              </div>
+
+              {/* Roll Number */}
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-gray-700 ml-1">Roll Number</label>
+                <div className="relative group">
+                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-[#144542] transition-colors">
+                    <FiHash />
+                  </div>
+                  <input
+                    type="text"
+                    name="rollNumber"
+                    value={formData.rollNumber}
+                    onChange={handleChange}
+                    className="w-full pl-11 pr-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#144542]/5 focus:border-[#144542] transition-all text-sm font-medium"
+                    placeholder="Enter roll number"
                     required
                   />
                 </div>

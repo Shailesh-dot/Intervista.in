@@ -3,10 +3,10 @@ import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  FiSearch, FiAward, FiCode, FiClock, FiActivity, 
-  FiCheckCircle, FiVolume2, FiAlertCircle, FiX, 
-  FiUser, FiMail, FiCalendar, FiChevronRight, FiGrid, FiChevronDown, FiChevronUp, FiDownload
+import {
+  FiSearch, FiAward, FiCode, FiClock, FiActivity,
+  FiCheckCircle, FiVolume2, FiAlertCircle, FiX,
+  FiUser, FiMail, FiCalendar, FiChevronRight, FiGrid, FiChevronDown, FiChevronUp, FiDownload, FiTrash2
 } from "react-icons/fi";
 
 const CircularProgress = ({ score, size = 130, strokeWidth = 10 }) => {
@@ -54,7 +54,7 @@ const CircularProgress = ({ score, size = 130, strokeWidth = 10 }) => {
 const parseAiFeedback = (fbVal) => {
   let score = null;
   let feedback = "No feedback available.";
-  
+
   if (fbVal) {
     if (typeof fbVal === 'object') {
       score = fbVal.score !== undefined ? fbVal.score : null;
@@ -92,6 +92,56 @@ export default function TestDashboard({ test }) {
   // Leaderboard state
   const [leaderboardModule, setLeaderboardModule] = useState(null); // null | 'aptitude' | 'coding' | 'aiInterview' | 'verbal'
   const [showLeaderboardDropdown, setShowLeaderboardDropdown] = useState(false);
+  const [candidateToDelete, setCandidateToDelete] = useState(null);
+  const [isDeletingRecord, setIsDeletingRecord] = useState(false);
+  const [toastMessage, setToastMessage] = useState(null);
+
+  useEffect(() => {
+    if (toastMessage) {
+      const timer = setTimeout(() => setToastMessage(null), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [toastMessage]);
+
+  const handleDeleteRecord = async () => {
+    if (!candidateToDelete || !test?.testId) return;
+    setIsDeletingRecord(true);
+    try {
+      const response = await fetch(
+        `/api/verification/verification/test-results/${test.testId}/candidate/${candidateToDelete.studentId}`,
+        {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' }
+        }
+      );
+
+      if (response.ok) {
+        setResults(prev => prev.filter(r => r.studentId !== candidateToDelete.studentId && r.resultBaseId !== candidateToDelete.resultBaseId));
+        if (selectedCandidate?.studentId === candidateToDelete.studentId) {
+          setSelectedCandidate(null);
+        }
+        setToastMessage({
+          type: 'success',
+          text: `Test record for ${candidateToDelete.studentName || 'candidate'} deleted. Student can now re-attend.`
+        });
+        setCandidateToDelete(null);
+      } else {
+        const errData = await response.json().catch(() => ({}));
+        setToastMessage({
+          type: 'error',
+          text: errData.error || errData.detail || 'Failed to delete candidate record.'
+        });
+      }
+    } catch (err) {
+      console.error('Error deleting candidate record:', err);
+      setToastMessage({
+        type: 'error',
+        text: 'Network error deleting candidate record.'
+      });
+    } finally {
+      setIsDeletingRecord(false);
+    }
+  };
 
   // Fetch candidate photo when selectedCandidate changes
   useEffect(() => {
@@ -159,6 +209,7 @@ export default function TestDashboard({ test }) {
     rows.push(["CANDIDATE SCORECARD REPORT"]);
     rows.push(["Candidate Name", selectedCandidate.studentName]);
     rows.push(["Candidate Email", selectedCandidate.studentEmail]);
+    if (selectedCandidate.studentRollNumber) rows.push(["Roll Number", selectedCandidate.studentRollNumber]);
     rows.push(["Student ID", selectedCandidate.studentId]);
     rows.push(["Attempt Date", new Date(selectedCandidate.createdAt).toLocaleDateString()]);
     rows.push(["Overall Score", `${selectedCandidate.scoreSecured} / ${selectedCandidate.totalScore}`]);
@@ -173,14 +224,14 @@ export default function TestDashboard({ test }) {
       rows.push(["Correct Answers", apt.correct]);
       rows.push(["Wrong Answers", apt.incorrect]);
       rows.push(["Question No.", "Topic", "Question Text", "Candidate Answer", "Correct Solution", "Status"]);
-      
+
       (apt.questions || []).forEach((q, idx) => {
         const userAns = apt.userAnswers?.[idx] || "";
         const correctAns = apt.correctAnswers?.[idx] || "";
         const hasSolution = !!correctAns;
         const isCorrect = hasSolution ? (userAns === correctAns ? "Correct" : "Incorrect") : "Answer Recorded";
         const topic = apt.topics?.[idx] || "Logical Assessment";
-        
+
         rows.push([
           `Q${idx + 1}`,
           topic,
@@ -199,11 +250,11 @@ export default function TestDashboard({ test }) {
       rows.push(["CODING MODULE RESULTS"]);
       rows.push(["Score Secured", `${cod.moduleScoreSecured} / ${cod.moduleTotalScore}`]);
       rows.push(["Problem No.", "Testcases Passed", "Source Code"]);
-      
+
       (cod.answers || []).forEach((code, idx) => {
         const passed = cod.testcasePassed?.[idx] ?? 0;
         const total = cod.testcaseTotals?.[idx] ?? 0;
-        
+
         rows.push([
           `Problem ${idx + 1}`,
           `${passed} / ${total}`,
@@ -221,13 +272,13 @@ export default function TestDashboard({ test }) {
       rows.push(["Technical Depth Score", `${ai.moduleScoreSecured} / ${ai.moduleTotalScore} (${pct}%)`]);
       rows.push(["Dialogue Accuracy", `${ai.correct} / ${(ai.questions || []).length} match`]);
       rows.push(["Question No.", "Question", "Candidate Answer", "AI Feedback / Reference Match"]);
-      
+
       (ai.questions || []).forEach((q, idx) => {
         const ans = ai.answers?.[idx] || "(No reply received)";
         const rawFeedback = ai.correctAnswers?.[idx] || "No feedback available.";
         const fbObj = parseAiFeedback(rawFeedback);
         const correctText = fbObj.score !== null ? `[Score: ${fbObj.score}/10] ${fbObj.feedback}` : fbObj.feedback;
-        
+
         rows.push([
           `Question ${idx + 1}`,
           q,
@@ -244,12 +295,12 @@ export default function TestDashboard({ test }) {
       rows.push(["SPEECH & VERBAL MODULE RESULTS"]);
       rows.push(["Score Secured", `${vbl.moduleScoreSecured} / ${vbl.moduleTotalScore}`]);
       rows.push(["Metric", "Score %"]);
-      
+
       Object.keys(vbl.metrics || {}).forEach((m) => {
         rows.push([m, `${vbl.metrics[m]}%`]);
       });
       rows.push([]);
-      
+
       rows.push(["Speaking Samples"]);
       (vbl.speaking || []).forEach((speak, idx) => {
         rows.push([`Sample ${idx + 1}`, speak]);
@@ -282,7 +333,7 @@ export default function TestDashboard({ test }) {
 
     // ─── shared style tokens ────────────────────────────────────────────────────
     const BASE_FONT = "font-family:Arial,Helvetica,sans-serif;";
-    const LINE_H    = "line-height:1.7;";
+    const LINE_H = "line-height:1.7;";
 
     const card = (inner) =>
       `<div style="${BASE_FONT}${LINE_H}background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:32px 36px;margin-bottom:22px;box-shadow:0 2px 8px rgba(0,0,0,.06);">${inner}</div>`;
@@ -313,6 +364,7 @@ export default function TestDashboard({ test }) {
         <div style="display:flex;flex-wrap:wrap;gap:24px;font-size:13px;color:rgba(255,255,255,.78);">
           <span>&#9993;&nbsp; ${selectedCandidate.studentEmail || "N/A"}</span>
           <span>&#128100;&nbsp; ID: ${selectedCandidate.studentId || "N/A"}</span>
+          ${selectedCandidate.studentRollNumber ? `<span>&#128179;&nbsp; Roll: ${selectedCandidate.studentRollNumber}</span>` : ""}
           <span>&#128197;&nbsp; ${attemptDate}</span>
         </div>
       </div>`;
@@ -369,18 +421,18 @@ export default function TestDashboard({ test }) {
           </thead>
           <tbody>
           ${(apt.questions || []).map((q, idx) => {
-            const userAns = apt.userAnswers?.[idx] ?? "(skipped)";
-            const correctAns = apt.correctAnswers?.[idx];
-            const hasSol = !!correctAns;
-            const isCorrect = hasSol ? String(userAns) === String(correctAns) : null;
-            const topic = apt.topics?.[idx] || "Logical Assessment";
-            const rowBg = idx % 2 === 0 ? "#ffffff" : "#f8fafc";
-            const statusBadge = isCorrect === true
-              ? badge("Correct",  "#dcfce7", "#166534")
-              : isCorrect === false
-              ? badge("Incorrect", "#fee2e2", "#991b1b")
-              : badge("Recorded", "#dbeafe", "#1e40af");
-            return `<tr style="background:${rowBg};border-bottom:1px solid #f1f5f9;">
+        const userAns = apt.userAnswers?.[idx] ?? "(skipped)";
+        const correctAns = apt.correctAnswers?.[idx];
+        const hasSol = !!correctAns;
+        const isCorrect = hasSol ? String(userAns) === String(correctAns) : null;
+        const topic = apt.topics?.[idx] || "Logical Assessment";
+        const rowBg = idx % 2 === 0 ? "#ffffff" : "#f8fafc";
+        const statusBadge = isCorrect === true
+          ? badge("Correct", "#dcfce7", "#166534")
+          : isCorrect === false
+            ? badge("Incorrect", "#fee2e2", "#991b1b")
+            : badge("Recorded", "#dbeafe", "#1e40af");
+        return `<tr style="background:${rowBg};border-bottom:1px solid #f1f5f9;">
               <td style="padding:16px 14px;color:#94a3b8;font-weight:700;vertical-align:top;font-size:13px;">${idx + 1}</td>
               <td style="padding:16px 14px;vertical-align:top;">
                 <div style="font-size:10px;color:#94a3b8;text-transform:uppercase;font-weight:700;letter-spacing:.06em;margin-bottom:5px;">${topic}</div>
@@ -392,7 +444,7 @@ export default function TestDashboard({ test }) {
               </td>
               <td style="padding:16px 14px;vertical-align:top;color:${hasSol ? "#0f172a" : "#94a3b8"};font-weight:${hasSol ? "700" : "400"};font-style:${hasSol ? "normal" : "italic"};font-size:13px;">${hasSol ? correctAns : "Not archived"}</td>
             </tr>`;
-          }).join("")}
+      }).join("")}
           </tbody>
         </table>
       `);
@@ -407,10 +459,10 @@ export default function TestDashboard({ test }) {
           ${metaItem("Coding Score", `${cod.moduleScoreSecured} / ${cod.moduleTotalScore}`)}
         </div>
         ${(cod.answers || []).map((code, idx) => {
-          const passed = cod.testcasePassed?.[idx] ?? 0;
-          const total  = cod.testcaseTotals?.[idx] ?? 0;
-          const codeStr = (code || "// No answer submitted.").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-          return `<div style="border-radius:14px;overflow:hidden;margin-bottom:18px;border:1px solid #334155;">
+        const passed = cod.testcasePassed?.[idx] ?? 0;
+        const total = cod.testcaseTotals?.[idx] ?? 0;
+        const codeStr = (code || "// No answer submitted.").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        return `<div style="border-radius:14px;overflow:hidden;margin-bottom:18px;border:1px solid #334155;">
             <div style="background:#0f2d2b;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;">
               <span style="color:rgba(255,255,255,.75);font-size:13px;font-family:monospace;font-weight:600;">Problem ${idx + 1} Submission</span>
               <span style="color:#a3e635;font-size:12px;font-weight:700;">&#10003; ${passed} / ${total} test cases passed</span>
@@ -419,7 +471,7 @@ export default function TestDashboard({ test }) {
               <pre style="margin:0;font-family:'Courier New',monospace;font-size:12px;color:#34d399;line-height:1.65;white-space:pre-wrap;word-break:break-all;">${codeStr}</pre>
             </div>
           </div>`;
-        }).join("")}
+      }).join("")}
       `);
     }
 
@@ -434,16 +486,16 @@ export default function TestDashboard({ test }) {
           ${metaItem("Dialogue Accuracy", `${ai.correct} / ${(ai.questions || []).length} matched`)}
         </div>
         ${(ai.questions || []).map((q, idx) => {
-          const ans = ai.answers?.[idx]    || "(No reply received)";
-          const rawFb = ai.correctAnswers?.[idx] || "No feedback available.";
-          const fbObj = parseAiFeedback(rawFb);
-          const fbText = fbObj.score !== null ? `<span style="background:#eafaf1;color:#10b981;font-weight:bold;padding:2px 6px;border-radius:4px;margin-right:6px;font-size:11px;">${fbObj.score}/10</span> ${fbObj.feedback}` : fbObj.feedback;
-          return `<div style="border-left:5px solid #144542;padding-left:20px;margin-bottom:24px;">
+        const ans = ai.answers?.[idx] || "(No reply received)";
+        const rawFb = ai.correctAnswers?.[idx] || "No feedback available.";
+        const fbObj = parseAiFeedback(rawFb);
+        const fbText = fbObj.score !== null ? `<span style="background:#eafaf1;color:#10b981;font-weight:bold;padding:2px 6px;border-radius:4px;margin-right:6px;font-size:11px;">${fbObj.score}/10</span> ${fbObj.feedback}` : fbObj.feedback;
+        return `<div style="border-left:5px solid #144542;padding-left:20px;margin-bottom:24px;">
             <div style="font-weight:800;color:#0f172a;font-size:14px;margin-bottom:10px;${LINE_H}">Q${idx + 1}: ${q}</div>
             <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:14px 18px;font-size:13px;color:#475569;font-style:italic;margin-bottom:10px;${LINE_H}">"${ans}"</div>
             <div style="font-size:12px;color:#64748b;${LINE_H}"><strong style="color:#144542;font-style:normal;">AI Feedback: </strong>${fbText}</div>
           </div>`;
-        }).join("")}
+      }).join("")}
       `);
     }
 
@@ -507,10 +559,10 @@ export default function TestDashboard({ test }) {
       const pdfW = pdf.internal.pageSize.getWidth();
       const pdfH = pdf.internal.pageSize.getHeight();
 
-      const ratio        = pdfW / canvas.width;   // scale-down factor
+      const ratio = pdfW / canvas.width;   // scale-down factor
       const pageH_canvas = pdfH / ratio;           // canvas rows per PDF page
 
-      let offsetY   = 0;
+      let offsetY = 0;
       let firstPage = true;
 
       while (offsetY < canvas.height) {
@@ -521,7 +573,7 @@ export default function TestDashboard({ test }) {
 
         // Copy slice onto a temp canvas
         const sliceCanvas = document.createElement("canvas");
-        sliceCanvas.width  = canvas.width;
+        sliceCanvas.width = canvas.width;
         sliceCanvas.height = sliceH;
         sliceCanvas.getContext("2d").drawImage(canvas, 0, -offsetY);
 
@@ -547,7 +599,8 @@ export default function TestDashboard({ test }) {
               studentPhone: profile.phone || "N/A",
               studentDob: profile.dob || "N/A",
               studentGender: profile.gender || "N/A",
-              studentCollege: profile.college || "N/A"
+              studentCollege: profile.college || "N/A",
+              studentRollNumber: profile.rollNumber || profile.RollNumber || cand.studentRollNumber || "N/A"
             };
           }
         } catch (err) {
@@ -558,7 +611,8 @@ export default function TestDashboard({ test }) {
           studentPhone: "N/A",
           studentDob: "N/A",
           studentGender: "N/A",
-          studentCollege: "N/A"
+          studentCollege: "N/A",
+          studentRollNumber: cand.studentRollNumber || "N/A"
         };
       })
     );
@@ -569,7 +623,7 @@ export default function TestDashboard({ test }) {
     setIsOverallDownloading('excel');
     try {
       const enriched = await fetchAllProfiles();
-      
+
       const csvCell = (val) => {
         if (val === null || val === undefined) return '""';
         const str = String(val);
@@ -589,10 +643,11 @@ export default function TestDashboard({ test }) {
       rows.push(["In Progress", inProgress]);
       rows.push(["Average Score", `${averageScoreSecured}%`]);
       rows.push([]);
-      
+
       const headers = [
         "Candidate Name",
         "Candidate Email",
+        "Roll Number",
         "Phone Number",
         "Date of Birth",
         "Gender",
@@ -606,7 +661,7 @@ export default function TestDashboard({ test }) {
       if (test.codingModule) headers.push("Coding Score");
       if (test.interviewModule) headers.push("AI Interview Score");
       if (test.verbalModule) headers.push("Speech/Verbal Score");
-      
+
       rows.push(headers);
 
       enriched.forEach(cand => {
@@ -614,6 +669,7 @@ export default function TestDashboard({ test }) {
         const row = [
           cand.studentName || `Candidate #${cand.studentId}`,
           cand.studentEmail || "N/A",
+          cand.studentRollNumber || "N/A",
           cand.studentPhone || "N/A",
           cand.studentDob || "N/A",
           cand.studentGender || "N/A",
@@ -627,7 +683,7 @@ export default function TestDashboard({ test }) {
         if (test.codingModule) row.push(cand.coding ? `${cand.coding.moduleScoreSecured} / ${cand.coding.moduleTotalScore}` : "N/A");
         if (test.interviewModule) row.push(cand.aiInterview ? `${cand.aiInterview.moduleScoreSecured} / ${cand.aiInterview.moduleTotalScore}` : "N/A");
         if (test.verbalModule) row.push(cand.verbal ? `${cand.verbal.moduleScoreSecured} / ${cand.verbal.moduleTotalScore}` : "N/A");
-        
+
         rows.push(row);
       });
 
@@ -657,7 +713,7 @@ export default function TestDashboard({ test }) {
       const filename = `overall_results_${test.testId}.pdf`;
 
       const BASE_FONT = "font-family:Arial,Helvetica,sans-serif;";
-      const LINE_H    = "line-height:1.6;";
+      const LINE_H = "line-height:1.6;";
 
       const badge = (label, bg, fg) =>
         `<span style="display:inline-block;background:${bg};color:${fg};padding:4px 12px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:.02em;">${label}</span>`;
@@ -721,7 +777,7 @@ export default function TestDashboard({ test }) {
         const scorePct = getPercentage(cand.scoreSecured, cand.totalScore);
         const statusBg = status === "Completed" ? "#ecfdf5" : "#fffbeb";
         const statusFg = status === "Completed" ? "#047857" : "#b45309";
-        
+
         html += `
           <div style="${BASE_FONT}${LINE_H}background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px;margin-bottom:18px;box-shadow:0 2px 6px rgba(0,0,0,.02);page-break-inside:avoid;">
             
@@ -744,18 +800,18 @@ export default function TestDashboard({ test }) {
             <div style="display:table;width:100%;margin-bottom:16px;font-size:11px;color:#475569;background:#f8fafc;padding:12px 16px;border-radius:10px;border:1px dashed #e2e8f0;">
               <div style="display:table-row;">
                 <div style="display:table-cell;width:50%;padding-bottom:6px;">
-                  <span style="font-weight:700;color:#64748b;">Phone:</span> ${cand.studentPhone || "N/A"}
+                  <span style="font-weight:700;color:#64748b;">Roll Number:</span> ${cand.studentRollNumber || "N/A"}
                 </div>
                 <div style="display:table-cell;width:50%;padding-bottom:6px;">
-                  <span style="font-weight:700;color:#64748b;">Date of Birth:</span> ${cand.studentDob || "N/A"}
+                  <span style="font-weight:700;color:#64748b;">Phone:</span> ${cand.studentPhone || "N/A"}
                 </div>
               </div>
               <div style="display:table-row;">
                 <div style="display:table-cell;width:50%;">
-                  <span style="font-weight:700;color:#64748b;">Gender:</span> ${cand.studentGender || "N/A"}
+                  <span style="font-weight:700;color:#64748b;">College:</span> ${cand.studentCollege || "N/A"}
                 </div>
                 <div style="display:table-cell;width:50%;">
-                  <span style="font-weight:700;color:#64748b;">College:</span> ${cand.studentCollege || "N/A"}
+                  <span style="font-weight:700;color:#64748b;">Gender:</span> ${cand.studentGender || "N/A"}
                 </div>
               </div>
             </div>
@@ -843,10 +899,10 @@ export default function TestDashboard({ test }) {
       const pdfW = pdf.internal.pageSize.getWidth();
       const pdfH = pdf.internal.pageSize.getHeight();
 
-      const ratio        = pdfW / canvas.width;
+      const ratio = pdfW / canvas.width;
       const pageH_canvas = pdfH / ratio;
 
-      let offsetY   = 0;
+      let offsetY = 0;
       let firstPage = true;
 
       while (offsetY < canvas.height) {
@@ -856,7 +912,7 @@ export default function TestDashboard({ test }) {
         const sliceH = Math.min(pageH_canvas, canvas.height - offsetY);
 
         const sliceCanvas = document.createElement("canvas");
-        sliceCanvas.width  = canvas.width;
+        sliceCanvas.width = canvas.width;
         sliceCanvas.height = sliceH;
         sliceCanvas.getContext("2d").drawImage(canvas, 0, -offsetY);
 
@@ -909,10 +965,11 @@ export default function TestDashboard({ test }) {
   // ── FILTER & SEARCH LOGIC ──────────────────────────────────────
   const filteredResults = results.filter(r => {
     const status = checkCompletionStatus(r);
-    const matchesSearch = 
+    const matchesSearch =
       (r.studentName || "").toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (r.studentEmail || "").toLowerCase().includes(searchQuery.toLowerCase());
-    
+      (r.studentEmail || "").toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (r.studentRollNumber || "").toLowerCase().includes(searchQuery.toLowerCase());
+
     if (statusFilter === "all") return matchesSearch;
     if (statusFilter === "completed") return matchesSearch && status === "Completed";
     if (statusFilter === "progress") return matchesSearch && status === "In progress";
@@ -948,9 +1005,9 @@ export default function TestDashboard({ test }) {
 
   return (
     <div className="max-w-6xl mx-auto h-full flex flex-col font-sans">
-      
+
       {/* ── HEADER CONTAINER ──────────────────────────────────────── */}
-      <div className="bg-white rounded-3xl p-8 border border-gray-150 shadow-sm mb-8 relative overflow-hidden">
+      <div className="bg-white rounded-3xl p-8 border border-gray-150 shadow-sm mb-8 relative">
         <div className="absolute top-0 right-0 w-24 h-full bg-[#DAFF0C]/10 skew-x-12 transform translate-x-12 pointer-events-none" />
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
@@ -995,14 +1052,14 @@ export default function TestDashboard({ test }) {
 
             {/* Overall Roster Downloads */}
             <div className="flex gap-2 mt-3">
-              <button 
+              <button
                 onClick={downloadOverallPDF}
                 disabled={isOverallDownloading !== null}
                 className="px-4 py-2 bg-[#144542] hover:bg-[#1b5b53] disabled:bg-[#144542]/50 text-white text-[10px] font-black rounded-xl shadow-sm flex items-center justify-center gap-1.5 cursor-pointer transition-all active:scale-95 disabled:pointer-events-none"
               >
                 <FiDownload /> {isOverallDownloading === 'pdf' ? 'Generating PDF...' : 'Overall PDF'}
               </button>
-              <button 
+              <button
                 onClick={downloadOverallExcel}
                 disabled={isOverallDownloading !== null}
                 className="px-4 py-2 bg-white border border-[#144542] hover:bg-[#144542]/5 disabled:border-gray-300 disabled:text-gray-400 text-[#144542] text-[10px] font-black rounded-xl shadow-sm flex items-center justify-center gap-1.5 cursor-pointer transition-all active:scale-95 disabled:pointer-events-none"
@@ -1076,10 +1133,10 @@ export default function TestDashboard({ test }) {
 
       {/* ── CANDIDATES TABLE & FILTERS (Styled like UI Reference 1) ── */}
       <div className="bg-white rounded-3xl border border-gray-150 shadow-sm flex flex-col overflow-hidden max-h-[600px] min-h-[250px]">
-        
+
         {/* Table Filters Top Bar */}
         <div className="p-6 pb-4 border-b border-gray-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
-          
+
           {/* Pills / Status Tabs */}
           <div className="flex gap-2">
             {[
@@ -1090,16 +1147,14 @@ export default function TestDashboard({ test }) {
               <button
                 key={tab.id}
                 onClick={() => setStatusFilter(tab.id)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-                  statusFilter === tab.id
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all ${statusFilter === tab.id
                     ? "bg-[#144542] text-white shadow-md shadow-[#144542]/10"
                     : "bg-[#EAF0F0]/50 border border-gray-200 text-gray-600 hover:bg-gray-100"
-                }`}
+                  }`}
               >
                 {tab.label}
-                <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${
-                  statusFilter === tab.id ? "bg-[#DAFF0C] text-[#144542]" : "bg-gray-200 text-gray-700"
-                }`}>
+                <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${statusFilter === tab.id ? "bg-[#DAFF0C] text-[#144542]" : "bg-gray-200 text-gray-700"
+                  }`}>
                   {tab.count}
                 </span>
               </button>
@@ -1116,11 +1171,10 @@ export default function TestDashboard({ test }) {
                     setShowLeaderboardDropdown(prev => !prev);
                   }
                 }}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-                  leaderboardModule
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all ${leaderboardModule
                     ? "bg-[#DAFF0C] text-[#144542] shadow-md"
                     : "bg-[#EAF0F0]/50 border border-gray-200 text-gray-600 hover:bg-gray-100"
-                }`}
+                  }`}
               >
                 <FiAward size={13} />
                 {leaderboardModule
@@ -1132,9 +1186,9 @@ export default function TestDashboard({ test }) {
                 <div className="absolute top-full left-0 mt-1.5 bg-white border border-gray-200 rounded-xl shadow-xl z-50 min-w-[180px] overflow-hidden">
                   {[
                     { key: 'aiInterview', label: 'AI Interview', enabled: test.interviewModule },
-                    { key: 'aptitude',   label: 'Aptitude',     enabled: test.aptitudeModule },
-                    { key: 'verbal',     label: 'Verbal',        enabled: test.verbalModule },
-                    { key: 'coding',     label: 'Coding',       enabled: test.codingModule },
+                    { key: 'aptitude', label: 'Aptitude', enabled: test.aptitudeModule },
+                    { key: 'verbal', label: 'Verbal', enabled: test.verbalModule },
+                    { key: 'coding', label: 'Coding', enabled: test.codingModule },
                   ].filter(m => m.enabled).map(m => (
                     <button
                       key={m.key}
@@ -1189,7 +1243,7 @@ export default function TestDashboard({ test }) {
 
           const rankMedal = (rank) => {
             if (rank === 1) return { emoji: '🥇', bg: 'bg-yellow-50', border: 'border-yellow-200', text: 'text-yellow-700' };
-            if (rank === 2) return { emoji: '🥈', bg: 'bg-gray-50',   border: 'border-gray-200',   text: 'text-gray-600' };
+            if (rank === 2) return { emoji: '🥈', bg: 'bg-gray-50', border: 'border-gray-200', text: 'text-gray-600' };
             if (rank === 3) return { emoji: '🥉', bg: 'bg-orange-50', border: 'border-orange-200', text: 'text-orange-700' };
             return null;
           };
@@ -1220,14 +1274,12 @@ export default function TestDashboard({ test }) {
                     <div
                       key={idx}
                       onClick={() => { setSelectedCandidate(cand); setActiveScorecardTab('overview'); }}
-                      className={`flex items-center gap-4 p-4 rounded-2xl border cursor-pointer hover:shadow-md transition-all duration-200 ${
-                        medal ? `${medal.bg} ${medal.border}` : 'bg-white border-gray-100 hover:border-gray-200'
-                      } ${rank <= 3 ? 'shadow-sm' : ''}`}
+                      className={`flex items-center gap-4 p-4 rounded-2xl border cursor-pointer hover:shadow-md transition-all duration-200 ${medal ? `${medal.bg} ${medal.border}` : 'bg-white border-gray-100 hover:border-gray-200'
+                        } ${rank <= 3 ? 'shadow-sm' : ''}`}
                     >
                       {/* Rank */}
-                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 font-black text-sm ${
-                        medal ? `${medal.bg} ${medal.text} border ${medal.border}` : 'bg-gray-50 text-gray-400 border border-gray-100'
-                      }`}>
+                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 font-black text-sm ${medal ? `${medal.bg} ${medal.text} border ${medal.border}` : 'bg-gray-50 text-gray-400 border border-gray-100'
+                        }`}>
                         {medal ? medal.emoji : `#${rank}`}
                       </div>
 
@@ -1238,7 +1290,9 @@ export default function TestDashboard({ test }) {
                         </div>
                         <div className="min-w-0">
                           <p className="text-sm font-bold text-gray-900 truncate">{cand.studentName}</p>
-                          <p className="text-[11px] font-semibold text-gray-400 truncate">{cand.studentEmail}</p>
+                          <p className="text-[11px] font-semibold text-gray-400 truncate">
+                            {cand.studentEmail}{cand.studentRollNumber ? ` • ${cand.studentRollNumber}` : ""}
+                          </p>
                         </div>
                       </div>
 
@@ -1274,150 +1328,160 @@ export default function TestDashboard({ test }) {
           );
         })() : (
 
-        /* Results List Table */
-        <div className="overflow-x-auto flex-1 overflow-y-auto pr-1.5 custom-scrollbar">
-          {filteredResults.length === 0 ? (
-            <div className="p-16 text-center text-gray-400">
-              <FiUser className="text-4xl mx-auto mb-3 opacity-30" />
-              <p className="font-bold text-sm">No candidate submissions found matching the criteria.</p>
-            </div>
-          ) : (
-            <table className="w-full text-left border-collapse">
-              <thead className="sticky top-0 bg-white z-10 shadow-sm">
-                <tr className="bg-[#144542]/[0.02] border-b border-gray-100">
-                  <th className="px-6 py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">Candidate</th>
-                  <th className="px-6 py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">Attempt Date</th>
-                  <th className="px-6 py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">Modules Cleared</th>
-                  <th className="px-6 py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">Secure Score</th>
-                  <th className="px-6 py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">Status</th>
-                  <th className="px-6 py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest"></th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredResults.map((cand, idx) => {
-                  const status = checkCompletionStatus(cand);
-                  const scorePct = getPercentage(cand.scoreSecured, cand.totalScore);
-                  
-                  // Generate initials
-                  const initials = (cand.studentName || "S")
-                    .split(" ")
-                    .map(n => n[0])
-                    .join("")
-                    .toUpperCase()
-                    .substring(0, 2);
+          /* Results List Table */
+          <div className="overflow-x-auto flex-1 overflow-y-auto pr-1.5 custom-scrollbar">
+            {filteredResults.length === 0 ? (
+              <div className="p-16 text-center text-gray-400">
+                <FiUser className="text-4xl mx-auto mb-3 opacity-30" />
+                <p className="font-bold text-sm">No candidate submissions found matching the criteria.</p>
+              </div>
+            ) : (
+              <table className="w-full text-left border-collapse">
+                <thead className="sticky top-0 bg-white z-10 shadow-sm">
+                  <tr className="bg-[#144542]/[0.02] border-b border-gray-100">
+                    <th className="px-6 py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">Candidate</th>
+                    <th className="px-6 py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">Attempt Date</th>
+                    <th className="px-6 py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">Modules Cleared</th>
+                    <th className="px-6 py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">Secure Score</th>
+                    <th className="px-6 py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">Status</th>
+                    <th className="px-6 py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest text-right">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredResults.map((cand, idx) => {
+                    const status = checkCompletionStatus(cand);
+                    const scorePct = getPercentage(cand.scoreSecured, cand.totalScore);
 
-                  return (
-                    <tr 
-                      key={idx} 
-                      onClick={() => {
-                        setSelectedCandidate(cand);
-                        setActiveScorecardTab("overview");
-                      }}
-                      className="border-b border-gray-50 hover:bg-[#144542]/[0.01] transition-colors cursor-pointer group"
-                    >
-                      {/* Name & Email with initials avatar */}
-                      <td className="px-6 py-4">
-                        <div className="flex items-center gap-3">
-                          <div className="w-9 h-9 rounded-xl bg-[#144542] text-[#DAFF0C] font-black text-xs flex items-center justify-center shadow-sm">
-                            {initials}
+                    // Generate initials
+                    const initials = (cand.studentName || "S")
+                      .split(" ")
+                      .map(n => n[0])
+                      .join("")
+                      .toUpperCase()
+                      .substring(0, 2);
+
+                    return (
+                      <tr
+                        key={idx}
+                        onClick={() => {
+                          setSelectedCandidate(cand);
+                          setActiveScorecardTab("overview");
+                        }}
+                        className="border-b border-gray-50 hover:bg-[#144542]/[0.01] transition-colors cursor-pointer group"
+                      >
+                        {/* Name & Email with initials avatar */}
+                        <td className="px-6 py-4">
+                          <div className="flex items-center gap-3">
+                            <div className="w-9 h-9 rounded-xl bg-[#144542] text-[#DAFF0C] font-black text-xs flex items-center justify-center shadow-sm">
+                              {initials}
+                            </div>
+                            <div>
+                              <p className="text-sm font-bold text-gray-900 group-hover:text-[#144542] transition-colors">{cand.studentName}</p>
+                              <p className="text-[11px] font-semibold text-gray-400">
+                                {cand.studentEmail}{cand.studentRollNumber ? ` • ${cand.studentRollNumber}` : ""}
+                              </p>
+                            </div>
                           </div>
-                          <div>
-                            <p className="text-sm font-bold text-gray-900 group-hover:text-[#144542] transition-colors">{cand.studentName}</p>
-                            <p className="text-[11px] font-semibold text-gray-400">{cand.studentEmail}</p>
+                        </td>
+
+                        {/* Date */}
+                        <td className="px-6 py-4 text-xs font-semibold text-gray-700">
+                          {formatDate(cand.createdAt)}
+                        </td>
+
+                        {/* Checkmarks checklist for Modules */}
+                        <td className="px-6 py-4">
+                          <div className="flex gap-2">
+                            {test.aptitudeModule && (
+                              <div
+                                className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black ${cand.aptitude ? "bg-[#facc15] text-white" : "border-2 border-dashed border-gray-200 text-gray-300"
+                                  }`}
+                                title="Aptitude Module"
+                              >
+                                {cand.aptitude ? "✓" : "A"}
+                              </div>
+                            )}
+                            {test.codingModule && (
+                              <div
+                                className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black ${cand.coding ? "bg-[#db830f] text-white" : "border-2 border-dashed border-gray-200 text-gray-300"
+                                  }`}
+                                title="Coding Module"
+                              >
+                                {cand.coding ? "✓" : "C"}
+                              </div>
+                            )}
+                            {test.interviewModule && (
+                              <div
+                                className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black ${cand.aiInterview ? "bg-[#00d1c1] text-white" : "border-2 border-dashed border-gray-200 text-gray-300"
+                                  }`}
+                                title="AI Interview Module"
+                              >
+                                {cand.aiInterview ? "✓" : "I"}
+                              </div>
+                            )}
+                            {test.verbalModule && (
+                              <div
+                                className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black ${cand.verbal ? "bg-[#a855f7] text-white" : "border-2 border-dashed border-gray-200 text-gray-300"
+                                  }`}
+                                title="Verbal Communication"
+                              >
+                                {cand.verbal ? "✓" : "V"}
+                              </div>
+                            )}
                           </div>
-                        </div>
-                      </td>
+                        </td>
 
-                      {/* Date */}
-                      <td className="px-6 py-4 text-xs font-semibold text-gray-700">
-                        {formatDate(cand.createdAt)}
-                      </td>
+                        {/* Secure Score fraction & percent badge */}
+                        <td className="px-6 py-4">
+                          <div className="flex items-center gap-3">
+                            <span className="text-sm font-black text-gray-800">
+                              {cand.scoreSecured} <span className="text-gray-300 font-medium">/ {cand.totalScore}</span>
+                            </span>
+                            <span className={`px-2 py-0.5 rounded-md text-[10px] font-black ${scorePct >= 75 ? "bg-emerald-50 text-emerald-600 border border-emerald-100" :
+                                scorePct >= 50 ? "bg-amber-50 text-amber-600 border border-amber-100" :
+                                  "bg-red-50 text-red-500 border border-red-100"
+                              }`}>
+                              {scorePct}%
+                            </span>
+                          </div>
+                        </td>
 
-                      {/* Checkmarks checklist for Modules */}
-                      <td className="px-6 py-4">
-                        <div className="flex gap-2">
-                          {test.aptitudeModule && (
-                            <div 
-                              className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black ${
-                                cand.aptitude ? "bg-[#facc15] text-white" : "border-2 border-dashed border-gray-200 text-gray-300"
-                              }`}
-                              title="Aptitude Module"
-                            >
-                              {cand.aptitude ? "✓" : "A"}
-                            </div>
-                          )}
-                          {test.codingModule && (
-                            <div 
-                              className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black ${
-                                cand.coding ? "bg-[#db830f] text-white" : "border-2 border-dashed border-gray-200 text-gray-300"
-                              }`}
-                              title="Coding Module"
-                            >
-                              {cand.coding ? "✓" : "C"}
-                            </div>
-                          )}
-                          {test.interviewModule && (
-                            <div 
-                              className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black ${
-                                cand.aiInterview ? "bg-[#00d1c1] text-white" : "border-2 border-dashed border-gray-200 text-gray-300"
-                              }`}
-                              title="AI Interview Module"
-                            >
-                              {cand.aiInterview ? "✓" : "I"}
-                            </div>
-                          )}
-                          {test.verbalModule && (
-                            <div 
-                              className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black ${
-                                cand.verbal ? "bg-[#a855f7] text-white" : "border-2 border-dashed border-gray-200 text-gray-300"
-                              }`}
-                              title="Verbal Communication"
-                            >
-                              {cand.verbal ? "✓" : "V"}
-                            </div>
-                          )}
-                        </div>
-                      </td>
-
-                      {/* Secure Score fraction & percent badge */}
-                      <td className="px-6 py-4">
-                        <div className="flex items-center gap-3">
-                          <span className="text-sm font-black text-gray-800">
-                            {cand.scoreSecured} <span className="text-gray-300 font-medium">/ {cand.totalScore}</span>
+                        {/* Status Pill */}
+                        <td className="px-6 py-4">
+                          <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold ${status === "Completed"
+                              ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
+                              : "bg-amber-50 text-amber-700 border border-amber-200"
+                            }`}>
+                            <div className={`w-1.5 h-1.5 rounded-full ${status === "Completed" ? "bg-emerald-500" : "bg-amber-500"}`} />
+                            {status}
                           </span>
-                          <span className={`px-2 py-0.5 rounded-md text-[10px] font-black ${
-                            scorePct >= 75 ? "bg-emerald-50 text-emerald-600 border border-emerald-100" :
-                            scorePct >= 50 ? "bg-amber-50 text-amber-600 border border-amber-100" :
-                            "bg-red-50 text-red-500 border border-red-100"
-                          }`}>
-                            {scorePct}%
-                          </span>
-                        </div>
-                      </td>
+                        </td>
 
-                      {/* Status Pill */}
-                      <td className="px-6 py-4">
-                        <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold ${
-                          status === "Completed"
-                            ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
-                            : "bg-amber-50 text-amber-700 border border-amber-200"
-                        }`}>
-                          <div className={`w-1.5 h-1.5 rounded-full ${status === "Completed" ? "bg-emerald-500" : "bg-amber-500"}`} />
-                          {status}
-                        </span>
-                      </td>
-
-                      {/* Chevron Link */}
-                      <td className="px-6 py-4 text-right">
-                        <FiChevronRight className="text-gray-400 group-hover:text-[#144542] group-hover:translate-x-1 transition-all" size={18} />
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          )}
-        </div>
+                        {/* Chevron Link */}
+                        <td className="px-6 py-4 text-right">
+                          <div className="flex items-center justify-end gap-3">
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setCandidateToDelete(cand);
+                              }}
+                              className="px-3 py-1.5 bg-red-50 hover:bg-red-500 text-red-600 hover:text-white border border-red-200 hover:border-red-500 rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-1.5 shadow-sm active:scale-95 cursor-pointer"
+                              title="Delete candidate test record"
+                            >
+                              <FiTrash2 size={13} />
+                              <span>Delete Record</span>
+                            </button>
+                            <FiChevronRight className="text-gray-400 group-hover:text-[#144542] group-hover:translate-x-1 transition-all" size={18} />
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            )}
+          </div>
         )} {/* end leaderboard ternary */}
       </div>
 
@@ -1425,7 +1489,7 @@ export default function TestDashboard({ test }) {
       <AnimatePresence>
         {selectedCandidate && (
           <div className="fixed inset-0 z-50 overflow-hidden flex justify-end">
-            
+
             {/* Overlay backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -1452,14 +1516,14 @@ export default function TestDashboard({ test }) {
                   </div>
                   <h2 className="text-2xl font-black tracking-tight">{selectedCandidate.studentName}</h2>
                   <p className="text-xs font-semibold text-white/60 mt-1 flex items-center gap-1">
-                    <FiMail /> {selectedCandidate.studentEmail} • ID: {selectedCandidate.studentId}
+                    <FiMail /> {selectedCandidate.studentEmail} • ID: {selectedCandidate.studentId}{selectedCandidate.studentRollNumber ? ` • Roll: ${selectedCandidate.studentRollNumber}` : ""}
                   </p>
                 </div>
                 <div className="flex items-center gap-3 z-10">
                   {candidatePhoto ? (
-                    <img 
-                      src={candidatePhoto} 
-                      alt={selectedCandidate.studentName} 
+                    <img
+                      src={candidatePhoto}
+                      alt={selectedCandidate.studentName}
                       className="w-18 h-18 rounded-full object-cover border-2 border-gray-700 shadow-md"
                     />
                   ) : (
@@ -1472,7 +1536,7 @@ export default function TestDashboard({ test }) {
                         .substring(0, 2)}
                     </div>
                   )}
-                  
+
                 </div>
               </div>
 
@@ -1490,11 +1554,10 @@ export default function TestDashboard({ test }) {
                     <button
                       key={t.id}
                       onClick={() => setActiveScorecardTab(t.id)}
-                      className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black transition-all ${
-                        activeScorecardTab === t.id
+                      className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black transition-all ${activeScorecardTab === t.id
                           ? "bg-[#144542] text-white"
                           : "text-gray-500 hover:bg-gray-100"
-                      }`}
+                        }`}
                     >
                       {t.icon}
                       {t.label}
@@ -1506,7 +1569,7 @@ export default function TestDashboard({ test }) {
               <div className="flex-1 overflow-y-auto p-8 custom-scrollbar">
                 {/* ── OVERVIEW TAB ────────────────────────────────────────── */}
                 {activeScorecardTab === "overview" && (
-                  
+
                   <div className="space-y-6">
                     <div className="bg-white rounded-3xl p-6 border border-gray-150 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4 mb-5">
                       <div>
@@ -1514,13 +1577,13 @@ export default function TestDashboard({ test }) {
                         <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest mt-0.5">Download candidate results archive</p>
                       </div>
                       <div className="flex gap-3 w-full sm:w-auto">
-                        <button 
+                        <button
                           onClick={downloadPDF}
                           className="flex-1 sm:flex-none px-5 py-3 bg-[#144542] hover:bg-[#1b5b53] text-white text-xs font-black rounded-xl shadow-sm flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-95"
                         >
                           <FiDownload /> PDF Option
                         </button>
-                        <button 
+                        <button
                           onClick={downloadExcel}
                           className="flex-1 sm:flex-none px-5 py-3 bg-white border-2 border-[#144542] hover:bg-gray-50 text-[#144542] text-xs font-black rounded-xl shadow-sm flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-95"
                         >
@@ -1531,14 +1594,14 @@ export default function TestDashboard({ test }) {
 
                     {/* Circle chart and key stats */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      
-                      
+
+
                       {/* Circular Gauge Card */}
                       <div className="bg-white rounded-3xl p-8 border border-gray-150 shadow-sm flex flex-col items-center justify-center text-center">
                         <div className="relative w-36 h-36 flex items-center justify-center">
                           <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
                             <circle cx="50" cy="50" r="40" fill="none" stroke="#144542" strokeOpacity="0.08" strokeWidth="8" />
-                            <circle 
+                            <circle
                               cx="50" cy="50" r="40" fill="none" stroke="#144542" strokeWidth="8" strokeLinecap="round"
                               strokeDasharray={251.2}
                               strokeDashoffset={251.2 - (251.2 * getPercentage(selectedCandidate.scoreSecured, selectedCandidate.totalScore)) / 100}
@@ -1554,12 +1617,12 @@ export default function TestDashboard({ test }) {
                         </div>
                         <h4 className="text-base font-black text-gray-900 mt-4">
                           {getPercentage(selectedCandidate.scoreSecured, selectedCandidate.totalScore) >= 75 ? "Outstanding Cleared" :
-                           getPercentage(selectedCandidate.scoreSecured, selectedCandidate.totalScore) >= 50 ? "Qualified" :
-                           "Disqualified / Needs Review"}
+                            getPercentage(selectedCandidate.scoreSecured, selectedCandidate.totalScore) >= 50 ? "Qualified" :
+                              "Disqualified / Needs Review"}
                         </h4>
                         <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-1">Performance Evaluation</p>
                       </div>
-                      
+
 
                       {/* General metadata scorecard details */}
                       <div className="bg-white rounded-3xl p-8 border border-gray-150 shadow-sm space-y-4">
@@ -1693,338 +1756,520 @@ export default function TestDashboard({ test }) {
                 )}
 
                 {/* ── APTITUDE MODULE TAB ──────────────────────────────────── */}
-                {activeScorecardTab === "aptitude" && selectedCandidate.aptitude && (
-                  <div className="space-y-6">
-                    <div className="grid grid-cols-3 gap-4">
-                      <div className="bg-white p-5 rounded-2xl border border-gray-150 text-center">
-                        <span className="text-xs font-bold text-gray-400 block uppercase">Score Secured</span>
-                        <span className="text-2xl font-black text-gray-900">{selectedCandidate.aptitude.moduleScoreSecured} / {selectedCandidate.aptitude.moduleTotalScore}</span>
+                {activeScorecardTab === "aptitude" && (
+                  selectedCandidate.aptitude ? (
+                    <div className="space-y-6">
+                      <div className="grid grid-cols-3 gap-4">
+                        <div className="bg-white p-5 rounded-2xl border border-gray-150 text-center">
+                          <span className="text-xs font-bold text-gray-400 block uppercase">Score Secured</span>
+                          <span className="text-2xl font-black text-gray-900">{selectedCandidate.aptitude.moduleScoreSecured} / {selectedCandidate.aptitude.moduleTotalScore}</span>
+                        </div>
+                        <div className="bg-white p-5 rounded-2xl border border-gray-150 text-center">
+                          <span className="text-xs font-bold text-gray-400 block uppercase">Correct Answers</span>
+                          <span className="text-2xl font-black text-emerald-600">{selectedCandidate.aptitude.correct}</span>
+                        </div>
+                        <div className="bg-white p-5 rounded-2xl border border-gray-150 text-center">
+                          <span className="text-xs font-bold text-gray-400 block uppercase">Wrong Answers</span>
+                          <span className="text-2xl font-black text-red-500">{selectedCandidate.aptitude.incorrect}</span>
+                        </div>
                       </div>
-                      <div className="bg-white p-5 rounded-2xl border border-gray-150 text-center">
-                        <span className="text-xs font-bold text-gray-400 block uppercase">Correct Answers</span>
-                        <span className="text-2xl font-black text-emerald-600">{selectedCandidate.aptitude.correct}</span>
-                      </div>
-                      <div className="bg-white p-5 rounded-2xl border border-gray-150 text-center">
-                        <span className="text-xs font-bold text-gray-400 block uppercase">Wrong Answers</span>
-                        <span className="text-2xl font-black text-red-500">{selectedCandidate.aptitude.incorrect}</span>
-                      </div>
-                    </div>
 
-                    {/* Question breakdown lists */}
-                    <div className="bg-white rounded-3xl p-6 border border-gray-150 shadow-sm space-y-4">
-                      <h3 className="text-xs font-black text-gray-400 uppercase tracking-widest border-b border-gray-100 pb-3">Questions & Choices Analysis</h3>
-                      
-                      <div className="space-y-4">
-                        {(selectedCandidate.aptitude.questions || []).map((q, idx) => {
-                          const userAns = selectedCandidate.aptitude.userAnswers?.[idx];
-                          const correctAns = selectedCandidate.aptitude.correctAnswers?.[idx];
-                          const hasSolution = !!correctAns;
-                          const isCorrect = hasSolution ? (userAns === correctAns) : null;
-                          const topic = selectedCandidate.aptitude.topics?.[idx] || "Logical Assessment";
+                      {/* Question breakdown lists */}
+                      <div className="bg-white rounded-3xl p-6 border border-gray-150 shadow-sm space-y-4">
+                        <h3 className="text-xs font-black text-gray-400 uppercase tracking-widest border-b border-gray-100 pb-3">Questions & Choices Analysis</h3>
 
-                          let badgeText = "";
-                          let badgeClass = "";
-                          if (isCorrect === true) {
-                            badgeText = "Correct";
-                            badgeClass = "bg-emerald-100 text-emerald-800";
-                          } else if (isCorrect === false) {
-                            badgeText = "Incorrect";
-                            badgeClass = "bg-red-100 text-red-800";
-                          } else {
-                            badgeText = "Answer Recorded";
-                            badgeClass = "bg-blue-50 text-blue-800 border border-blue-100";
-                          }
+                        <div className="space-y-4">
+                          {(selectedCandidate.aptitude.questions || []).map((q, idx) => {
+                            const userAns = selectedCandidate.aptitude.userAnswers?.[idx];
+                            const correctAns = selectedCandidate.aptitude.correctAnswers?.[idx];
+                            const hasSolution = !!correctAns;
+                            const isCorrect = hasSolution ? (userAns === correctAns) : null;
+                            const topic = selectedCandidate.aptitude.topics?.[idx] || "Logical Assessment";
 
-                          return (
-                            <div key={idx} className="p-4 bg-gray-50 border border-gray-200 rounded-xl space-y-3">
-                              <div className="flex justify-between items-start">
-                                <span className="px-2 py-0.5 bg-gray-200 text-gray-700 text-[9px] font-black rounded uppercase">{topic}</span>
-                                <span className={`px-2 py-0.5 rounded text-[10px] font-black ${badgeClass}`}>
-                                  {badgeText}
-                                </span>
-                              </div>
-                              <p className="text-xs font-black text-gray-900 leading-tight">Q{idx + 1}: {q}</p>
-                              <div className="grid grid-cols-2 gap-2 text-xs">
-                                <div className="p-2.5 bg-white border rounded-lg">
-                                  <span className="text-[10px] text-gray-400 font-bold block uppercase">Candidate choice</span>
-                                  <span className={`font-bold ${
-                                    isCorrect === true ? "text-emerald-600" :
-                                    isCorrect === false ? "text-red-500" :
-                                    "text-gray-800"
-                                  }`}>{userAns || "(skipped)"}</span>
-                                </div>
-                                <div className="p-2.5 bg-white border rounded-lg">
-                                  <span className="text-[10px] text-gray-400 font-bold block uppercase">Correct solution</span>
-                                  <span className={`font-bold ${hasSolution ? "text-gray-800" : "text-gray-400 italic"}`}>
-                                    {hasSolution ? correctAns : "Solution not archived"}
+                            let badgeText = "";
+                            let badgeClass = "";
+                            if (isCorrect === true) {
+                              badgeText = "Correct";
+                              badgeClass = "bg-emerald-100 text-emerald-800";
+                            } else if (isCorrect === false) {
+                              badgeText = "Incorrect";
+                              badgeClass = "bg-red-100 text-red-800";
+                            } else {
+                              badgeText = "Answer Recorded";
+                              badgeClass = "bg-blue-50 text-blue-800 border border-blue-100";
+                            }
+
+                            return (
+                              <div key={idx} className="p-4 bg-gray-50 border border-gray-200 rounded-xl space-y-3">
+                                <div className="flex justify-between items-start">
+                                  <span className="px-2 py-0.5 bg-gray-200 text-gray-700 text-[9px] font-black rounded uppercase">{topic}</span>
+                                  <span className={`px-2 py-0.5 rounded text-[10px] font-black ${badgeClass}`}>
+                                    {badgeText}
                                   </span>
                                 </div>
+                                <p className="text-xs font-black text-gray-900 leading-tight">Q{idx + 1}: {q}</p>
+                                <div className="grid grid-cols-2 gap-2 text-xs">
+                                  <div className="p-2.5 bg-white border rounded-lg">
+                                    <span className="text-[10px] text-gray-400 font-bold block uppercase">Candidate choice</span>
+                                    <span className={`font-bold ${isCorrect === true ? "text-emerald-600" :
+                                        isCorrect === false ? "text-red-500" :
+                                          "text-gray-800"
+                                      }`}>{userAns || "(skipped)"}</span>
+                                  </div>
+                                  <div className="p-2.5 bg-white border rounded-lg">
+                                    <span className="text-[10px] text-gray-400 font-bold block uppercase">Correct solution</span>
+                                    <span className={`font-bold ${hasSolution ? "text-gray-800" : "text-gray-400 italic"}`}>
+                                      {hasSolution ? correctAns : "Solution not archived"}
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="bg-white rounded-3xl p-12 text-center border border-gray-150 shadow-sm space-y-3">
+                      <div className="w-16 h-16 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mx-auto mb-2 border border-amber-100">
+                        <FiAlertCircle size={28} />
+                      </div>
+                      <h3 className="text-base font-black text-gray-900">No Aptitude Data Recorded</h3>
+                      <p className="text-xs font-semibold text-gray-400 max-w-sm mx-auto">
+                        This candidate has not completed or submitted the Aptitude module for this assessment session.
+                      </p>
+                    </div>
+                  )
+                )}
+
+                {/* ── CODING MODULE SUBMISSION TAB ─────────────────────────── */}
+                {activeScorecardTab === "coding" && (
+                  selectedCandidate.coding ? (
+                    <div className="space-y-6">
+                      {(() => {
+                        const assignedQuestionCodes = (selectedCandidate.coding.codingCode || '')
+                          .split(',')
+                          .map(s => s.trim())
+                          .filter(Boolean);
+
+                        return (
+                          <>
+                            <div className="bg-white p-5 rounded-2xl border border-gray-150 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                              <div>
+                                <span className="text-xs font-bold text-gray-400 block uppercase">Coding Module Score</span>
+                                <span className="text-2xl font-black text-gray-900">{selectedCandidate.coding.moduleScoreSecured} / {selectedCandidate.coding.moduleTotalScore}</span>
+                              </div>
+                              <div className="flex flex-wrap items-center gap-2">
+                                <span className="px-3 py-1.5 bg-[#db830f]/10 border border-[#db830f]/20 text-[#db830f] text-xs font-black rounded-lg font-mono">
+                                  Language: Python / Java / C++
+                                </span>
+                              </div>
+                            </div>
+
+                            {/* Assigned Questions Chips for HR visibility */}
+                            {assignedQuestionCodes.length > 0 && (
+                              <div className="bg-[#fffbf5] p-4 rounded-2xl border border-[#f5ddb3] flex flex-col gap-2">
+                                <span className="text-[11px] font-black uppercase text-[#db830f] tracking-wider flex items-center gap-1.5">
+                                  <span>🎯 Assigned Questions ({assignedQuestionCodes.length})</span>
+                                </span>
+                                <div className="flex flex-wrap gap-2">
+                                  {assignedQuestionCodes.map((qCode, qIdx) => (
+                                    <span key={qIdx} className="px-3 py-1 bg-white border border-[#f5ddb3] text-gray-800 text-xs font-bold rounded-lg shadow-xs flex items-center gap-1.5">
+                                      <span className="w-4 h-4 rounded-full bg-[#db830f] text-white text-[10px] font-black flex items-center justify-center">
+                                        {qIdx + 1}
+                                      </span>
+                                      <span className="font-mono">{qCode}</span>
+                                    </span>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+
+                            {/* Candidate Source Code submitted rendered in a mockup editor */}
+                            {(selectedCandidate.coding.answers || []).map((code, idx) => {
+                              const passed = selectedCandidate.coding.testcasePassed?.[idx] ?? 0;
+                              const total = selectedCandidate.coding.testcaseTotals?.[idx] ?? 0;
+                              const qTitle = assignedQuestionCodes[idx] || `Problem ${idx + 1}`;
+
+                              return (
+                                <div key={idx} className="bg-[#144542] rounded-3xl border border-white/10 shadow-lg overflow-hidden">
+                                  {/* Code editor top chrome header */}
+                                  <div className="bg-black/25 px-6 py-4 flex items-center justify-between border-b border-white/5">
+                                    <div className="flex items-center gap-3">
+                                      <div className="flex gap-1.5">
+                                        <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                                        <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+                                        <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+                                      </div>
+                                      <span className="text-white/80 font-mono text-[11px] font-bold ml-2">
+                                        Problem {idx + 1}: <span className="text-[#DAFF0C]">{qTitle}</span> Submission
+                                      </span>
+                                    </div>
+                                    <span className="px-3 py-1 bg-white/10 text-[#DAFF0C] text-[10px] font-black uppercase rounded-md tracking-wider">
+                                      Testcases: {passed} / {total} passed
+                                    </span>
+                                  </div>
+
+                                  {/* Code viewport container */}
+                                  <pre className="p-6 overflow-x-auto text-[11px] font-mono text-emerald-400/90 leading-relaxed bg-[#0c2f2d] max-h-[300px] custom-scrollbar">
+                                    <code>{code || "// No answer submitted."}</code>
+                                  </pre>
+                                </div>
+                              );
+                            })}
+                          </>
+                        );
+                      })()}
+                    </div>
+                  ) : (
+                    <div className="bg-white rounded-3xl p-12 text-center border border-gray-150 shadow-sm space-y-3">
+                      <div className="w-16 h-16 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mx-auto mb-2 border border-amber-100">
+                        <FiAlertCircle size={28} />
+                      </div>
+                      <h3 className="text-base font-black text-gray-900">No Coding Data Recorded</h3>
+                      <p className="text-xs font-semibold text-gray-400 max-w-sm mx-auto">
+                        This candidate has not submitted any code for the Coding module in this assessment session.
+                      </p>
+                    </div>
+                  )
+                )}
+
+                {/* ── AI CONVERSATIONAL INTERVIEW TAB ───────────────────────── */}
+                {activeScorecardTab === "interview" && (
+                  selectedCandidate.aiInterview ? (() => {
+                    const aiData = selectedCandidate.aiInterview;
+                    const overallPct = Math.round((aiData.moduleScoreSecured / aiData.moduleTotalScore) * 100) || 0;
+
+                    const getScoreColor = (s) => {
+                      if (s >= 70) return 'text-green-600';
+                      if (s >= 40) return 'text-amber-500';
+                      return 'text-red-600';
+                    };
+
+                    const getScoreBg = (s) => {
+                      if (s >= 70) return 'bg-green-50/70 border-green-100';
+                      if (s >= 40) return 'bg-amber-50/70 border-amber-100';
+                      return 'bg-red-50/70 border-red-100';
+                    };
+
+                    const getScoreBarColor = (s) => {
+                      if (s >= 70) return 'bg-emerald-500';
+                      if (s >= 40) return 'bg-amber-500';
+                      return 'bg-red-500';
+                    };
+
+                    // Compute question scores dynamically
+                    const questionScores = (aiData.questions || []).map((q, idx) => {
+                      const candidateAnswer = aiData.answers?.[idx] || "(No reply received)";
+                      const rawFeedback = aiData.correctAnswers?.[idx] || "No feedback available.";
+                      const fbObj = parseAiFeedback(rawFeedback);
+
+                      let rawScore = fbObj.score;
+                      if (rawScore === null) {
+                        rawScore = 5;
+                        const lowerFeedback = fbObj.feedback.toLowerCase();
+                        if (lowerFeedback.includes("no relevant knowledge") || lowerFeedback.includes("failed") || candidateAnswer === "(No reply received)") {
+                          rawScore = 2;
+                        } else if (lowerFeedback.includes("excellent") || lowerFeedback.includes("good match") || lowerFeedback.includes("strong")) {
+                          rawScore = 9;
+                        } else if (lowerFeedback.includes("partial") || lowerFeedback.includes("some matching")) {
+                          rawScore = 6;
+                        } else {
+                          const averageScore = (aiData.moduleScoreSecured / aiData.moduleTotalScore) * 10;
+                          rawScore = Math.min(10, Math.max(1, Math.round(averageScore)));
+                        }
+                      }
+
+                      return {
+                        id: idx + 1,
+                        question: q,
+                        candidateAnswer,
+                        feedback: fbObj.feedback,
+                        rawScore,
+                        score: rawScore * 10,
+                      };
+                    });
+
+                    return (
+                      <div className="space-y-6">
+                        {/* Top Performance Overview Card */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                          {/* Circular Progress Card */}
+                          <div className="bg-white rounded-3xl p-6 border border-gray-150 shadow-sm flex flex-col items-center justify-center text-center col-span-1">
+                            <CircularProgress score={overallPct} size={110} strokeWidth={9} />
+                            <div className="mt-4">
+                              <span className="px-3.5 py-1 bg-[#144542] text-[#DAFF0C] text-[9px] font-black uppercase rounded-full tracking-wider shadow-sm">
+                                AI EVALUATION
+                              </span>
+                            </div>
+                          </div>
+
+                          {/* Stats Breakdown cards */}
+                          <div className="md:col-span-2 grid grid-cols-2 gap-4">
+                            <div className="bg-white p-6 rounded-3xl border border-gray-150 flex flex-col justify-center">
+                              <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Technical Depth Score</span>
+                              <span className="text-2xl font-black text-gray-900">{aiData.moduleScoreSecured} <span className="text-gray-400 text-sm font-medium">/ {aiData.moduleTotalScore}</span></span>
+                              <div className="mt-3 h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
+                                <div style={{ width: `${overallPct}%` }} className={`h-full rounded-full ${getScoreBarColor(overallPct)}`} />
+                              </div>
+                            </div>
+
+                            <div className="bg-white p-6 rounded-3xl border border-gray-150 flex flex-col justify-center">
+                              <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Dialogue Accuracy</span>
+                              <span className="text-2xl font-black text-[#00a89a]">{aiData.correct} <span className="text-gray-400 text-sm font-medium">/ {(aiData.questions || []).length} match</span></span>
+                              <div className="mt-3 text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+                                {aiData.wrong} Incorrect / Missing
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Question-wise analysis */}
+                        <div className="bg-white rounded-[2rem] p-6 border border-gray-150 shadow-sm">
+                          <div className="flex items-center justify-between mb-6 border-b border-gray-100 pb-4">
+                            <div className="flex items-center gap-3">
+                              <div className="w-8 h-8 bg-emerald-50 text-emerald-600 flex items-center justify-center rounded-lg">
+                                <FiAward size={16} />
+                              </div>
+                              <h3 className="text-sm font-black text-gray-900 tracking-tight">Question-wise Analysis</h3>
+                            </div>
+                            <span className="text-[9px] font-black text-gray-400 uppercase tracking-widest">
+                              {questionScores.length} Questions Evaluated
+                            </span>
+                          </div>
+
+                          <div className="space-y-3">
+                            {questionScores.map((qs) => (
+                              <div key={qs.id} className="overflow-hidden border-b border-gray-50 last:border-0 pb-3 last:pb-0">
+                                <button
+                                  onClick={() => setExpandedInterviewQuestion(expandedInterviewQuestion === qs.id ? null : qs.id)}
+                                  className={`w-full flex items-center gap-4 py-3 px-4 transition-all hover:bg-gray-50 text-left rounded-xl ${expandedInterviewQuestion === qs.id ? 'bg-gray-50' : ''}`}
+                                >
+                                  <span className="w-6 text-[9px] font-black text-gray-400 uppercase tracking-widest">Q{qs.id}</span>
+                                  <div className="flex-1">
+                                    <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
+                                      <div style={{ width: `${qs.score}%` }} className={`h-full rounded-full ${getScoreBarColor(qs.score)}`} />
+                                    </div>
+                                  </div>
+                                  <div className={`px-2.5 py-1 rounded-lg font-black text-xs min-w-[3rem] text-center ${getScoreBg(qs.score)} ${getScoreColor(qs.score)} border`}>
+                                    {qs.rawScore}/10
+                                  </div>
+                                  {expandedInterviewQuestion === qs.id ? <FiChevronUp className="text-gray-400" /> : <FiChevronDown className="text-gray-400" />}
+                                </button>
+
+                                <AnimatePresence>
+                                  {expandedInterviewQuestion === qs.id && (
+                                    <motion.div
+                                      initial={{ height: 0, opacity: 0 }}
+                                      animate={{ height: 'auto', opacity: 1 }}
+                                      exit={{ height: 0, opacity: 0 }}
+                                      className="px-10 py-4 overflow-hidden"
+                                    >
+                                      <div className="p-5 bg-gray-50 text-gray-800 rounded-2xl border border-gray-150 text-xs font-semibold leading-relaxed space-y-3">
+                                        <div>
+                                          <span className="text-[#144542] font-black uppercase text-[9px] block mb-1 tracking-widest opacity-50">
+                                            Question {qs.id}
+                                          </span>
+                                          <p className="text-gray-900 font-bold">{qs.question}</p>
+                                        </div>
+                                        <div className="pt-2 border-t border-gray-200/65">
+                                          <span className="text-gray-500 font-black uppercase text-[9px] block mb-1 tracking-widest">
+                                            Candidate Response
+                                          </span>
+                                          <p className="italic text-gray-800 bg-[#DAFF0C]/5 border border-[#DAFF0C]/20 p-3.5 rounded-xl leading-relaxed">"{qs.candidateAnswer}"</p>
+                                        </div>
+                                        <div className="pt-2 border-t border-gray-200/65">
+                                          <span className="text-[#144542] font-black uppercase text-[9px] block mb-1 tracking-widest opacity-55">
+                                            AI Feedback / Reference Match
+                                          </span>
+                                          <p className="text-gray-700 leading-relaxed font-medium">{qs.feedback}</p>
+                                        </div>
+                                      </div>
+                                    </motion.div>
+                                  )}
+                                </AnimatePresence>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })() : (
+                    <div className="bg-white rounded-3xl p-12 text-center border border-gray-150 shadow-sm space-y-3">
+                      <div className="w-16 h-16 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mx-auto mb-2 border border-amber-100">
+                        <FiAlertCircle size={28} />
+                      </div>
+                      <h3 className="text-base font-black text-gray-900">No AI Interview Data Recorded</h3>
+                      <p className="text-xs font-semibold text-gray-400 max-w-sm mx-auto">
+                        This candidate has not participated in the AI Interview module in this assessment session.
+                      </p>
+                    </div>
+                  )
+                )}
+
+                {/* ── SPEECH & VERBAL COMMUNICATION TAB ─────────────────────── */}
+                {activeScorecardTab === "verbal" && (
+                  selectedCandidate.verbal ? (
+                    <div className="space-y-6">
+                      <div className="bg-white p-5 rounded-2xl border border-gray-150 flex justify-between items-center">
+                        <div>
+                          <span className="text-xs font-bold text-gray-400 block uppercase">Verbal Module Score</span>
+                          <span className="text-2xl font-black text-gray-900">{selectedCandidate.verbal.moduleScoreSecured} / {selectedCandidate.verbal.moduleTotalScore}</span>
+                        </div>
+                        <span className="px-3 py-1.5 bg-[#a855f7]/10 border border-[#a855f7]/20 text-purple-700 text-xs font-black rounded-lg">
+                          Metrics Verified
+                        </span>
+                      </div>
+
+                      {/* Gauges of Speech metrics (Pronunciation, Fluency etc.) */}
+                      <div className="grid grid-cols-2 gap-4">
+                        {Object.keys(selectedCandidate.verbal.metrics || {}).map((m, keyIdx) => {
+                          const score = selectedCandidate.verbal.metrics[m];
+                          return (
+                            <div key={keyIdx} className="bg-white rounded-2xl p-5 border border-gray-150 space-y-3">
+                              <div className="flex justify-between items-center">
+                                <span className="text-xs font-bold text-gray-500 uppercase">{m}</span>
+                                <span className="text-sm font-black text-[#144542]">{score}%</span>
+                              </div>
+                              <div className="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+                                <div style={{ width: `${score}%` }} className="h-full bg-purple-500 rounded-full" />
                               </div>
                             </div>
                           );
                         })}
                       </div>
-                    </div>
-                  </div>
-                )}
 
-                {/* ── CODING MODULE SUBMISSION TAB ─────────────────────────── */}
-                {activeScorecardTab === "coding" && selectedCandidate.coding && (
-                  <div className="space-y-6">
-                    <div className="bg-white p-5 rounded-2xl border border-gray-150 flex items-center justify-between">
-                      <div>
-                        <span className="text-xs font-bold text-gray-400 block uppercase">Coding Module Score</span>
-                        <span className="text-2xl font-black text-gray-900">{selectedCandidate.coding.moduleScoreSecured} / {selectedCandidate.coding.moduleTotalScore}</span>
-                      </div>
-                      <span className="px-3 py-1.5 bg-[#db830f]/10 border border-[#db830f]/20 text-[#db830f] text-xs font-black rounded-lg font-mono">
-                        Language: Python / Java / C++
-                      </span>
-                    </div>
+                      {/* Speech listening vs speaking logs */}
+                      <div className="bg-white rounded-3xl p-6 border border-gray-150 shadow-sm space-y-4">
+                        <h3 className="text-xs font-black text-gray-400 uppercase tracking-widest border-b border-gray-100 pb-3">Speaking Audits</h3>
 
-                    {/* Candidate Source Code submitted rendered in a mockup editor */}
-                    {(selectedCandidate.coding.answers || []).map((code, idx) => {
-                      const passed = selectedCandidate.coding.testcasePassed?.[idx] ?? 0;
-                      const total = selectedCandidate.coding.testcaseTotals?.[idx] ?? 0;
-
-                      return (
-                        <div key={idx} className="bg-[#144542] rounded-3xl border border-white/10 shadow-lg overflow-hidden">
-                          
-                          {/* Code editor top chrome header */}
-                          <div className="bg-black/25 px-6 py-4 flex items-center justify-between border-b border-white/5">
-                            <div className="flex items-center gap-3">
-                              <div className="flex gap-1.5">
-                                <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                                <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
-                                <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
-                              </div>
-                              <span className="text-white/60 font-mono text-[11px] font-bold ml-2">Problem {idx + 1} Code Submission</span>
-                            </div>
-                            <span className="px-3 py-1 bg-white/10 text-[#DAFF0C] text-[10px] font-black uppercase rounded-md tracking-wider">
-                              Testcases: {passed} / {total} passed
-                            </span>
-                          </div>
-
-                          {/* Code viewport container */}
-                          <pre className="p-6 overflow-x-auto text-[11px] font-mono text-emerald-400/90 leading-relaxed bg-[#0c2f2d] max-h-[300px] custom-scrollbar">
-                            <code>{code || "// No answer submitted."}</code>
-                          </pre>
-                        </div>
-                      );
-                    })}
-                  </div>
-                )}
-
-                {/* ── AI CONVERSATIONAL INTERVIEW TAB ───────────────────────── */}
-                {activeScorecardTab === "interview" && selectedCandidate.aiInterview && (() => {
-                  const aiData = selectedCandidate.aiInterview;
-                  const overallPct = Math.round((aiData.moduleScoreSecured / aiData.moduleTotalScore) * 100) || 0;
-                  
-                  const getScoreColor = (s) => {
-                    if (s >= 70) return 'text-green-600';
-                    if (s >= 40) return 'text-amber-500';
-                    return 'text-red-600';
-                  };
-
-                  const getScoreBg = (s) => {
-                    if (s >= 70) return 'bg-green-50/70 border-green-100';
-                    if (s >= 40) return 'bg-amber-50/70 border-amber-100';
-                    return 'bg-red-50/70 border-red-100';
-                  };
-
-                  const getScoreBarColor = (s) => {
-                    if (s >= 70) return 'bg-emerald-500';
-                    if (s >= 40) return 'bg-amber-500';
-                    return 'bg-red-500';
-                  };
-
-                  // Compute question scores dynamically
-                  const questionScores = (aiData.questions || []).map((q, idx) => {
-                    const candidateAnswer = aiData.answers?.[idx] || "(No reply received)";
-                    const rawFeedback = aiData.correctAnswers?.[idx] || "No feedback available.";
-                    const fbObj = parseAiFeedback(rawFeedback);
-                    
-                    let rawScore = fbObj.score;
-                    if (rawScore === null) {
-                      rawScore = 5;
-                      const lowerFeedback = fbObj.feedback.toLowerCase();
-                      if (lowerFeedback.includes("no relevant knowledge") || lowerFeedback.includes("failed") || candidateAnswer === "(No reply received)") {
-                        rawScore = 2;
-                      } else if (lowerFeedback.includes("excellent") || lowerFeedback.includes("good match") || lowerFeedback.includes("strong")) {
-                        rawScore = 9;
-                      } else if (lowerFeedback.includes("partial") || lowerFeedback.includes("some matching")) {
-                        rawScore = 6;
-                      } else {
-                        const averageScore = (aiData.moduleScoreSecured / aiData.moduleTotalScore) * 10;
-                        rawScore = Math.min(10, Math.max(1, Math.round(averageScore)));
-                      }
-                    }
-                    
-                    return {
-                      id: idx + 1,
-                      question: q,
-                      candidateAnswer,
-                      feedback: fbObj.feedback,
-                      rawScore,
-                      score: rawScore * 10,
-                    };
-                  });
-
-                  return (
-                    <div className="space-y-6">
-                      {/* Top Performance Overview Card */}
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        {/* Circular Progress Card */}
-                        <div className="bg-white rounded-3xl p-6 border border-gray-150 shadow-sm flex flex-col items-center justify-center text-center col-span-1">
-                          <CircularProgress score={overallPct} size={110} strokeWidth={9} />
-                          <div className="mt-4">
-                            <span className="px-3.5 py-1 bg-[#144542] text-[#DAFF0C] text-[9px] font-black uppercase rounded-full tracking-wider shadow-sm">
-                              AI EVALUATION
-                            </span>
-                          </div>
-                        </div>
-
-                        {/* Stats Breakdown cards */}
-                        <div className="md:col-span-2 grid grid-cols-2 gap-4">
-                          <div className="bg-white p-6 rounded-3xl border border-gray-150 flex flex-col justify-center">
-                            <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Technical Depth Score</span>
-                            <span className="text-2xl font-black text-gray-900">{aiData.moduleScoreSecured} <span className="text-gray-400 text-sm font-medium">/ {aiData.moduleTotalScore}</span></span>
-                            <div className="mt-3 h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
-                              <div style={{ width: `${overallPct}%` }} className={`h-full rounded-full ${getScoreBarColor(overallPct)}`} />
-                            </div>
-                          </div>
-
-                          <div className="bg-white p-6 rounded-3xl border border-gray-150 flex flex-col justify-center">
-                            <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Dialogue Accuracy</span>
-                            <span className="text-2xl font-black text-[#00a89a]">{aiData.correct} <span className="text-gray-400 text-sm font-medium">/ {(aiData.questions || []).length} match</span></span>
-                            <div className="mt-3 text-[10px] font-bold text-gray-400 uppercase tracking-wider">
-                              {aiData.wrong} Incorrect / Missing
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Question-wise analysis */}
-                      <div className="bg-white rounded-[2rem] p-6 border border-gray-150 shadow-sm">
-                        <div className="flex items-center justify-between mb-6 border-b border-gray-100 pb-4">
-                          <div className="flex items-center gap-3">
-                            <div className="w-8 h-8 bg-emerald-50 text-emerald-600 flex items-center justify-center rounded-lg">
-                              <FiAward size={16} />
-                            </div>
-                            <h3 className="text-sm font-black text-gray-900 tracking-tight">Question-wise Analysis</h3>
-                          </div>
-                          <span className="text-[9px] font-black text-gray-400 uppercase tracking-widest">
-                            {questionScores.length} Questions Evaluated
-                          </span>
-                        </div>
-
-                        <div className="space-y-3">
-                          {questionScores.map((qs) => (
-                            <div key={qs.id} className="overflow-hidden border-b border-gray-50 last:border-0 pb-3 last:pb-0">
-                              <button
-                                onClick={() => setExpandedInterviewQuestion(expandedInterviewQuestion === qs.id ? null : qs.id)}
-                                className={`w-full flex items-center gap-4 py-3 px-4 transition-all hover:bg-gray-50 text-left rounded-xl ${expandedInterviewQuestion === qs.id ? 'bg-gray-50' : ''}`}
-                              >
-                                <span className="w-6 text-[9px] font-black text-gray-400 uppercase tracking-widest">Q{qs.id}</span>
-                                <div className="flex-1">
-                                  <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
-                                    <div style={{ width: `${qs.score}%` }} className={`h-full rounded-full ${getScoreBarColor(qs.score)}`} />
-                                  </div>
-                                </div>
-                                <div className={`px-2.5 py-1 rounded-lg font-black text-xs min-w-[3rem] text-center ${getScoreBg(qs.score)} ${getScoreColor(qs.score)} border`}>
-                                  {qs.rawScore}/10
-                                </div>
-                                {expandedInterviewQuestion === qs.id ? <FiChevronUp className="text-gray-400" /> : <FiChevronDown className="text-gray-400" />}
-                              </button>
-
-                              <AnimatePresence>
-                                {expandedInterviewQuestion === qs.id && (
-                                  <motion.div
-                                    initial={{ height: 0, opacity: 0 }}
-                                    animate={{ height: 'auto', opacity: 1 }}
-                                    exit={{ height: 0, opacity: 0 }}
-                                    className="px-10 py-4 overflow-hidden"
-                                  >
-                                    <div className="p-5 bg-gray-50 text-gray-800 rounded-2xl border border-gray-150 text-xs font-semibold leading-relaxed space-y-3">
-                                      <div>
-                                        <span className="text-[#144542] font-black uppercase text-[9px] block mb-1 tracking-widest opacity-50">
-                                          Question {qs.id}
-                                        </span>
-                                        <p className="text-gray-900 font-bold">{qs.question}</p>
-                                      </div>
-                                      <div className="pt-2 border-t border-gray-200/65">
-                                        <span className="text-gray-500 font-black uppercase text-[9px] block mb-1 tracking-widest">
-                                          Candidate Response
-                                        </span>
-                                        <p className="italic text-gray-800 bg-[#DAFF0C]/5 border border-[#DAFF0C]/20 p-3.5 rounded-xl leading-relaxed">"{qs.candidateAnswer}"</p>
-                                      </div>
-                                      <div className="pt-2 border-t border-gray-200/65">
-                                        <span className="text-[#144542] font-black uppercase text-[9px] block mb-1 tracking-widest opacity-55">
-                                          AI Feedback / Reference Match
-                                        </span>
-                                        <p className="text-gray-700 leading-relaxed font-medium">{qs.feedback}</p>
-                                      </div>
-                                    </div>
-                                  </motion.div>
-                                )}
-                              </AnimatePresence>
+                        <div className="space-y-4">
+                          {(selectedCandidate.verbal.speaking || []).map((speak, idx) => (
+                            <div key={idx} className="p-4 bg-purple-50/50 border border-purple-100 rounded-xl space-y-2">
+                              <span className="text-[9px] font-black text-purple-700 block uppercase tracking-widest">Speech Sample {idx + 1}</span>
+                              <p className="text-xs font-semibold text-gray-800 leading-relaxed italic">"{speak}"</p>
                             </div>
                           ))}
                         </div>
                       </div>
                     </div>
-                  );
-                })()}
-
-                {/* ── SPEECH & VERBAL COMMUNICATION TAB ─────────────────────── */}
-                {activeScorecardTab === "verbal" && selectedCandidate.verbal && (
-                  <div className="space-y-6">
-                    <div className="bg-white p-5 rounded-2xl border border-gray-150 flex justify-between items-center">
-                      <div>
-                        <span className="text-xs font-bold text-gray-400 block uppercase">Verbal Module Score</span>
-                        <span className="text-2xl font-black text-gray-900">{selectedCandidate.verbal.moduleScoreSecured} / {selectedCandidate.verbal.moduleTotalScore}</span>
+                  ) : (
+                    <div className="bg-white rounded-3xl p-12 text-center border border-gray-150 shadow-sm space-y-3">
+                      <div className="w-16 h-16 rounded-2xl bg-amber-50 text-purple-600 flex items-center justify-center mx-auto mb-2 border border-purple-100">
+                        <FiAlertCircle size={28} />
                       </div>
-                      <span className="px-3 py-1.5 bg-[#a855f7]/10 border border-[#a855f7]/20 text-purple-700 text-xs font-black rounded-lg">
-                        Metrics Verified
-                      </span>
+                      <h3 className="text-base font-black text-gray-900">No Verbal Data Recorded</h3>
+                      <p className="text-xs font-semibold text-gray-400 max-w-sm mx-auto">
+                        This candidate has not submitted speech or listening recordings in this assessment session.
+                      </p>
                     </div>
-
-                    {/* Gauges of Speech metrics (Pronunciation, Fluency etc.) */}
-                    <div className="grid grid-cols-2 gap-4">
-                      {Object.keys(selectedCandidate.verbal.metrics || {}).map((m, keyIdx) => {
-                        const score = selectedCandidate.verbal.metrics[m];
-                        return (
-                          <div key={keyIdx} className="bg-white rounded-2xl p-5 border border-gray-150 space-y-3">
-                            <div className="flex justify-between items-center">
-                              <span className="text-xs font-bold text-gray-500 uppercase">{m}</span>
-                              <span className="text-sm font-black text-[#144542]">{score}%</span>
-                            </div>
-                            <div className="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
-                              <div style={{ width: `${score}%` }} className="h-full bg-purple-500 rounded-full" />
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-
-                    {/* Speech listening vs speaking logs */}
-                    <div className="bg-white rounded-3xl p-6 border border-gray-150 shadow-sm space-y-4">
-                      <h3 className="text-xs font-black text-gray-400 uppercase tracking-widest border-b border-gray-100 pb-3">Speaking Audits</h3>
-                      
-                      <div className="space-y-4">
-                        {(selectedCandidate.verbal.speaking || []).map((speak, idx) => (
-                          <div key={idx} className="p-4 bg-purple-50/50 border border-purple-100 rounded-xl space-y-2">
-                            <span className="text-[9px] font-black text-purple-700 block uppercase tracking-widest">Speech Sample {idx + 1}</span>
-                            <p className="text-xs font-semibold text-gray-800 leading-relaxed italic">"{speak}"</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+                  )
                 )}
 
               </div>
             </motion.div>
           </div>
+        )}
+      </AnimatePresence>
+      {/* ── DELETE RECORD CONFIRMATION MODAL ── */}
+      <AnimatePresence>
+        {candidateToDelete && (
+          <div className="fixed inset-0 z-50 overflow-hidden flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              transition={{ duration: 0.2 }}
+              className="bg-white rounded-3xl p-6 md:p-8 max-w-md w-full shadow-2xl border border-red-100 relative"
+            >
+              {/* Close Button */}
+              <button
+                type="button"
+                onClick={() => !isDeletingRecord && setCandidateToDelete(null)}
+                disabled={isDeletingRecord}
+                className="absolute top-5 right-5 text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
+              >
+                <FiX size={20} />
+              </button>
+
+              {/* Warning Icon Badge */}
+              <div className="w-14 h-14 rounded-2xl bg-red-50 text-red-500 flex items-center justify-center mb-4 text-2xl shadow-inner">
+                <FiTrash2 />
+              </div>
+
+              <h3 className="text-xl font-black text-gray-900 mb-2 tracking-tight">
+                Delete Test Record?
+              </h3>
+
+              <p className="text-sm text-gray-500 leading-relaxed mb-4">
+                Are you sure you want to delete the test attempt for{" "}
+                <strong className="text-gray-900 font-bold">{candidateToDelete.studentName}</strong> (
+                <span className="text-gray-700">{candidateToDelete.studentEmail}</span>)?
+              </p>
+
+              <div className="bg-amber-50/80 border border-amber-200/80 rounded-2xl p-4 mb-6 text-xs text-amber-900 leading-relaxed flex items-start gap-2.5">
+                <FiAlertCircle size={18} className="shrink-0 text-amber-600 mt-0.5" />
+                <div>
+                  <strong>Important:</strong> This will permanently delete this candidate's test score, module results, and recorded attempt for <span className="font-bold uppercase tracking-wider">{test.testId}</span>. The student will be able to <strong>re-attend</strong> this test from their dashboard.
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <button
+                  type="button"
+                  onClick={() => setCandidateToDelete(null)}
+                  disabled={isDeletingRecord}
+                  className="flex-1 py-3 px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold rounded-xl text-sm transition-all active:scale-95 disabled:opacity-50 cursor-pointer"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  onClick={handleDeleteRecord}
+                  disabled={isDeletingRecord}
+                  className="flex-1 py-3 px-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-sm transition-all shadow-lg shadow-red-600/20 active:scale-95 disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  {isDeletingRecord ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      <span>Deleting...</span>
+                    </>
+                  ) : (
+                    <>
+                      <FiTrash2 size={16} />
+                      <span>Yes, Delete Record</span>
+                    </>
+                  )}
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* ── TOAST NOTIFICATION ── */}
+      <AnimatePresence>
+        {toastMessage && (
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            className={`fixed bottom-6 right-6 z-50 px-5 py-3.5 rounded-2xl font-bold text-sm shadow-xl flex items-center gap-3 border ${
+              toastMessage.type === 'success'
+                ? 'bg-[#144542] text-[#DAFF0C] border-[#DAFF0C]/20 shadow-[#144542]/20'
+                : 'bg-red-600 text-white border-red-500'
+            }`}
+          >
+            {toastMessage.type === 'success' ? <FiCheckCircle size={18} /> : <FiAlertCircle size={18} />}
+            <span>{toastMessage.text}</span>
+            <button
+              type="button"
+              onClick={() => setToastMessage(null)}
+              className="ml-2 text-white/60 hover:text-white transition-colors cursor-pointer"
+            >
+              <FiX size={16} />
+            </button>
+          </motion.div>
         )}
       </AnimatePresence>
 

@@ -31,6 +31,8 @@ class TestCaseResult(BaseModel):
     stderr: Optional[str] = None
     compile_output: Optional[str] = None
     is_hidden: Optional[bool] = None
+    expected_output: Optional[str] = None
+    input: Optional[str] = None
     
     model_config = ConfigDict(from_attributes=True)
 

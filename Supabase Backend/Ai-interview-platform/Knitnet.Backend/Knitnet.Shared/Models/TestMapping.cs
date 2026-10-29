@@ -82,6 +82,12 @@ public class CodingMapping
     [Column("problem_codes")]
     public string ProblemCodes { get; set; } = "[]";
 
+    [Column("selection_mode")]
+    public string SelectionMode { get; set; } = "fixed";
+
+    [Column("random_config")]
+    public string? RandomConfig { get; set; }
+
     [ForeignKey("TestMappingId")]
     public TestMapping? TestMapping { get; set; }
 }

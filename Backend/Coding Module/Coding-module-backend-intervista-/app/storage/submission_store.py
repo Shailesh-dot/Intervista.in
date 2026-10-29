@@ -7,6 +7,9 @@ from app.db.session import db_session
 def _to_response(db_s: DBSubmission) -> SubmissionStatusResponse:
     tc_results = []
     for r in db_s.results:
+        is_hid = r.test_case.is_hidden if r.test_case else False
+        expected_out = r.test_case.expected_output if r.test_case else None
+        input_val = r.test_case.input_data if r.test_case else None
         tc_results.append(TestCaseResult(
             test_case_id=r.test_case_id,
             status=r.status or "Pending",
@@ -14,7 +17,9 @@ def _to_response(db_s: DBSubmission) -> SubmissionStatusResponse:
             stdout=r.stdout,
             stderr=r.stderr,
             compile_output=r.compile_output,
-            is_hidden=r.test_case.is_hidden if r.test_case else False
+            is_hidden=is_hid,
+            expected_output=expected_out,
+            input=input_val
         ))
 
     return SubmissionStatusResponse(

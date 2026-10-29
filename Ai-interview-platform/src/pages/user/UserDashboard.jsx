@@ -101,6 +101,7 @@ export default function UserDashboard() {
     name: "",
     email: "",
     college: "",
+    rollNumber: "",
     dob: "",
     age: "",
     address: "",
@@ -137,6 +138,7 @@ export default function UserDashboard() {
             name: d.FullName || d.fullName || d.Name || d.name || "",
             email: d.Email || d.email || email || "",
             college: d.College || d.college || "",
+            rollNumber: d.RollNumber || d.rollNumber || "",
             dob: d.Dob || d.dob || "",
             age: d.Age || d.age || "",
             address: d.Address || d.address || "",
@@ -266,8 +268,11 @@ export default function UserDashboard() {
     }
     // Store testInfo in localStorage for use throughout the test flow
     localStorage.setItem('testInfo', JSON.stringify(testInfo));
-    // Clear completed modules for the new session attempt
+    // Clear completed modules and old test assignments for the new session attempt
     localStorage.setItem('completedModules', JSON.stringify([]));
+    localStorage.removeItem('coding_assigned_codes');
+    if (testInfo?.testCode) localStorage.removeItem(`coding_assigned_codes_${testInfo.testCode}`);
+    if (testInfo?.testId) localStorage.removeItem(`coding_assigned_codes_${testInfo.testId}`);
     navigate('/user/guidelines', { state: { testId: testInfo.testCode, testInfo } });
   };
 
@@ -340,6 +345,13 @@ export default function UserDashboard() {
               <p className="text-white/40 text-[10px] font-bold uppercase tracking-[0.15em] leading-none mb-1">Institution</p>
               <p className="text-white text-xs lg:text-base truncate tracking-wider">{userData.college}</p>
             </div>
+
+            {userData.rollNumber && (
+              <div className="min-w-0 border-l-2 border-[#DAFF0C]/30 pl-3">
+                <p className="text-white/40 text-[10px] font-bold uppercase tracking-[0.15em] leading-none mb-1">Roll Number</p>
+                <p className="text-white text-xs lg:text-base truncate tracking-wider">{userData.rollNumber}</p>
+              </div>
+            )}
           </div>
         </div>
 

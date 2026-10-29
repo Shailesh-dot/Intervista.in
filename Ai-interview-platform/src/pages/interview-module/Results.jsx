@@ -103,7 +103,44 @@ export default function Results() {
       const userEmail = localStorage.getItem('userEmail') || '';
       const codingCandidateId = userEmail || userId || 'candidate@example.com';
       const testInfo = loadTestInfo();
-      const problemCodes = testInfo?.codingMapping?.problemCodes || [];
+      const testCode = testInfo?.testCode || testInfo?.testId;
+      const mode = (testInfo?.codingMapping?.selectionMode || 'fixed').toLowerCase();
+      let problemCodes = testInfo?.codingMapping?.problemCodes || [];
+
+      // Check if there are cached assigned codes
+      const cacheKey = testCode ? `coding_assigned_codes_${testCode}` : 'coding_assigned_codes';
+      const cached = localStorage.getItem(cacheKey) || localStorage.getItem('coding_assigned_codes');
+      if (cached) {
+        try {
+          const parsed = JSON.parse(cached);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            problemCodes = parsed;
+          }
+        } catch {}
+      }
+
+      if (testCode && (mode === 'random' || !testInfo?.codingMapping?.selectionMode)) {
+        try {
+          const assignRes = await fetch('/api/verification/coding-assignment', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              testCode: testCode,
+              studentId: userId || userEmail
+            })
+          });
+          if (assignRes.ok) {
+            const assignData = await assignRes.json();
+            if (Array.isArray(assignData.problemCodes) && assignData.problemCodes.length > 0) {
+              problemCodes = assignData.problemCodes;
+              localStorage.setItem(cacheKey, JSON.stringify(problemCodes));
+              localStorage.setItem('coding_assigned_codes', JSON.stringify(problemCodes));
+            }
+          }
+        } catch (e) {
+          console.warn('[Results] Could not re-fetch assignment, using cached codes:', e);
+        }
+      }
 
       try {
         // 1. Fetch questions to map IDs to titles
@@ -130,77 +167,75 @@ export default function Results() {
           console.error('[Results] Failed to fetch candidate submissions:', err);
         }
 
-        // Get local submitted codes/drafts (saved by MainAssessment on submit or change)
+        // Submissions recorded during this assessment session
+        const sessionSubmissions = JSON.parse(localStorage.getItem('coding_session_submissions') || '{}');
         const localSubmissions = JSON.parse(localStorage.getItem('coding_submissions') || '{}');
-        const localDrafts = JSON.parse(localStorage.getItem('coding_draft_codes') || '{}');
 
-        // 4. Group by question_id and find the best submission (highest score) submitted in the current session
-        const bestSubmissionsMap = {};
-        candidateSubmissions.forEach(sub => {
-          const qId = sub.question_id;
-          // Check if they explicitly submitted this question in the current session
-          const currentCode = localSubmissions[qId];
-          if (!currentCode) return; 
-
-          const existing = bestSubmissionsMap[qId];
-          if (!existing || sub.score > existing.score) {
-            bestSubmissionsMap[qId] = sub;
-          }
-        });
+        // Determine which questions were assigned to this test
+        const targetQuestions = problemCodes.length > 0
+          ? problemCodes
+          : (allQuestions.length > 0 ? allQuestions.map(q => q.id) : Object.keys(sessionSubmissions));
 
         const problemsData = [];
-        let moduleTotalScore = 0;
+        let moduleTotalScore = targetQuestions.length * 100;
         let moduleScoreSecured = 0;
         const testcaseTotals = [];
         const testcasePassed = [];
         const answers = [];
 
-        // Determine which questions were assigned
-        const targetQuestions = problemCodes.length > 0 
-          ? problemCodes 
-          : (allQuestions.length > 0 ? allQuestions.map(q => q.id) : Object.keys(bestSubmissionsMap));
-
         targetQuestions.forEach(qId => {
-          const bestSub = bestSubmissionsMap[qId];
+          const sub = sessionSubmissions[qId];
           const qMeta = allQuestions.find(q => q.id === qId);
           const title = qMeta?.title || `Problem ${qId}`;
-          
-          const totalCases = bestSub?.total_test_cases ?? 10;
-          const passedCases = bestSub?.passed_test_cases ?? 0;
-          const scoreSecured = bestSub?.score ?? 0; // out of 100
-          
-          moduleTotalScore += 100;
-          moduleScoreSecured += scoreSecured;
 
-          testcaseTotals.push(totalCases);
-          testcasePassed.push(passedCases);
+          if (sub) {
+            const totalCases = sub.total_test_cases ?? 10;
+            const passedCases = sub.passed_test_cases ?? 0;
+            const scoreSecured = sub.score ?? (passedCases > 0 ? Math.round((passedCases / totalCases) * 100) : 0);
+            const sourceCode = sub.source_code || localSubmissions[qId] || '';
 
-          // Retrieve source code of submission
-          // 1. check coding_submissions (explicitly submitted)
-          // 2. check coding_draft_codes (saved draft)
-          // 3. fallback to empty
-          const sourceCode = localSubmissions[qId] || localDrafts[qId] || "";
-          answers.push(sourceCode);
+            moduleScoreSecured += scoreSecured;
+            testcaseTotals.push(totalCases);
+            testcasePassed.push(passedCases);
+            answers.push(sourceCode);
 
-          problemsData.push({
-            title,
-            name: title,
-            maxScore: 100,
-            max_score: 100,
-            score: scoreSecured,
-            marks: scoreSecured,
-            language: bestSub?.language || 'python',
-            lang: bestSub?.language || 'python',
-            status: bestSub?.status || 'Failed',
-          });
+            problemsData.push({
+              title,
+              name: title,
+              maxScore: 100,
+              max_score: 100,
+              score: scoreSecured,
+              marks: scoreSecured,
+              language: sub.language || 'python',
+              lang: sub.language || 'python',
+              status: sub.status || (scoreSecured === 100 ? 'Accepted' : 'Partial'),
+            });
+          } else {
+            // Not attempted in this session: do not take boilerplate from drafts!
+            testcaseTotals.push(10);
+            testcasePassed.push(0);
+            answers.push('');
+
+            problemsData.push({
+              title,
+              name: title,
+              maxScore: 100,
+              max_score: 100,
+              score: 0,
+              marks: 0,
+              language: 'python',
+              lang: 'python',
+              status: 'Not Attempted',
+            });
+          }
         });
 
         const normalized = {
           totalScore: moduleScoreSecured,
           maxScore: moduleTotalScore,
           accuracy: moduleTotalScore > 0 ? Math.round((moduleScoreSecured / moduleTotalScore) * 100) : 0,
-          problemsAttempted: targetQuestions.length,
-          problemsSolved: Object.values(bestSubmissionsMap).filter(s => s.status === 'Accepted').length,
+          problemsAttempted: Object.keys(sessionSubmissions).length,
+          problemsSolved: Object.values(sessionSubmissions).filter(s => s.status === 'Accepted' || s.score === 100).length,
           timeTaken: '—',
           problems: problemsData,
         };
